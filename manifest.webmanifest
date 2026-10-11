@@ -1,0 +1,30 @@
+{
+  "background_color": "#ffffff",
+  "categories": [
+    "utilities",
+    "productivity"
+  ],
+  "description": "Convert images, PDFs, text, PPT & Word files free \u2014 right in your browser. Made by Akram Khan.",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "id": "/",
+  "name": "FileBadlo \u2014 All in One File Converter",
+  "orientation": "portrait",
+  "scope": "/",
+  "short_name": "FileBadlo",
+  "start_url": "/",
+  "theme_color": "#0F172A"
+}
