@@ -1,6 +1,6 @@
 /* FileBadlo service worker — cache-first so the app works fully offline
    after the first visit. Bump CACHE when libraries change. */
-const CACHE = "filebadlo-v1";
+const CACHE = "filebadlo-v2";
 const CORE = [
   "./",
   "./index.html",
@@ -37,6 +37,19 @@ self.addEventListener("activate", (e) => {
 
 self.addEventListener("fetch", (e) => {
   if (e.request.method !== "GET") return;
+  // Page loads: network-first so new versions arrive, cache keeps offline working
+  if (e.request.mode === "navigate") {
+    e.respondWith(
+      fetch(e.request)
+        .then((res) => {
+          const copy = res.clone();
+          caches.open(CACHE).then((c) => c.put("./index.html", copy)).catch(() => {});
+          return res;
+        })
+        .catch(() => caches.match("./index.html", { ignoreSearch: true }))
+    );
+    return;
+  }
   e.respondWith(
     caches.match(e.request, { ignoreSearch: true }).then((hit) => {
       if (hit) return hit;
