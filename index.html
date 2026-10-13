@@ -7,7 +7,8 @@
 <meta name="description" content="FileBadlo by Akram Khan — free all-in-one file converter. Image to PDF, PDF to Image, Text to PDF, Images to PPT, Text to DOC, PDF Merge, Split & Compress. 100% private: all conversions happen in your browser.">
 <meta name="theme-color" content="#0F172A">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -208,6 +209,68 @@ footer{margin-top:auto;border-top:1px solid var(--line);margin-top:64px;padding:
   .brandname{font-size:19px}
   .dl-big{width:100%;justify-content:center}
 }
+
+/* ===== v2 PREMIUM GLASS UPGRADE (Akram Khan) ===== */
+body{background:
+  radial-gradient(42% 30% at 8% 0%,color-mix(in srgb,var(--acc,#F59E0B) 16%,transparent),transparent 70%),
+  radial-gradient(46% 34% at 92% 6%,color-mix(in srgb,var(--acc,#F59E0B) 12%,transparent),transparent 70%),
+  radial-gradient(60% 45% at 50% 112%,color-mix(in srgb,var(--acc,#F59E0B) 10%,transparent),transparent 70%),
+  var(--bg)}
+.top{backdrop-filter:blur(18px) saturate(1.6);-webkit-backdrop-filter:blur(18px) saturate(1.6);
+  background:color-mix(in srgb,var(--card) 72%,transparent);
+  box-shadow:0 10px 34px rgba(2,6,23,.10),inset 0 1px 0 color-mix(in srgb,var(--head) 10%,transparent)}
+.madeby{display:inline-block;margin-top:16px;padding:9px 20px;border-radius:999px;font-size:13.5px;
+  color:#1A1207;background:linear-gradient(135deg,#F8D47C,#E9A93D 55%,#C8842A);
+  border:1px solid rgba(255,255,255,.55);box-shadow:0 10px 26px rgba(217,164,65,.35),inset 0 1px 0 rgba(255,255,255,.7)}
+.madeby b{font-weight:900;letter-spacing:.02em}
+.tab{backdrop-filter:blur(12px) saturate(1.4);-webkit-backdrop-filter:blur(12px) saturate(1.4);
+  background:color-mix(in srgb,var(--card) 78%,transparent);
+  box-shadow:0 6px 18px rgba(2,6,23,.07),inset 0 1px 0 color-mix(in srgb,var(--head) 8%,transparent);
+  transition:transform .18s,box-shadow .18s,border-color .18s}
+.tab:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(2,6,23,.12),inset 0 1px 0 color-mix(in srgb,var(--head) 10%,transparent)}
+.tool{position:relative;overflow:hidden;
+  background:linear-gradient(150deg,color-mix(in srgb,var(--head) 6%,transparent),transparent 42%),
+             linear-gradient(330deg,color-mix(in srgb,var(--acc,#F59E0B) 7%,transparent),transparent 46%),
+             color-mix(in srgb,var(--card) 82%,transparent);
+  border:1px solid color-mix(in srgb,var(--head) 14%,transparent);border-radius:26px;
+  box-shadow:0 30px 60px rgba(2,6,23,.16),inset 0 1px 0 color-mix(in srgb,var(--head) 12%,transparent);
+  backdrop-filter:blur(20px) saturate(1.55);-webkit-backdrop-filter:blur(20px) saturate(1.55)}
+.tool::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+.drop{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  background:color-mix(in srgb,var(--card) 66%,transparent);
+  box-shadow:inset 0 1px 0 color-mix(in srgb,var(--head) 9%,transparent)}
+.convert{box-shadow:0 16px 34px color-mix(in srgb,var(--acc,#F59E0B) 38%,transparent),inset 0 1px 0 rgba(255,255,255,.35)}
+details,.frow,.thumb{box-shadow:inset 0 1px 0 color-mix(in srgb,var(--head) 7%,transparent)}
+/* showcase cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:13px;margin:26px 0 6px}
+.tcard{position:relative;text-align:left;font-family:inherit;cursor:pointer;padding:17px 16px 15px;border-radius:20px;
+  color:var(--ink);border:1px solid color-mix(in srgb,var(--head) 13%,transparent);
+  background:linear-gradient(150deg,color-mix(in srgb,var(--head) 7%,transparent),transparent 45%),
+             color-mix(in srgb,var(--card) 80%,transparent);
+  box-shadow:0 14px 30px rgba(2,6,23,.10),inset 0 1px 0 color-mix(in srgb,var(--head) 12%,transparent);
+  backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);
+  transition:transform .18s,box-shadow .18s,border-color .18s;overflow:hidden}
+.tcard::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+.tcard:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--acc,#F59E0B) 45%,transparent);
+  box-shadow:0 22px 42px rgba(2,6,23,.16),0 0 0 1px color-mix(in srgb,var(--acc,#F59E0B) 22%,transparent),inset 0 1px 0 color-mix(in srgb,var(--head) 14%,transparent)}
+.tcard:active{transform:translateY(-1px) scale(.985)}
+.tcard .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:21px;margin-bottom:11px;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--acc,#F59E0B) 26%,transparent),color-mix(in srgb,var(--acc,#F59E0B) 8%,transparent));
+  border:1px solid color-mix(in srgb,var(--acc,#F59E0B) 30%,transparent);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.tcard b{display:block;font-size:14.5px;color:var(--head);letter-spacing:-.01em}
+.tcard small{display:block;margin-top:4px;font-size:11.8px;line-height:1.45;color:var(--mut)}
+/* footer links */
+.flinks{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:14px 0 4px}
+.flinks span{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.flinks a{font-size:13px;font-weight:700;text-decoration:none;color:var(--head);
+  padding:8px 14px;border-radius:999px;border:1px solid color-mix(in srgb,var(--head) 14%,transparent);
+  background:color-mix(in srgb,var(--card) 78%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:.18s}
+.flinks a:hover{border-color:rgba(217,164,65,.65);color:#B97F16;transform:translateY(-1px)}
+@media(max-width:640px){.cards{grid-template-columns:repeat(auto-fill,minmax(148px,1fr))}}
 </style>
 </head>
 <body>
@@ -258,8 +321,31 @@ footer{margin-top:auto;border-top:1px solid var(--line);margin-top:64px;padding:
       <button data-tool="imgconvert"><span class="ic">🔄</span> JPG ⇄ PNG ⇄ WEBP</button>
       <button data-tool="word2pdf"><span class="ic">📘</span> Word to PDF</button>
       <button data-tool="ppt2pdf"><span class="ic">📙</span> PPT to PDF</button>
+      <button data-tool="pdfrotate"><span class="ic">🔃</span> Rotate PDF</button>
+      <button data-tool="imgresize"><span class="ic">📐</span> Resize Image</button>
+      <button data-tool="qr"><span class="ic">🔳</span> QR Code Maker</button>
+      <button data-tool="texttools"><span class="ic">🔤</span> Text Tools</button>
     </div>
   </nav>
+
+  <div class="cards" id="toolCards">
+    <button class="tcard" data-tool="img2pdf"><span class="ic">🖼️</span><b>Image to PDF</b><small>JPG, PNG, WEBP → one clean PDF</small></button>
+    <button class="tcard" data-tool="pdf2img"><span class="ic">📄</span><b>PDF to Image</b><small>Every page as a JPG, in a ZIP</small></button>
+    <button class="tcard" data-tool="text2pdf"><span class="ic">✍️</span><b>Text to PDF</b><small>Typed text → polished PDF</small></button>
+    <button class="tcard" data-tool="img2ppt"><span class="ic">📊</span><b>Images to PPT</b><small>Photos → presentation slides</small></button>
+    <button class="tcard" data-tool="text2doc"><span class="ic">📝</span><b>Text to DOC</b><small>Typed text → Word document</small></button>
+    <button class="tcard" data-tool="pdfmerge"><span class="ic">🔗</span><b>PDF Merge</b><small>Combine many PDFs into one</small></button>
+    <button class="tcard" data-tool="pdfsplit"><span class="ic">✂️</span><b>PDF Split</b><small>Split a PDF page by page</small></button>
+    <button class="tcard" data-tool="pdfcompress"><span class="ic">🗜️</span><b>Compress PDF</b><small>Make a PDF file smaller</small></button>
+    <button class="tcard" data-tool="pdfrotate"><span class="ic">🔃</span><b>Rotate PDF</b><small>Turn pages 90°, 180° or 270°</small></button>
+    <button class="tcard" data-tool="imgcompress"><span class="ic">📉</span><b>Compress Image</b><small>Shrink image file size</small></button>
+    <button class="tcard" data-tool="imgconvert"><span class="ic">🔄</span><b>Image Convert</b><small>JPG ⇄ PNG ⇄ WEBP</small></button>
+    <button class="tcard" data-tool="imgresize"><span class="ic">📐</span><b>Resize Image</b><small>Exact pixels, aspect lock</small></button>
+    <button class="tcard" data-tool="word2pdf"><span class="ic">📘</span><b>Word to PDF</b><small>DOCX → PDF in seconds</small></button>
+    <button class="tcard" data-tool="ppt2pdf"><span class="ic">📙</span><b>PPT to PDF</b><small>PPTX → PDF in seconds</small></button>
+    <button class="tcard" data-tool="qr"><span class="ic">🔳</span><b>QR Code Maker</b><small>Text or link → QR image</small></button>
+    <button class="tcard" data-tool="texttools"><span class="ic">🔤</span><b>Text Tools</b><small>Word count & case changer</small></button>
+  </div>
 
 <!-- ============ TAB 1: IMAGE TO PDF ============ -->
 <section class="tool on" id="tool-img2pdf">
@@ -426,6 +512,70 @@ footer{margin-top:auto;border-top:1px solid var(--line);margin-top:64px;padding:
   <div class="dlzone" id="ppDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
 </section>
 
+
+<!-- ============ TAB: ROTATE PDF ============ -->
+<section class="tool" id="tool-pdfrotate">
+  <h2>🔃 Rotate PDF</h2>
+  <p class="desc">Turn every page of a PDF by 90°, 180° or 270° — handy for scanned pages that open sideways.</p>
+  <div class="drop" data-drop="pdfrotate"><div class="dic">🔃</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
+  <div class="filelist" id="pdfrotateList"></div>
+  <div class="opts">
+    <div class="opt"><label>Rotate by</label><select id="prAngle"><option value="90">90° clockwise</option><option value="180">180° (upside down)</option><option value="270">270° clockwise</option></select></div>
+  </div>
+  <button class="convert" id="prConvert">Rotate PDF</button>
+  <div class="prog" id="prProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+  <div class="dlzone" id="prDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
+</section>
+
+<!-- ============ TAB: RESIZE IMAGE ============ -->
+<section class="tool" id="tool-imgresize">
+  <h2>📐 Resize Image</h2>
+  <p class="desc">Set exact pixel size for any image — profile photos, thumbnails, uploads with size limits.</p>
+  <div class="drop" id="rzDrop" data-drop="imgresize"><div class="dic">📐</div><b>Drop an image here or click to browse</b><p>JPG • PNG • WEBP</p><input type="file" id="rzFile" accept="image/*"></div>
+  <div style="text-align:center;margin-top:14px"><img id="rzPrev" alt="" style="max-width:220px;max-height:220px;border-radius:14px;display:none;box-shadow:0 10px 26px rgba(2,6,23,.18)"></div>
+  <p class="desc" id="rzInfo" style="text-align:center;margin-top:8px"></p>
+  <div class="opts">
+    <div class="opt"><label>Width (px)</label><input type="number" id="rzW" min="1" placeholder="e.g. 800"></div>
+    <div class="opt"><label>Height (px)</label><input type="number" id="rzH" min="1" placeholder="e.g. 600"></div>
+    <div class="opt"><label>Format</label><select id="rzFmt"><option value="image/png">PNG</option><option value="image/jpeg" selected>JPG</option><option value="image/webp">WEBP</option></select></div>
+  </div>
+  <label style="display:flex;gap:8px;align-items:center;font-size:13.5px;font-weight:600;margin:2px 0 6px"><input type="checkbox" id="rzLock" checked style="width:17px;height:17px"> Keep aspect ratio (changing width sets height automatically)</label>
+  <button class="convert" id="rzConvert">Resize &amp; Prepare</button>
+  <div class="prog" id="rzProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+  <div class="dlzone" id="rzDl"><button class="dl-big">⬇️ Download Image</button><div class="dl-meta"></div></div>
+</section>
+
+<!-- ============ TAB: QR CODE MAKER ============ -->
+<section class="tool" id="tool-qr">
+  <h2>🔳 QR Code Maker</h2>
+  <p class="desc">Turn any text, link, phone number or Wi-Fi details into a QR code image — made on your device, nothing uploaded.</p>
+  <div class="opts" style="margin:0 0 14px">
+    <div class="opt" style="flex:2"><label>Text or link</label><input type="text" id="qrText" placeholder="e.g. https://fileeditor.vercel.app"></div>
+    <div class="opt"><label>Size</label><select id="qrSize"><option value="256">256 px</option><option value="512" selected>512 px</option><option value="1024">1024 px</option></select></div>
+  </div>
+  <button class="convert" id="qrConvert">Create QR Code</button>
+  <div id="qrBox" style="display:flex;justify-content:center;padding:20px 0 4px"></div>
+  <div class="dlzone" id="qrDl"><button class="dl-big">⬇️ Download QR (PNG)</button><div class="dl-meta"></div></div>
+</section>
+
+<!-- ============ TAB: TEXT TOOLS ============ -->
+<section class="tool" id="tool-texttools">
+  <h2>🔤 Text Tools</h2>
+  <p class="desc">Word counter and case changer for essays, captions and assignments — live count as you type.</p>
+  <div class="opt" style="margin-bottom:12px"><label>Your text</label><textarea id="ttText" rows="7" placeholder="Type or paste your text here…" style="width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:14.5px;background:var(--card);color:var(--ink);resize:vertical"></textarea></div>
+  <p class="desc" id="ttStats" style="font-weight:700;color:var(--head)">Words: 0 • Characters: 0 • Sentences: 0 • Lines: 0 • Reading time: 0 min</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">
+    <button class="tbtn" id="ttUpper" type="button">UPPERCASE</button>
+    <button class="tbtn" id="ttLower" type="button">lowercase</button>
+    <button class="tbtn" id="ttTitle" type="button">Title Case</button>
+    <button class="tbtn" id="ttSentence" type="button">Sentence case</button>
+    <button class="tbtn" id="ttSpaces" type="button">Clean extra spaces</button>
+    <button class="tbtn" id="ttCopy" type="button">📋 Copy text</button>
+  </div>
+  <button class="convert" id="ttDownload" style="margin-top:14px">Download as .txt</button>
+  <div class="dlzone" id="ttDl"><button class="dl-big">⬇️ Download Text File</button><div class="dl-meta"></div></div>
+</section>
+
 <!-- ============ FAQ ============ -->
 <section class="faq">
   <h2>Frequently Asked Questions</h2>
@@ -446,6 +596,7 @@ footer{margin-top:auto;border-top:1px solid var(--line);margin-top:64px;padding:
       <svg class="logo" style="width:38px;height:38px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="#0F172A"/><circle cx="50" cy="50" r="47" fill="none" stroke="#F59E0B" stroke-width="3"/><text x="50" y="63" text-anchor="middle" font-family="Poppins,Arial" font-weight="800" font-size="36" fill="#ffffff">AK</text></svg>
       <span><span class="brandname" style="font-size:18px">FileBadlo</span><small>MADE BY AKRAM KHAN</small></span>
     </a>
+    <div class="flinks"><span>More by Akram Khan</span><a href="https://khanprompts.vercel.app/" target="_blank" rel="noopener">🧠 KhanPrompts — AI Prompts</a><a href="https://akbills.vercel.app/" target="_blank" rel="noopener">🧾 AK Bills — Bill Calculator</a></div>
     <p>© 2026 FileBadlo — Made by Akram Khan | All conversions happen in your browser — No files uploaded to server</p>
   </div>
 </footer>
@@ -461,6 +612,7 @@ footer{margin-top:auto;border-top:1px solid var(--line);margin-top:64px;padding:
 <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 (function(){
 "use strict";
@@ -528,8 +680,8 @@ function addWatermark(doc){
 
 /* ---------------- shared file stores ---------------- */
 const store={img2pdf:[],pdf2img:null,img2ppt:[],pdfmerge:[],pdfsplit:null,
-             pdfcompress:null,imgcompress:null,imgconvert:null,word2pdf:null,ppt2pdf:null};
-const singleTools={pdf2img:1,pdfsplit:1,pdfcompress:1,imgcompress:1,imgconvert:1,word2pdf:1,ppt2pdf:1};
+             pdfcompress:null,imgcompress:null,imgconvert:null,word2pdf:null,ppt2pdf:null,pdfrotate:null};
+const singleTools={pdf2img:1,pdfsplit:1,pdfcompress:1,imgcompress:1,imgconvert:1,word2pdf:1,ppt2pdf:1,pdfrotate:1};
 
 function renderThumbs(gridId,arr){
   const g=$(gridId);g.innerHTML="";
@@ -584,12 +736,14 @@ function handleFiles(key,files){
     if(store[key])URL.revokeObjectURL(store[key].url);
     store[key]={file:f,url:URL.createObjectURL(f)};
     renderThumbs(key==="imgcompress"?"imgcompressGrid":"imgconvertGrid",[store[key]]);
+  }else if(key==="imgresize"){
+    if(files[0])rzLoad(files[0]);
   }else if(key==="pdfmerge"){
     files.filter(f=>f.type==="application/pdf").forEach(f=>store.pdfmerge.push(f));
     renderFiles("pdfmergeList",store.pdfmerge);
   }else{ // single-file tools
     const f=files[0];store[key]=f;
-    const listMap={pdf2img:"pdf2imgList",pdfsplit:"pdfsplitList",pdfcompress:"pdfcompressList",word2pdf:"word2pdfList",ppt2pdf:"ppt2pdfList"};
+    const listMap={pdf2img:"pdf2imgList",pdfsplit:"pdfsplitList",pdfcompress:"pdfcompressList",word2pdf:"word2pdfList",ppt2pdf:"ppt2pdfList",pdfrotate:"pdfrotateList"};
     renderFiles(listMap[key],[f]);
   }
 }
@@ -957,6 +1111,93 @@ $("ppConvert").onclick=async()=>{
     toast("PDF ready ✓");
   }catch(e){console.error(e);toast("Could not convert that presentation",1)}
   busy(btn,false);progDone("ppProg");
+};
+
+/* ============ NEW: ROTATE PDF ============ */
+$("prConvert").onclick=async()=>{
+  const f=store.pdfrotate;if(!f)return toast("Add a PDF file first",1);
+  const btn=$("prConvert");busy(btn,1,"Rotating…");
+  try{
+    prog("prProg",30,"Loading PDF…");
+    const doc=await PDFLib.PDFDocument.load(await f.arrayBuffer());
+    const ang=parseInt($("prAngle").value,10)||90;
+    doc.getPages().forEach(p=>{const cur=p.getRotation().angle;
+      p.setRotation(PDFLib.degrees(((cur+ang)%360+360)%360))});
+    prog("prProg",80,"Saving…");
+    const bytes=await doc.save();
+    prog("prProg",100,"Done");
+    setDownload("prDl",new Blob([bytes],{type:"application/pdf"}),baseName(f.name)+"-rotated.pdf","Made by Akram Khan");
+    toast("PDF rotated ✓");
+  }catch(e){toast("Could not rotate this PDF",1)}
+  busy(btn,0);progDone("prProg");
+};
+
+/* ============ NEW: RESIZE IMAGE ============ */
+let rzImg=null,rzRatio=1,rzName="image";
+function rzLoad(f){
+  if(!f||!f.type||!f.type.startsWith("image/"))return toast("Please choose an image file",1);
+  rzName=baseName(f.name);
+  const url=URL.createObjectURL(f);const img=new Image();
+  img.onload=()=>{rzImg=img;rzRatio=img.naturalWidth/img.naturalHeight;
+    $("rzW").value=img.naturalWidth;$("rzH").value=img.naturalHeight;
+    const p=$("rzPrev");p.src=url;p.style.display="inline-block";
+    $("rzInfo").textContent="Original: "+img.naturalWidth+" × "+img.naturalHeight+" px • "+fmtSize(f.size)};
+  img.src=url;
+}
+$("rzFile").addEventListener("change",()=>{rzLoad($("rzFile").files[0]);$("rzFile").value=""});
+$("rzW").addEventListener("input",()=>{if($("rzLock").checked&&rzImg)
+  $("rzH").value=Math.max(1,Math.round((+$("rzW").value||0)/rzRatio))});
+$("rzH").addEventListener("input",()=>{if($("rzLock").checked&&rzImg)
+  $("rzW").value=Math.max(1,Math.round((+$("rzH").value||0)*rzRatio))});
+$("rzConvert").onclick=()=>{
+  if(!rzImg)return toast("Add an image first",1);
+  const w=parseInt($("rzW").value,10),h=parseInt($("rzH").value,10);
+  if(!w||!h||w<1||h<1)return toast("Enter a valid width and height",1);
+  const btn=$("rzConvert");busy(btn,1,"Resizing…");prog("rzProg",50,"Resizing…");
+  const c=document.createElement("canvas");c.width=w;c.height=h;
+  c.getContext("2d").drawImage(rzImg,0,0,w,h);
+  const fmt=$("rzFmt").value,ext=fmt==="image/png"?"png":fmt==="image/webp"?"webp":"jpg";
+  c.toBlob(b=>{prog("rzProg",100,"Done");
+    setDownload("rzDl",b,rzName+"-"+w+"x"+h+"."+ext,"Made by Akram Khan");
+    toast("Image resized ✓");busy(btn,0);progDone("rzProg")},fmt,0.92);
+};
+
+/* ============ NEW: QR CODE MAKER ============ */
+$("qrConvert").onclick=()=>{
+  const txt=$("qrText").value.trim();
+  if(!txt)return toast("Type some text or a link first",1);
+  if(!window.QRCode)return toast("QR library is still loading — check connection once",1);
+  const size=parseInt($("qrSize").value,10)||512,box=$("qrBox");box.innerHTML="";
+  new QRCode(box,{text:txt,width:size,height:size,correctLevel:QRCode.CorrectLevel.M});
+  setTimeout(()=>{const cv=box.querySelector("canvas");
+    if(cv)cv.toBlob(b=>setDownload("qrDl",b,"filebadlo-qr.png","Made by Akram Khan"))},80);
+  toast("QR code ready ✓");
+};
+
+/* ============ NEW: TEXT TOOLS ============ */
+function ttStats(){
+  const t=$("ttText").value;
+  const words=(t.trim().match(/\S+/g)||[]).length;
+  const sents=(t.match(/[.!?]+(\s|$)/g)||[]).length;
+  const lines=t?t.split(/\n/).length:0;
+  $("ttStats").textContent="Words: "+words+" • Characters: "+t.length+
+    " • Sentences: "+sents+" • Lines: "+lines+
+    " • Reading time: "+Math.max(0,Math.round(words/200*10)/10)+" min";
+}
+$("ttText").addEventListener("input",ttStats);
+$("ttUpper").onclick=()=>{$("ttText").value=$("ttText").value.toUpperCase();ttStats()};
+$("ttLower").onclick=()=>{$("ttText").value=$("ttText").value.toLowerCase();ttStats()};
+$("ttTitle").onclick=()=>{$("ttText").value=$("ttText").value.toLowerCase()
+  .replace(/(^|\s)\S/g,s=>s.toUpperCase());ttStats()};
+$("ttSentence").onclick=()=>{const v=$("ttText").value.toLowerCase();
+  $("ttText").value=v.replace(/(^\s*[a-z])|([.!?]\s*[a-z])/g,s=>s.toUpperCase());ttStats()};
+$("ttSpaces").onclick=()=>{$("ttText").value=$("ttText").value
+  .replace(/[ \t]+/g," ").replace(/\n{3,}/g,"\n\n").trim();ttStats()};
+$("ttCopy").onclick=async()=>{try{await navigator.clipboard.writeText($("ttText").value);
+  toast("Text copied ✓")}catch(e){toast("Copy failed — select and copy manually",1)}};
+$("ttDownload").onclick=()=>{
+  const t=$("ttText").value;if(!t.trim())return toast("Type some text first",1);
+  setDownload("ttDl",new Blob([t],{type:"text/plain"}),"filebadlo-text.txt","Made by Akram Khan");
 };
 
 })();
