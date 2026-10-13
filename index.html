@@ -7,7 +7,7 @@
 <meta name="description" content="AK TOOLS by Akram Khan — free all-in-one file converter. Image to PDF, PDF to Image, Text to PDF, Images to PPT, Text to DOC, PDF Merge, Split & Compress. 100% private: all conversions happen in your browser.">
 <meta name="theme-color" content="#0F172A">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -417,7 +417,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 <header class="top">
 <div class="wrap top-in">
 <a class="brand" href="#">
-<span class="logowrap"><svg class="logo" viewBox="0 0 100 100" aria-label="AK logo"><circle cx="50" cy="50" r="47" fill="#0F172A"/><circle cx="50" cy="50" r="47" fill="none" stroke="#F59E0B" stroke-width="3"/><text x="50" y="63" text-anchor="middle" font-family="Poppins,Arial" font-weight="800" font-size="36" fill="#ffffff">AK</text></svg><img class="logoimg" src="logo.png" alt="Akram Khan logo" onerror="this.remove()"></span>
+<span class="logowrap"><svg class="logo" viewBox="0 0 100 100" aria-label="AK logo"><circle cx="50" cy="50" r="47" fill="#0F172A"/><circle cx="50" cy="50" r="47" fill="none" stroke="#F59E0B" stroke-width="3"/><text x="50" y="63" text-anchor="middle" font-family="Poppins,Arial" font-weight="800" font-size="36" fill="#ffffff">AK</text></svg><img class="logoimg" src="logo.svg" alt="Akram Khan logo" onerror="this.remove()"></span>
 <span><span class="brandname">AK TOOLS</span><small>ALL FILE TOOLS IN ONE PLACE</small></span>
 </a>
 <span class="hctrl">
@@ -457,7 +457,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 
 <div class="wrap">
 <section class="hero">
-<img class="hero-logo" src="logo.png" alt="Akram Khan logo" onerror="this.remove()">
+<img class="hero-logo" src="logo.svg" alt="Akram Khan logo" onerror="this.remove()">
 <h1>Convert any file, <span class="u">right in your browser.</span></h1>
 <div class="hchips"><span>⚡ 23 Free Tools</span><span>📴 Works Offline</span><span>🔒 No Sign-up</span></div>
 <div class="madeby">Made by <b>Akram Khan</b></div>
@@ -902,7 +902,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 <footer>
 <div class="wrap foot-in">
 <a class="brand" href="#" style="text-decoration:none">
-<img class="logo" src="logo.png" alt="Akram Khan logo" style="width:38px;height:38px;border-radius:50%;object-fit:cover" onerror="this.remove()">
+<img class="logo" src="logo.svg" alt="Akram Khan logo" style="width:38px;height:38px;border-radius:50%;object-fit:cover" onerror="this.remove()">
 <span><span class="brandname" style="font-size:18px">AK TOOLS</span><small>MADE BY AKRAM KHAN</small></span>
 </a>
 <div class="flinks"><span>More by Akram Khan</span><a href="https://khanprompts.vercel.app/" target="_blank" rel="noopener">🧠 KhanPrompts — AI Prompts</a><a href="https://akbills.vercel.app/" target="_blank" rel="noopener">🧾 AK Bills — Bill Calculator</a></div>
@@ -943,7 +943,7 @@ function setDownload(zoneId,blob,filename,meta){
   const z=$(zoneId);z.classList.add("on");
   let nameInp=z.querySelector(".dl-name");
   if(!nameInp){nameInp=document.createElement("input");nameInp.className="dl-name";
-    nameInp.type="text";nameInp.placeholder="File name";nameInp.setAttribute("aria-label","File name");
+    nameInp.type="text";nameInp.placeholder="File name";
     z.insertBefore(nameInp,z.firstChild)}
   nameInp.value=filename;
   z.querySelector(".dl-meta").textContent=filename+" • "+fmtSize(blob.size)+(meta?" • "+meta:"");
