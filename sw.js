@@ -1,6 +1,6 @@
 /* AK TOOLS service worker — cache-first so the app works fully offline
    after the first visit. Bump CACHE when libraries change. */
-const CACHE = "aktools-v3";
+const CACHE = "aktools-v4";
 const CORE = [
   "./",
   "./index.html",
@@ -22,7 +22,12 @@ const CORE = [
   "https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js",
   "https://cdn.jsdelivr.net/npm/tesseract.js@5.0.5/dist/tesseract.min.js",
-  "https://cdn.jsdelivr.net/npm/tesseract.js@5.0.5/dist/worker.min.js"
+  "https://cdn.jsdelivr.net/npm/tesseract.js@5.0.5/dist/worker.min.js",
+  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=70&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=70&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=70&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=70&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=65&w=1000&auto=format&fit=crop"
 ];
 
 self.addEventListener("install", (e) => {
