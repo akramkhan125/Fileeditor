@@ -1,6 +1,6 @@
 /* FileBadlo service worker — cache-first so the app works fully offline
    after the first visit. Bump CACHE when libraries change. */
-const CACHE = "filebadlo-v6";
+const CACHE = "filebadlo-v7";
 const CORE = [
   "./",
   "./index.html",
@@ -20,7 +20,9 @@ const CORE = [
   "https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js",
   "https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js",
-  "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+  "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js",
+  "https://cdn.jsdelivr.net/npm/tesseract.js@5.0.5/dist/tesseract.min.js",
+  "https://cdn.jsdelivr.net/npm/tesseract.js@5.0.5/dist/worker.min.js"
 ];
 
 self.addEventListener("install", (e) => {
@@ -40,6 +42,22 @@ self.addEventListener("activate", (e) => {
 });
 
 self.addEventListener("fetch", (e) => {
+  const _u = new URL(e.request.url);
+  if (e.request.method === "POST" && _u.pathname === "/share") {
+    e.respondWith((async () => {
+      try {
+        const fd = await e.request.formData();
+        const file = fd.get("shared_file");
+        if (file && file.size) {
+          const c = await caches.open("fb-shared");
+          await c.put("/shared-file", new Response(file, { headers: { "Content-Type": file.type || "application/octet-stream" } }));
+          await c.put("/shared-meta", new Response(JSON.stringify({ name: file.name || "shared-file", type: file.type || "" }), { headers: { "Content-Type": "application/json" } }));
+        }
+      } catch (err) {}
+      return Response.redirect("/?shared=1", 303);
+    })());
+    return;
+  }
   if (e.request.method !== "GET") return;
   // Page loads: network-first so new versions arrive, cache keeps offline working
   if (e.request.mode === "navigate") {
