@@ -271,6 +271,44 @@ details,.frow,.thumb{box-shadow:inset 0 1px 0 color-mix(in srgb,var(--head) 7%,t
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:.18s}
 .flinks a:hover{border-color:rgba(217,164,65,.65);color:#B97F16;transform:translateY(-1px)}
 @media(max-width:640px){.cards{grid-template-columns:repeat(auto-fill,minmax(148px,1fr))}}
+
+/* ===== v3 PRO COVER + CARD ART (Akram Khan) ===== */
+.hero{position:relative;overflow:hidden;text-align:center;padding:46px 20px 34px;margin-top:20px;
+  border-radius:30px;border:1px solid color-mix(in srgb,var(--head) 13%,transparent);
+  background:linear-gradient(155deg,color-mix(in srgb,var(--head) 7%,transparent),transparent 45%),
+             linear-gradient(330deg,color-mix(in srgb,var(--acc,#F59E0B) 13%,transparent),transparent 52%),
+             color-mix(in srgb,var(--card) 80%,transparent);
+  box-shadow:0 30px 64px rgba(2,6,23,.16),inset 0 1px 0 color-mix(in srgb,var(--head) 13%,transparent);
+  backdrop-filter:blur(20px) saturate(1.55);-webkit-backdrop-filter:blur(20px) saturate(1.55)}
+.hero::before{content:"";position:absolute;width:340px;height:340px;left:-110px;top:-150px;border-radius:50%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--acc,#F59E0B) 34%,transparent),transparent 65%);filter:blur(28px);pointer-events:none}
+.hero::after{content:"";position:absolute;width:300px;height:300px;right:-100px;bottom:-160px;border-radius:50%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--acc2,var(--acc,#F59E0B)) 30%,transparent),transparent 65%);filter:blur(28px);pointer-events:none}
+.hero>*{position:relative;z-index:1}
+.hero h1{font-weight:900}
+.hero h1 .u{text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--acc,#F59E0B) 55%,transparent);
+  text-decoration-thickness:5px;text-underline-offset:7px}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .hero h1 .u{background:linear-gradient(92deg,var(--acc,#F59E0B),var(--acc2,var(--acc,#F59E0B)));
+    -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}}
+.hchips{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:20px}
+.hchips span{font-size:12.8px;font-weight:800;color:var(--head);padding:8px 15px;border-radius:999px;
+  border:1px solid color-mix(in srgb,var(--head) 13%,transparent);
+  background:color-mix(in srgb,var(--card) 72%,transparent);
+  box-shadow:0 8px 20px rgba(2,6,23,.08),inset 0 1px 0 color-mix(in srgb,var(--head) 11%,transparent);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.tcard{background:linear-gradient(155deg,color-mix(in srgb,var(--head) 7%,transparent),transparent 46%),
+             radial-gradient(120% 90% at 12% 0%,color-mix(in srgb,var(--acc,#F59E0B) 13%,transparent),transparent 55%),
+             color-mix(in srgb,var(--card) 82%,transparent)}
+.tcard::before{content:"";position:absolute;left:14px;right:14px;top:0;height:3px;border-radius:0 0 6px 6px;
+  background:linear-gradient(90deg,transparent,var(--acc,#F59E0B),var(--acc2,var(--acc,#F59E0B)),transparent);opacity:.75}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .tcard b{background:linear-gradient(92deg,var(--head),color-mix(in srgb,var(--head) 70%,var(--acc,#F59E0B)));
+    -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}}
+.tool h2{position:relative;padding-bottom:10px}
+.tool h2::after{content:"";position:absolute;left:0;bottom:0;width:64px;height:4px;border-radius:99px;
+  background:linear-gradient(90deg,var(--acc,#F59E0B),var(--acc2,var(--acc,#F59E0B)))}
+footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--acc,#F59E0B) 6%,transparent))}
 </style>
 </head>
 <body>
@@ -302,7 +340,7 @@ details,.frow,.thumb{box-shadow:inset 0 1px 0 color-mix(in srgb,var(--head) 7%,t
 <div class="wrap">
   <section class="hero">
     <h1>Convert any file, <span class="u">right in your browser.</span></h1>
-    <p>Image to PDF, PDF to Image, Text to PDF, Images to PPT, Word documents, merge, split &amp; compress — every tool free, fast and private. No sign-up. No uploads.</p>
+    <div class="hchips"><span>⚡ 16 Free Tools</span><span>📴 Works Offline</span><span>🔒 No Sign-up</span></div>
     <div class="madeby">Made by <b>Akram Khan</b></div>
   </section>
 
