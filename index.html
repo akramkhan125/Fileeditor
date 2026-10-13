@@ -341,6 +341,39 @@ footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--acc
 .tcard:nth-child(15){--c:#0F766E}.tcard:nth-child(16){--c:#A21CAF}
 .tab{box-shadow:0 6px 16px rgba(2,6,23,.10),0 2px 0 rgba(2,6,23,.08),inset 0 1px 0 color-mix(in srgb,var(--head) 10%,transparent)}
 .tab:active{transform:translateY(1px)}
+
+/* ===== v5 CATEGORIES, SEARCH, 3D PALETTE FIX ===== */
+.cathead{grid-column:1/-1;font-size:16px;font-weight:900;color:var(--head);letter-spacing:-.01em;
+  margin:12px 2px 0;display:flex;align-items:center;gap:10px}
+.cathead::after{content:"";flex:1;height:2px;border-radius:99px;
+  background:linear-gradient(90deg,color-mix(in srgb,var(--acc,#F59E0B) 55%,transparent),transparent)}
+.cards .cathead:first-child{margin-top:0}
+.tsearch{display:flex;gap:10px;margin:24px 0 4px;flex-wrap:wrap}
+.tsearch input{flex:1;min-width:200px;border:1.5px solid var(--line);border-radius:999px;padding:13px 20px;
+  font-family:inherit;font-size:14.5px;background:var(--card);color:var(--ink);outline:none;
+  box-shadow:0 8px 22px rgba(2,6,23,.07),inset 0 1px 0 color-mix(in srgb,var(--head) 8%,transparent)}
+.tsearch input:focus{border-color:var(--acc,#F59E0B)}
+.tsearch button{border:1.5px solid var(--line);border-radius:999px;padding:12px 18px;font-family:inherit;
+  font-size:13.5px;font-weight:800;background:var(--card);color:var(--head);cursor:pointer;
+  box-shadow:0 6px 16px rgba(2,6,23,.08);transition:.15s}
+.tsearch button.on{background:linear-gradient(135deg,#F8D47C,#D9A441);color:#1A1207;border-color:rgba(255,255,255,.5)}
+.tcard .star{position:absolute;top:9px;right:11px;font-size:16px;line-height:1;color:rgba(255,255,255,.75);
+  text-shadow:0 1px 3px rgba(0,0,0,.3);z-index:2;transition:.15s}
+.tcard .star.on{color:#FFE066;transform:scale(1.15)}
+.tcard:nth-of-type(1){--c:#2563EB}.tcard:nth-of-type(2){--c:#7C3AED}
+.tcard:nth-of-type(3){--c:#DB2777}.tcard:nth-of-type(4){--c:#059669}
+.tcard:nth-of-type(5){--c:#4F46E5}.tcard:nth-of-type(6){--c:#0891B2}
+.tcard:nth-of-type(7){--c:#DC2626}.tcard:nth-of-type(8){--c:#B45309}
+.tcard:nth-of-type(9){--c:#0D9488}.tcard:nth-of-type(10){--c:#9333EA}
+.tcard:nth-of-type(11){--c:#EA580C}.tcard:nth-of-type(12){--c:#0369A1}
+.tcard:nth-of-type(13){--c:#BE185D}.tcard:nth-of-type(14){--c:#65A30D}
+.tcard:nth-of-type(15){--c:#0F766E}.tcard:nth-of-type(16){--c:#A21CAF}
+.tcard:nth-of-type(17){--c:#1D4ED8}.tcard:nth-of-type(18){--c:#7C2D12}
+.tcard:nth-of-type(19){--c:#155E75}.tcard:nth-of-type(20){--c:#86198F}
+.tcard:nth-of-type(21){--c:#3F6212}.tcard:nth-of-type(22){--c:#9D174D}
+.tcard:nth-of-type(23){--c:#44403C}
+.sigwrap{background:#fff;border:1.5px solid var(--line);border-radius:16px;overflow:hidden}
+#sigPad{width:100%;height:240px;display:block;touch-action:none;cursor:crosshair}
 </style>
 </head>
 <body>
@@ -363,6 +396,8 @@ footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--acc
         <button class="sw" data-accent="teal" style="background:linear-gradient(135deg,#0D9488,#22D3EE)" title="Teal"></button>
       </span>
       <button class="modebtn" id="modeBtn" title="Dark / Light mode">🌙</button>
+      <button class="modebtn" id="langBtn" title="Urdu / English" style="font-size:13px;font-weight:800;width:auto;padding:0 12px;border-radius:999px">اردو</button>
+      <span class="priv" id="offBadge" style="display:none"><span class="dot"></span>Offline Ready ✓</span>
       <button id="installBtn">📲 Install App</button>
       <span class="priv"><span class="dot"></span>100% Private — Files never leave your device</span>
     </span>
@@ -372,7 +407,7 @@ footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--acc
 <div class="wrap">
   <section class="hero">
     <h1>Convert any file, <span class="u">right in your browser.</span></h1>
-    <div class="hchips"><span>⚡ 16 Free Tools</span><span>📴 Works Offline</span><span>🔒 No Sign-up</span></div>
+    <div class="hchips"><span>⚡ 23 Free Tools</span><span>📴 Works Offline</span><span>🔒 No Sign-up</span></div>
     <div class="madeby">Made by <b>Akram Khan</b></div>
   </section>
 
@@ -382,39 +417,37 @@ footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--acc
     <button class="tab" data-tool="text2pdf">✍️ Text to PDF</button>
     <button class="tab" data-tool="img2ppt">📊 Images to PPT</button>
     <button class="tab" data-tool="text2doc">📝 Text to DOC</button>
-    <button class="tab" id="moreTab">🧰 More Tools <span class="car">▾</span></button>
-    <div class="dropdown" id="moreDrop">
-      <button data-tool="pdfmerge"><span class="ic">🔗</span> PDF Merge</button>
-      <button data-tool="pdfsplit"><span class="ic">✂️</span> PDF Split</button>
-      <button data-tool="pdfcompress"><span class="ic">🗜️</span> Compress PDF</button>
-      <button data-tool="imgcompress"><span class="ic">📉</span> Compress Image</button>
-      <button data-tool="imgconvert"><span class="ic">🔄</span> JPG ⇄ PNG ⇄ WEBP</button>
-      <button data-tool="word2pdf"><span class="ic">📘</span> Word to PDF</button>
-      <button data-tool="ppt2pdf"><span class="ic">📙</span> PPT to PDF</button>
-      <button data-tool="pdfrotate"><span class="ic">🔃</span> Rotate PDF</button>
-      <button data-tool="imgresize"><span class="ic">📐</span> Resize Image</button>
-      <button data-tool="qr"><span class="ic">🔳</span> QR Code Maker</button>
-      <button data-tool="texttools"><span class="ic">🔤</span> Text Tools</button>
-    </div>
-  </nav>
+    </nav>
 
+  <div class="tsearch"><input id="toolSearch" type="search" placeholder="🔍 Search tools… try PDF, photo, QR, age"><button id="favToggle" type="button">⭐ Favorites</button></div>
+  <p class="noresult" id="noResult" style="display:none;text-align:center;color:var(--mut);font-weight:700;margin:14px 0 2px">No tool found — try another word.</p>
   <div class="cards" id="toolCards">
-    <button class="tcard" data-tool="img2pdf"><span class="ic">🖼️</span><b>Image to PDF</b><small>JPG, PNG, WEBP → one clean PDF</small></button>
-    <button class="tcard" data-tool="pdf2img"><span class="ic">📄</span><b>PDF to Image</b><small>Every page as a JPG, in a ZIP</small></button>
-    <button class="tcard" data-tool="text2pdf"><span class="ic">✍️</span><b>Text to PDF</b><small>Typed text → polished PDF</small></button>
-    <button class="tcard" data-tool="img2ppt"><span class="ic">📊</span><b>Images to PPT</b><small>Photos → presentation slides</small></button>
-    <button class="tcard" data-tool="text2doc"><span class="ic">📝</span><b>Text to DOC</b><small>Typed text → Word document</small></button>
-    <button class="tcard" data-tool="pdfmerge"><span class="ic">🔗</span><b>PDF Merge</b><small>Combine many PDFs into one</small></button>
-    <button class="tcard" data-tool="pdfsplit"><span class="ic">✂️</span><b>PDF Split</b><small>Split a PDF page by page</small></button>
-    <button class="tcard" data-tool="pdfcompress"><span class="ic">🗜️</span><b>Compress PDF</b><small>Make a PDF file smaller</small></button>
-    <button class="tcard" data-tool="pdfrotate"><span class="ic">🔃</span><b>Rotate PDF</b><small>Turn pages 90°, 180° or 270°</small></button>
-    <button class="tcard" data-tool="imgcompress"><span class="ic">📉</span><b>Compress Image</b><small>Shrink image file size</small></button>
-    <button class="tcard" data-tool="imgconvert"><span class="ic">🔄</span><b>Image Convert</b><small>JPG ⇄ PNG ⇄ WEBP</small></button>
-    <button class="tcard" data-tool="imgresize"><span class="ic">📐</span><b>Resize Image</b><small>Exact pixels, aspect lock</small></button>
-    <button class="tcard" data-tool="word2pdf"><span class="ic">📘</span><b>Word to PDF</b><small>DOCX → PDF in seconds</small></button>
-    <button class="tcard" data-tool="ppt2pdf"><span class="ic">📙</span><b>PPT to PDF</b><small>PPTX → PDF in seconds</small></button>
-    <button class="tcard" data-tool="qr"><span class="ic">🔳</span><b>QR Code Maker</b><small>Text or link → QR image</small></button>
-    <button class="tcard" data-tool="texttools"><span class="ic">🔤</span><b>Text Tools</b><small>Word count & case changer</small></button>
+    <div class="cathead" data-cat="pdf">📄 PDF Tools</div>
+    <button class="tcard" data-tool="pdf2img" data-cat="pdf"><span class="ic">📄</span><b>PDF to Image</b><small>Every page as a JPG, in a ZIP</small></button>
+    <button class="tcard" data-tool="pdfmerge" data-cat="pdf"><span class="ic">🔗</span><b>PDF Merge</b><small>Combine many PDFs into one</small></button>
+    <button class="tcard" data-tool="pdfsplit" data-cat="pdf"><span class="ic">✂️</span><b>PDF Split</b><small>Split a PDF page by page</small></button>
+    <button class="tcard" data-tool="pdfcompress" data-cat="pdf"><span class="ic">🗜️</span><b>Compress PDF</b><small>Make a PDF file smaller</small></button>
+    <button class="tcard" data-tool="pdfrotate" data-cat="pdf"><span class="ic">🔃</span><b>Rotate PDF</b><small>Turn pages 90°, 180° or 270°</small></button>
+    <button class="tcard" data-tool="pdfstamp" data-cat="pdf"><span class="ic">🔢</span><b>PDF Stamp</b><small>Page numbers & watermark text</small></button>
+    <button class="tcard" data-tool="pdf2word" data-cat="pdf"><span class="ic">📘</span><b>PDF to Word</b><small>PDF → editable Word file</small></button>
+    <button class="tcard" data-tool="word2pdf" data-cat="pdf"><span class="ic">📗</span><b>Word to PDF</b><small>DOCX → PDF in seconds</small></button>
+    <button class="tcard" data-tool="ppt2pdf" data-cat="pdf"><span class="ic">📙</span><b>PPT to PDF</b><small>PPTX → PDF in seconds</small></button>
+    <div class="cathead" data-cat="img">🖼️ Image Tools</div>
+    <button class="tcard" data-tool="img2pdf" data-cat="img"><span class="ic">🖼️</span><b>Image to PDF</b><small>JPG, PNG, WEBP → one clean PDF</small></button>
+    <button class="tcard" data-tool="img2ppt" data-cat="img"><span class="ic">📊</span><b>Images to PPT</b><small>Photos → presentation slides</small></button>
+    <button class="tcard" data-tool="imgcompress" data-cat="img"><span class="ic">📉</span><b>Compress Image</b><small>Shrink image file size</small></button>
+    <button class="tcard" data-tool="imgconvert" data-cat="img"><span class="ic">🔄</span><b>Image Convert</b><small>JPG ⇄ PNG ⇄ WEBP</small></button>
+    <button class="tcard" data-tool="imgresize" data-cat="img"><span class="ic">📐</span><b>Resize Image</b><small>Exact pixels, aspect lock</small></button>
+    <button class="tcard" data-tool="passport" data-cat="img"><span class="ic">🪪</span><b>Passport Photo</b><small>Official size, white background</small></button>
+    <button class="tcard" data-tool="ocr" data-cat="img"><span class="ic">🔍</span><b>Image to Text</b><small>Extract text from any photo (OCR)</small></button>
+    <div class="cathead" data-cat="txt">🧰 Text &amp; Utilities</div>
+    <button class="tcard" data-tool="text2pdf" data-cat="txt"><span class="ic">✍️</span><b>Text to PDF</b><small>Typed text → polished PDF</small></button>
+    <button class="tcard" data-tool="text2doc" data-cat="txt"><span class="ic">📝</span><b>Text to DOC</b><small>Typed text → Word document</small></button>
+    <button class="tcard" data-tool="qr" data-cat="txt"><span class="ic">🔳</span><b>QR Code Maker</b><small>Text or link → QR image</small></button>
+    <button class="tcard" data-tool="texttools" data-cat="txt"><span class="ic">🔤</span><b>Text Tools</b><small>Word count & case changer</small></button>
+    <button class="tcard" data-tool="signature" data-cat="txt"><span class="ic">✒️</span><b>Signature Maker</b><small>Draw & download your sign</small></button>
+    <button class="tcard" data-tool="calculators" data-cat="txt"><span class="ic">🧮</span><b>Calculators</b><small>Age, BMI, %, unit converter</small></button>
+    <button class="tcard" data-tool="passgen" data-cat="txt"><span class="ic">🔐</span><b>Password Generator</b><small>Strong passwords, one tap</small></button>
   </div>
 
 <!-- ============ TAB 1: IMAGE TO PDF ============ -->
@@ -583,6 +616,131 @@ footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--acc
 </section>
 
 
+
+<!-- ============ TAB: PDF TO WORD ============ -->
+<section class="tool" id="tool-pdf2word">
+  <h2>📘 PDF to Word</h2>
+  <p class="desc">Turn a text-based PDF into an editable Word (.docx) file. Works best on PDFs made from documents — scanned photo PDFs work better with Image to Text first.</p>
+  <div class="drop" data-drop="pdf2word"><div class="dic">📘</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
+  <div class="filelist" id="pdf2wordList"></div>
+  <button class="convert" id="p2wConvert">Convert to Word</button>
+  <div class="prog" id="p2wProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+  <div class="dlzone" id="p2wDl"><button class="dl-big">⬇️ Download Word File</button><div class="dl-meta"></div></div>
+</section>
+
+<!-- ============ TAB: PDF STAMP ============ -->
+<section class="tool" id="tool-pdfstamp">
+  <h2>🔢 PDF Stamp — Page Numbers &amp; Watermark</h2>
+  <p class="desc">Add page numbers, your own watermark text, or both, to every page of a PDF.</p>
+  <div class="drop" data-drop="pdfstamp"><div class="dic">🔢</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
+  <div class="filelist" id="pdfstampList"></div>
+  <div class="opts">
+    <div class="opt"><label>Add</label><select id="stWhat"><option value="numbers">Page numbers only</option><option value="watermark">Watermark text only</option><option value="both">Both</option></select></div>
+    <div class="opt"><label>Watermark text</label><input type="text" id="stText" placeholder="e.g. CONFIDENTIAL or your name"></div>
+    <div class="opt"><label>Number position</label><select id="stPos"><option value="bc">Bottom center</option><option value="br">Bottom right</option><option value="bl">Bottom left</option></select></div>
+  </div>
+  <button class="convert" id="stConvert">Stamp PDF</button>
+  <div class="prog" id="stProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+  <div class="dlzone" id="stDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
+</section>
+
+<!-- ============ TAB: PASSPORT PHOTO ============ -->
+<section class="tool" id="tool-passport">
+  <h2>🪪 Passport Photo Maker</h2>
+  <p class="desc">Make an official-size photo with a clean white background — for CNIC, passport, visa and job forms. Use the zoom slider to fit your face in the frame.</p>
+  <div class="drop" id="ppDrop"><div class="dic">🪪</div><b>Drop a photo here or click to browse</b><p>Any portrait photo</p><input type="file" id="ppFile" accept="image/*"></div>
+  <div style="text-align:center;margin-top:16px"><canvas id="ppPrev" width="413" height="531" style="max-width:230px;width:100%;border-radius:12px;box-shadow:0 12px 30px rgba(2,6,23,.2);display:none;background:#fff"></canvas></div>
+  <div class="opts">
+    <div class="opt"><label>Photo size</label><select id="ppSize"><option value="413x531">35 × 45 mm (passport)</option><option value="600x600">2 × 2 inch</option><option value="300x300">1 × 1 inch</option></select></div>
+    <div class="opt"><label>Copies</label><select id="ppCopies"><option value="1">Single photo</option><option value="4">Sheet of 4 (4×6 in)</option><option value="6">Sheet of 6 (4×6 in)</option><option value="8">Sheet of 8 (4×6 in)</option></select></div>
+    <div class="opt"><label>Zoom</label><input type="range" id="ppZoom" min="100" max="300" value="100" style="width:100%"></div>
+  </div>
+  <button class="convert" id="ppConvert">Make Photo</button>
+  <div class="prog" id="ppProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+  <div class="dlzone" id="ppDl"><button class="dl-big">⬇️ Download Photo</button><div class="dl-meta"></div></div>
+</section>
+
+<!-- ============ TAB: OCR ============ -->
+<section class="tool" id="tool-ocr">
+  <h2>🔍 Image to Text (OCR)</h2>
+  <p class="desc">Extract text from a photo or scanned page — English and Urdu supported. The OCR engine loads once from the internet, then stays on your device.</p>
+  <div class="drop" id="ocrDrop"><div class="dic">🔍</div><b>Drop an image here or click to browse</b><p>Photo or scan with text</p><input type="file" id="ocrFile" accept="image/*"></div>
+  <div style="text-align:center;margin-top:14px"><img id="ocrPrev" alt="" style="max-width:240px;max-height:240px;border-radius:12px;display:none;box-shadow:0 10px 26px rgba(2,6,23,.18)"></div>
+  <div class="opts">
+    <div class="opt"><label>Text language</label><select id="ocrLang"><option value="eng">English</option><option value="urd">Urdu (اردو)</option><option value="eng+urd">English + Urdu</option></select></div>
+  </div>
+  <button class="convert" id="ocrConvert">Extract Text</button>
+  <div class="prog" id="ocrProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+  <div class="opt" style="margin-top:12px"><label>Extracted text</label><textarea id="ocrOut" rows="7" placeholder="Your text will appear here…" style="width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:14.5px;background:var(--card);color:var(--ink);resize:vertical"></textarea></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tbtn" id="ocrCopy" type="button">📋 Copy text</button></div>
+  <button class="convert" id="ocrSave" style="margin-top:12px">Download as .txt</button>
+  <div class="dlzone" id="ocrDl"><button class="dl-big">⬇️ Download Text File</button><div class="dl-meta"></div></div>
+</section>
+
+<!-- ============ TAB: SIGNATURE ============ -->
+<section class="tool" id="tool-signature">
+  <h2>✒️ Signature Maker</h2>
+  <p class="desc">Draw your signature with finger or mouse and download it as a transparent PNG — ready to place on documents.</p>
+  <div class="sigwrap"><canvas id="sigPad"></canvas></div>
+  <div class="opts">
+    <div class="opt"><label>Pen color</label><input type="color" id="sigColor" value="#1e3a8a" style="width:100%;height:42px;border:1.5px solid var(--line);border-radius:11px;background:var(--card);padding:4px"></div>
+    <div class="opt"><label>Pen thickness</label><input type="range" id="sigSize" min="1" max="8" value="3" style="width:100%"></div>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tbtn" id="sigClear" type="button">🧹 Clear</button></div>
+  <button class="convert" id="sigSave">Save Signature</button>
+  <div class="dlzone" id="sigDl"><button class="dl-big">⬇️ Download PNG</button><div class="dl-meta"></div></div>
+</section>
+
+<!-- ============ TAB: CALCULATORS ============ -->
+<section class="tool" id="tool-calculators">
+  <h2>🧮 Calculators</h2>
+  <p class="desc">Everyday calculators — age, BMI, percentage and unit conversion. Everything updates live as you type.</p>
+  <div class="opts" style="margin-top:0">
+    <div class="opt"><label>🎂 Date of birth</label><input type="date" id="calcDob"></div>
+    <div class="opt"><label>Your age</label><input type="text" id="calcAgeOut" readonly placeholder="Pick your birth date"></div>
+  </div>
+  <div class="opts">
+    <div class="opt"><label>⚖️ Weight (kg)</label><input type="number" id="calcW" placeholder="e.g. 70"></div>
+    <div class="opt"><label>📏 Height (cm)</label><input type="number" id="calcH" placeholder="e.g. 175"></div>
+    <div class="opt"><label>Your BMI</label><input type="text" id="calcBmiOut" readonly placeholder="Enter weight & height"></div>
+  </div>
+  <div class="opts">
+    <div class="opt"><label>% Percentage: what is</label><input type="number" id="pctA" placeholder="e.g. 15"></div>
+    <div class="opt"><label>% of</label><input type="number" id="pctB" placeholder="e.g. 2400"></div>
+    <div class="opt"><label>Result</label><input type="text" id="pctOut" readonly placeholder="—"></div>
+  </div>
+  <div class="opts">
+    <div class="opt"><label>🔄 Convert value</label><input type="number" id="unitVal" placeholder="e.g. 10"></div>
+    <div class="opt"><label>From → To</label><select id="unitPair">
+      <option value="km-mi">Kilometers → Miles</option><option value="mi-km">Miles → Kilometers</option>
+      <option value="kg-lb">Kilograms → Pounds</option><option value="lb-kg">Pounds → Kilograms</option>
+      <option value="c-f">Celsius → Fahrenheit</option><option value="f-c">Fahrenheit → Celsius</option>
+      <option value="m-ft">Meters → Feet</option><option value="ft-m">Feet → Meters</option>
+      <option value="l-gal">Liters → Gallons</option><option value="gal-l">Gallons → Liters</option>
+      <option value="in-cm">Inches → Centimeters</option><option value="cm-in">Centimeters → Inches</option>
+    </select></div>
+    <div class="opt"><label>Result</label><input type="text" id="unitOut" readonly placeholder="—"></div>
+  </div>
+</section>
+
+<!-- ============ TAB: PASSWORD GENERATOR ============ -->
+<section class="tool" id="tool-passgen">
+  <h2>🔐 Password Generator</h2>
+  <p class="desc">Create strong, random passwords on your device — nothing is sent anywhere.</p>
+  <div class="opt" style="margin-bottom:12px"><label>Your password</label><input type="text" id="pgOut" readonly style="width:100%;border:1.5px solid var(--line);border-radius:12px;padding:13px 15px;font-family:ui-monospace,monospace;font-size:16px;background:var(--card);color:var(--head)" placeholder="Tap Generate"></div>
+  <div class="opts" style="margin-top:0">
+    <div class="opt"><label>Length: <span id="pgLenVal">16</span></label><input type="range" id="pgLen" min="8" max="40" value="16" style="width:100%"></div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:14px;font-size:13.5px;font-weight:600;margin:4px 0 8px">
+    <label><input type="checkbox" id="pgUpper" checked> ABC</label>
+    <label><input type="checkbox" id="pgLower" checked> abc</label>
+    <label><input type="checkbox" id="pgDigits" checked> 123</label>
+    <label><input type="checkbox" id="pgSymbols" checked> #$&amp;</label>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tbtn" id="pgCopy" type="button">📋 Copy password</button></div>
+  <button class="convert" id="pgGen">Generate Password</button>
+</section>
+
 <!-- ============ TAB: ROTATE PDF ============ -->
 <section class="tool" id="tool-pdfrotate">
   <h2>🔃 Rotate PDF</h2>
@@ -653,7 +811,7 @@ footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--acc
   <details><summary>Is it safe? Where do my files go?<span class="pl">+</span></summary><p>Completely safe. All conversions happen inside your own browser using JavaScript — your files are never uploaded to any server, so nobody can see them but you.</p></details>
   <details><summary>Does it work on mobile phones?<span class="pl">+</span></summary><p>Yes, FileBadlo is fully responsive and works on Android and iPhone browsers, as well as desktop.</p></details>
   <details><summary>Is there a file size limit?<span class="pl">+</span></summary><p>There's no server limit, but very large files depend on your device's memory. Most everyday files convert in seconds.</p></details>
-  <details><summary>Why does my converted file say "Made by Akram Khan"?<span class="pl">+</span></summary><p>FileBadlo is created by Akram Khan, and exported PDFs, presentations and documents carry a small credit footer in the corner.</p></details>
+  <details><summary>Do my converted files carry any watermark?<span class="pl">+</span></summary><p>Never. Every file you make on FileBadlo is 100% clean — no watermark, no logo, no credit line. Your files are fully yours.</p></details>
   <div class="share">
     <a class="wa" href="https://wa.me/?text=Convert%20files%20free%20in%20your%20browser%20%E2%80%94%20Image%20to%20PDF%2C%20PDF%20tools%2C%20PPT%20%26%20more%20on%20FileBadlo!" target="_blank" rel="noopener">📲 Share on WhatsApp</a>
   </div>
@@ -683,6 +841,7 @@ footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--acc
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.0.5/dist/tesseract.min.js"></script>
 <script>
 (function(){
 "use strict";
@@ -727,7 +886,7 @@ function logoBytes(){const s=akLogoDataURL().split(",")[1];const bin=atob(s);
   const u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return u}
 
 /* ============ WATERMARK: jsPDF ============ */
-function addWatermark(doc){
+function addWatermark(doc){return;/* watermarks removed per Akram 2026-10-13 */
   const W=doc.internal.pageSize.getWidth(),H=doc.internal.pageSize.getHeight();
   const n=doc.getNumberOfPages();
   for(let i=1;i<=n;i++){
@@ -750,8 +909,8 @@ function addWatermark(doc){
 
 /* ---------------- shared file stores ---------------- */
 const store={img2pdf:[],pdf2img:null,img2ppt:[],pdfmerge:[],pdfsplit:null,
-             pdfcompress:null,imgcompress:null,imgconvert:null,word2pdf:null,ppt2pdf:null,pdfrotate:null};
-const singleTools={pdf2img:1,pdfsplit:1,pdfcompress:1,imgcompress:1,imgconvert:1,word2pdf:1,ppt2pdf:1,pdfrotate:1};
+             pdfcompress:null,imgcompress:null,imgconvert:null,word2pdf:null,ppt2pdf:null,pdfrotate:null,pdf2word:null,pdfstamp:null};
+const singleTools={pdf2img:1,pdfsplit:1,pdfcompress:1,imgcompress:1,imgconvert:1,word2pdf:1,ppt2pdf:1,pdfrotate:1,pdf2word:1,pdfstamp:1};
 
 function renderThumbs(gridId,arr){
   const g=$(gridId);g.innerHTML="";
@@ -813,23 +972,18 @@ function handleFiles(key,files){
     renderFiles("pdfmergeList",store.pdfmerge);
   }else{ // single-file tools
     const f=files[0];store[key]=f;
-    const listMap={pdf2img:"pdf2imgList",pdfsplit:"pdfsplitList",pdfcompress:"pdfcompressList",word2pdf:"word2pdfList",ppt2pdf:"ppt2pdfList",pdfrotate:"pdfrotateList"};
+    const listMap={pdf2img:"pdf2imgList",pdfsplit:"pdfsplitList",pdfcompress:"pdfcompressList",word2pdf:"word2pdfList",ppt2pdf:"ppt2pdfList",pdfrotate:"pdfrotateList",pdf2word:"pdf2wordList",pdfstamp:"pdfstampList"};
     renderFiles(listMap[key],[f]);
   }
 }
 
 /* ---------------- tabs ---------------- */
-const moreDrop=$("moreDrop"),moreTab=$("moreTab");
 function showTool(name){
   document.querySelectorAll(".tool").forEach(s=>s.classList.toggle("on",s.id==="tool-"+name));
   document.querySelectorAll(".tab[data-tool]").forEach(t=>t.classList.toggle("on",t.dataset.tool===name));
-  moreTab.classList.toggle("on",!document.querySelector('.tab[data-tool="'+name+'"]'));
-  moreDrop.classList.remove("on");moreTab.classList.remove("open");
   window.scrollTo({top:document.querySelector(".tabs").offsetTop-90,behavior:"smooth"});
 }
 document.querySelectorAll("[data-tool]").forEach(b=>b.addEventListener("click",()=>showTool(b.dataset.tool)));
-moreTab.addEventListener("click",e=>{e.stopPropagation();moreDrop.classList.toggle("on");moreTab.classList.toggle("open")});
-document.addEventListener("click",e=>{if(!moreDrop.contains(e.target)){moreDrop.classList.remove("on");moreTab.classList.remove("open")}});
 
 /* ---------------- image loading helper ---------------- */
 function loadImage(url){return new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=url})}
@@ -948,9 +1102,6 @@ $("ipConvert").onclick=async()=>{
       }
       if(withTitles)slide.addText(baseName(arr[i].file.name),
         {x:0.4,y:0.14,w:12.5,h:0.5,fontSize:17,bold:true,color:"0F172A",fontFace:"Calibri"});
-      slide.addText("Made by Akram Khan | FileBadlo.com",
-        {x:9.1,y:7.14,w:4,h:0.3,fontSize:8,color:"A6A6A6",align:"right",fontFace:"Calibri"});
-      slide.addImage({data:akLogoDataURL(),x:0.18,y:6.95,w:0.45,h:0.45});
       prog("ipProg",Math.round((i+1)/arr.length*100),"Slide "+(i+1)+" of "+arr.length);
     }
     const blob=await pptx.write({outputType:"blob"});
@@ -975,18 +1126,7 @@ $("t2dConvert").onclick=async()=>{
           children:[new D.TextRun({text:line,size:24,font:"Calibri"})]}));
       });
     });
-    let footer;
-    try{
-      footer=new D.Footer({children:[new D.Paragraph({alignment:D.AlignmentType.RIGHT,
-        children:[
-          new D.ImageRun({data:logoBytes(),transformation:{width:14,height:14}}),
-          new D.TextRun({text:"  Made by Akram Khan | FileBadlo.com",size:16,color:"A6A6A6",font:"Calibri"})
-        ]})]});
-    }catch(e){
-      footer=new D.Footer({children:[new D.Paragraph({alignment:D.AlignmentType.RIGHT,
-        children:[new D.TextRun({text:"Made by Akram Khan | FileBadlo.com",size:16,color:"A6A6A6",font:"Calibri"})]})]});
-    }
-    const doc=new D.Document({sections:[{footers:{default:footer},children:kids}]});
+    const doc=new D.Document({sections:[{children:kids}]});
     const blob=await D.Packer.toBlob(doc);
     setDownload("t2dDl",blob,(title?title.replace(/[^\w\- ]+/g,""):"FileBadlo-document")+".docx");
     toast("Word file ready ✓");
@@ -1196,7 +1336,7 @@ $("prConvert").onclick=async()=>{
     prog("prProg",80,"Saving…");
     const bytes=await doc.save();
     prog("prProg",100,"Done");
-    setDownload("prDl",new Blob([bytes],{type:"application/pdf"}),baseName(f.name)+"-rotated.pdf","Made by Akram Khan");
+    setDownload("prDl",new Blob([bytes],{type:"application/pdf"}),baseName(f.name)+"-rotated.pdf");
     toast("PDF rotated ✓");
   }catch(e){toast("Could not rotate this PDF",1)}
   busy(btn,0);progDone("prProg");
@@ -1228,7 +1368,7 @@ $("rzConvert").onclick=()=>{
   c.getContext("2d").drawImage(rzImg,0,0,w,h);
   const fmt=$("rzFmt").value,ext=fmt==="image/png"?"png":fmt==="image/webp"?"webp":"jpg";
   c.toBlob(b=>{prog("rzProg",100,"Done");
-    setDownload("rzDl",b,rzName+"-"+w+"x"+h+"."+ext,"Made by Akram Khan");
+    setDownload("rzDl",b,rzName+"-"+w+"x"+h+"."+ext);
     toast("Image resized ✓");busy(btn,0);progDone("rzProg")},fmt,0.92);
 };
 
@@ -1240,7 +1380,7 @@ $("qrConvert").onclick=()=>{
   const size=parseInt($("qrSize").value,10)||512,box=$("qrBox");box.innerHTML="";
   new QRCode(box,{text:txt,width:size,height:size,correctLevel:QRCode.CorrectLevel.M});
   setTimeout(()=>{const cv=box.querySelector("canvas");
-    if(cv)cv.toBlob(b=>setDownload("qrDl",b,"filebadlo-qr.png","Made by Akram Khan"))},80);
+    if(cv)cv.toBlob(b=>setDownload("qrDl",b,"filebadlo-qr.png"))},80);
   toast("QR code ready ✓");
 };
 
@@ -1267,8 +1407,271 @@ $("ttCopy").onclick=async()=>{try{await navigator.clipboard.writeText($("ttText"
   toast("Text copied ✓")}catch(e){toast("Copy failed — select and copy manually",1)}};
 $("ttDownload").onclick=()=>{
   const t=$("ttText").value;if(!t.trim())return toast("Type some text first",1);
-  setDownload("ttDl",new Blob([t],{type:"text/plain"}),"filebadlo-text.txt","Made by Akram Khan");
+  setDownload("ttDl",new Blob([t],{type:"text/plain"}),"filebadlo-text.txt");
 };
+
+
+/* ============ NEW: PDF TO WORD ============ */
+$("p2wConvert").onclick=async()=>{
+  const f=store.pdf2word;if(!f)return toast("Add a PDF file first",1);
+  const btn=$("p2wConvert");busy(btn,1,"Converting…");
+  try{
+    prog("p2wProg",15,"Reading PDF…");
+    const pdf=await pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise;
+    const D=window.docx,kids=[];
+    for(let p=1;p<=pdf.numPages;p++){
+      const page=await pdf.getPage(p);const tc=await page.getTextContent();
+      let line="",lastY=null;
+      const flush=()=>{if(line.trim())kids.push(new D.Paragraph({spacing:{after:120},
+        children:[new D.TextRun({text:line.trim(),size:24,font:"Calibri"})]}));line=""};
+      tc.items.forEach(it=>{
+        if(lastY!==null&&Math.abs(it.transform[5]-lastY)>2)flush();
+        line+=it.str+(it.hasEOL?"":" ");if(it.hasEOL)flush();
+        lastY=it.transform[5];
+      });
+      flush();
+      if(p<pdf.numPages)kids.push(new D.Paragraph({children:[new D.PageBreak()]}));
+      prog("p2wProg",15+Math.round(p/pdf.numPages*75),"Page "+p+" of "+pdf.numPages);
+    }
+    if(!kids.length){toast("No text found — this PDF looks like scanned images. Try Image to Text (OCR).",1);
+      busy(btn,0);progDone("p2wProg");return}
+    const doc=new D.Document({sections:[{children:kids}]});
+    const blob=await D.Packer.toBlob(doc);
+    prog("p2wProg",100,"Done");
+    setDownload("p2wDl",blob,baseName(f.name)+".docx");
+    toast("Word file ready ✓");
+  }catch(e){console.error(e);toast("Could not convert this PDF",1)}
+  busy(btn,0);progDone("p2wProg");
+};
+
+/* ============ NEW: PDF STAMP ============ */
+$("stConvert").onclick=async()=>{
+  const f=store.pdfstamp;if(!f)return toast("Add a PDF file first",1);
+  const what=$("stWhat").value,wm=$("stText").value.trim();
+  if(what!=="numbers"&&!wm)return toast("Type a watermark text first",1);
+  const btn=$("stConvert");busy(btn,1,"Stamping…");
+  try{
+    prog("stProg",30,"Loading PDF…");
+    const doc=await PDFLib.PDFDocument.load(await f.arrayBuffer());
+    const font=await doc.embedFont(PDFLib.StandardFonts.Helvetica);
+    const pages=doc.getPages(),n=pages.length,pos=$("stPos").value;
+    pages.forEach((p,i)=>{
+      const{w,h}=p.getSize();
+      if(what==="numbers"||what==="both"){
+        const t="Page "+(i+1)+" of "+n,tw=font.widthOfTextAtSize(t,10);
+        const x=pos==="br"?w-tw-36:pos==="bl"?36:(w-tw)/2;
+        p.drawText(t,{x,y:24,size:10,font,color:PDFLib.rgb(0.45,0.45,0.45)});
+      }
+      if(what==="watermark"||what==="both"){
+        const tw=font.widthOfTextAtSize(wm,44);
+        p.drawText(wm,{x:(w-tw*Math.cos(0.6))/2,y:h/2-40,size:44,font,
+          color:PDFLib.rgb(0.6,0.6,0.6),opacity:0.16,rotate:PDFLib.degrees(35)});
+      }
+    });
+    prog("stProg",85,"Saving…");
+    const bytes=await doc.save();prog("stProg",100,"Done");
+    setDownload("stDl",new Blob([bytes],{type:"application/pdf"}),baseName(f.name)+"-stamped.pdf");
+    toast("PDF stamped ✓");
+  }catch(e){console.error(e);toast("Could not stamp this PDF",1)}
+  busy(btn,0);progDone("stProg");
+};
+
+/* ============ NEW: PASSPORT PHOTO ============ */
+let ppImg=null;
+function ppDraw(){
+  if(!ppImg)return;
+  const cv=$("ppPrev"),parts=$("ppSize").value.split("x");
+  const W=+parts[0],H=+parts[1];cv.width=W;cv.height=H;
+  const x=cv.getContext("2d");x.fillStyle="#FFFFFF";x.fillRect(0,0,W,H);
+  const zoom=+$("ppZoom").value/100;
+  const s=Math.max(W/ppImg.naturalWidth,H/ppImg.naturalHeight)*zoom;
+  const w=ppImg.naturalWidth*s,h=ppImg.naturalHeight*s;
+  x.drawImage(ppImg,(W-w)/2,(H-h)/2,w,h);
+  cv.style.display="inline-block";
+}
+$("ppFile").addEventListener("change",()=>{
+  const f=$("ppFile").files[0];if(!f)return;
+  const img=new Image();img.onload=()=>{ppImg=img;ppDraw()};img.src=URL.createObjectURL(f);
+  $("ppFile").value="";
+});
+["ppSize","ppZoom"].forEach(id=>$(id).addEventListener("input",ppDraw));
+$("ppConvert").onclick=()=>{
+  if(!ppImg)return toast("Add a photo first",1);
+  ppDraw();const btn=$("ppConvert");busy(btn,1,"Preparing…");prog("ppProg",60,"Preparing…");
+  const copies=+$("ppCopies").value;
+  if(copies===1){
+    $("ppPrev").toBlob(b=>{prog("ppProg",100,"Done");
+      setDownload("ppDl",b,"passport-photo.jpg");toast("Photo ready ✓");
+      busy(btn,0);progDone("ppProg")},"image/jpeg",0.95);
+  }else{
+    const W=1200,H=1800,sheet=document.createElement("canvas");sheet.width=W;sheet.height=H;
+    const x=sheet.getContext("2d");x.fillStyle="#FFFFFF";x.fillRect(0,0,W,H);
+    const pw=$("ppPrev").width,ph=$("ppPrev").height,cols=2,gap=30;
+    const cw=(W-gap*(cols+1))/cols,ch=cw*ph/pw,rows=Math.ceil(copies/cols);
+    for(let i=0;i<copies;i++){
+      const cx=gap+(i%cols)*(cw+gap),cy=gap+Math.floor(i/cols)*(ch+gap);
+      x.drawImage($("ppPrev"),cx,cy,cw,ch);
+      x.strokeStyle="#DDDDDD";x.strokeRect(cx,cy,cw,ch);
+    }
+    sheet.toBlob(b=>{prog("ppProg",100,"Done");
+      setDownload("ppDl",b,"passport-sheet-"+copies+".jpg");toast("Sheet ready ✓");
+      busy(btn,0);progDone("ppProg")},"image/jpeg",0.95);
+  }
+};
+
+/* ============ NEW: OCR ============ */
+let ocrUrl=null;
+$("ocrFile").addEventListener("change",()=>{
+  const f=$("ocrFile").files[0];if(!f)return;
+  if(ocrUrl)URL.revokeObjectURL(ocrUrl);
+  ocrUrl=URL.createObjectURL(f);
+  const p=$("ocrPrev");p.src=ocrUrl;p.style.display="inline-block";
+  $("ocrFile").value="";
+});
+$("ocrConvert").onclick=async()=>{
+  if(!ocrUrl)return toast("Add an image first",1);
+  if(!window.Tesseract)return toast("OCR engine still loading — check connection once",1);
+  const btn=$("ocrConvert");busy(btn,1,"Reading text…");
+  try{
+    const worker=await Tesseract.createWorker($("ocrLang").value,1,{
+      logger:m=>{if(m.status==="recognizing text")prog("ocrProg",Math.round(m.progress*100),"Reading… "+Math.round(m.progress*100)+"%")}});
+    const{data}=await worker.recognize(ocrUrl);
+    await worker.terminate();
+    $("ocrOut").value=data.text.trim();
+    prog("ocrProg",100,"Done");toast("Text extracted ✓");
+  }catch(e){console.error(e);toast("OCR failed — try a clearer photo",1)}
+  busy(btn,0);progDone("ocrProg");
+};
+$("ocrCopy").onclick=async()=>{try{await navigator.clipboard.writeText($("ocrOut").value);toast("Text copied ✓")}catch(e){toast("Copy failed",1)}};
+$("ocrSave").onclick=()=>{
+  const t=$("ocrOut").value;if(!t.trim())return toast("Extract some text first",1);
+  setDownload("ocrDl",new Blob([t],{type:"text/plain"}),"filebadlo-ocr.txt");
+};
+
+/* ============ NEW: SIGNATURE ============ */
+(function(){
+  const cv=$("sigPad"),x=cv.getContext("2d");let drawing=false,lx=0,ly=0,has=false;
+  function fit(){const r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;
+    const keep=document.createElement("canvas");keep.width=cv.width;keep.height=cv.height;
+    if(cv.width)keep.getContext("2d").drawImage(cv,0,0);
+    cv.width=Math.max(2,Math.round(r.width*d));cv.height=Math.max(2,Math.round(240*d));
+    x.lineCap="round";x.lineJoin="round";
+    if(keep.width>2)x.drawImage(keep,0,0,cv.width,cv.height)}
+  fit();window.addEventListener("resize",fit);
+  function pos(e){const r=cv.getBoundingClientRect();
+    return{x:(e.clientX-r.left)*cv.width/r.width,y:(e.clientY-r.top)*cv.height/r.height}}
+  cv.addEventListener("pointerdown",e=>{if(cv.width<50)fit();drawing=true;const p=pos(e);lx=p.x;ly=p.y;
+    cv.setPointerCapture(e.pointerId);e.preventDefault()});
+  cv.addEventListener("pointermove",e=>{if(!drawing)return;const p=pos(e);
+    x.strokeStyle=$("sigColor").value;x.lineWidth=+$("sigSize").value*(cv.width/640);
+    x.beginPath();x.moveTo(lx,ly);x.lineTo(p.x,p.y);x.stroke();lx=p.x;ly=p.y;has=true});
+  ["pointerup","pointercancel"].forEach(ev=>cv.addEventListener(ev,()=>drawing=false));
+  $("sigClear").onclick=()=>{x.clearRect(0,0,cv.width,cv.height);has=false};
+  $("sigSave").onclick=()=>{
+    if(!has)return toast("Draw your signature first",1);
+    cv.toBlob(b=>setDownload("sigDl",b,"my-signature.png"),"image/png");
+    toast("Signature ready ✓");
+  };
+})();
+
+/* ============ NEW: CALCULATORS ============ */
+function calcAge(){const v=$("calcDob").value;if(!v)return;
+  const d=new Date(v),now=new Date();if(isNaN(d)||d>now){$("calcAgeOut").value="";return}
+  let y=now.getFullYear()-d.getFullYear(),m=now.getMonth()-d.getMonth(),dd=now.getDate()-d.getDate();
+  if(dd<0){m--;dd+=new Date(now.getFullYear(),now.getMonth(),0).getDate()}
+  if(m<0){y--;m+=12}
+  $("calcAgeOut").value=y+" years, "+m+" months, "+dd+" days";
+}
+function calcBmi(){const w=+$("calcW").value,h=+$("calcH").value/100;
+  if(!w||!h){$("calcBmiOut").value="";return}
+  const bmi=w/(h*h);let cat=bmi<18.5?"Underweight":bmi<25?"Normal ✓":bmi<30?"Overweight":"Obese";
+  $("calcBmiOut").value=bmi.toFixed(1)+" — "+cat;
+}
+function calcPct(){const a=+$("pctA").value,b=+$("pctB").value;
+  $("pctOut").value=(a&&b)?(a/100*b).toLocaleString():""}
+function calcUnit(){const v=parseFloat($("unitVal").value);if(isNaN(v)){$("unitOut").value="";return}
+  const p=$("unitPair").value;let r;
+  switch(p){
+    case "km-mi":r=v*0.621371;break;case "mi-km":r=v*1.60934;break;
+    case "kg-lb":r=v*2.20462;break;case "lb-kg":r=v*0.453592;break;
+    case "c-f":r=v*9/5+32;break;case "f-c":r=(v-32)*5/9;break;
+    case "m-ft":r=v*3.28084;break;case "ft-m":r=v*0.3048;break;
+    case "l-gal":r=v*0.264172;break;case "gal-l":r=v*3.78541;break;
+    case "in-cm":r=v*2.54;break;case "cm-in":r=v*0.393701;break;
+  }
+  $("unitOut").value=(Math.round(r*1000)/1000).toLocaleString();
+}
+$("calcDob").addEventListener("change",calcAge);
+["calcW","calcH"].forEach(id=>$(id).addEventListener("input",calcBmi));
+["pctA","pctB"].forEach(id=>$(id).addEventListener("input",calcPct));
+["unitVal","unitPair"].forEach(id=>$(id).addEventListener("input",calcUnit));
+
+/* ============ NEW: PASSWORD GENERATOR ============ */
+function pgMake(){
+  let set="";
+  if($("pgUpper").checked)set+="ABCDEFGHJKLMNPQRSTUVWXYZ";
+  if($("pgLower").checked)set+="abcdefghijkmnpqrstuvwxyz";
+  if($("pgDigits").checked)set+="23456789";
+  if($("pgSymbols").checked)set+="#$%&*@!?";
+  if(!set)return toast("Tick at least one character type",1);
+  const len=+$("pgLen").value,buf=new Uint32Array(len);
+  crypto.getRandomValues(buf);
+  $("pgOut").value=[...buf].map(n=>set[n%set.length]).join("");
+}
+$("pgLen").addEventListener("input",()=>$("pgLenVal").textContent=$("pgLen").value);
+$("pgGen").onclick=pgMake;
+$("pgCopy").onclick=async()=>{if(!$("pgOut").value)pgMake();
+  try{await navigator.clipboard.writeText($("pgOut").value);toast("Password copied ✓")}catch(e){toast("Copy failed",1)}};
+pgMake();
+
+/* ============ SEARCH + FAVORITES ============ */
+let favs=new Set();try{favs=new Set(JSON.parse(localStorage.getItem("fb-favs")||"[]"))}catch(e){}
+let favOnly=false;
+document.querySelectorAll(".tcard").forEach(card=>{
+  const s=document.createElement("span");s.className="star"+(favs.has(card.dataset.tool)?" on":"");
+  s.textContent=favs.has(card.dataset.tool)?"★":"☆";s.title="Favorite";
+  s.addEventListener("click",e=>{e.stopPropagation();const t=card.dataset.tool;
+    if(favs.has(t)){favs.delete(t);s.textContent="☆";s.classList.remove("on")}
+    else{favs.add(t);s.textContent="★";s.classList.add("on");toast("Added to favorites ⭐")}
+    try{localStorage.setItem("fb-favs",JSON.stringify([...favs]))}catch(err){}
+    applyFilter();
+  });
+  card.appendChild(s);
+});
+function applyFilter(){
+  const q=($("toolSearch").value||"").trim().toLowerCase();let any=false;
+  const cats={pdf:0,img:0,txt:0};
+  document.querySelectorAll(".tcard").forEach(card=>{
+    const hit=(!q||card.textContent.toLowerCase().includes(q))&&(!favOnly||favs.has(card.dataset.tool));
+    card.style.display=hit?"":"none";
+    if(hit){any=true;cats[card.dataset.cat]=(cats[card.dataset.cat]||0)+1}
+  });
+  document.querySelectorAll(".cathead").forEach(h=>h.style.display=cats[h.dataset.cat]?"":"none");
+  $("noResult").style.display=any?"none":"block";
+}
+$("toolSearch").addEventListener("input",applyFilter);
+$("favToggle").addEventListener("click",()=>{favOnly=!favOnly;
+  $("favToggle").classList.toggle("on",favOnly);applyFilter()});
+
+/* ============ SHARED FILE INTAKE (share target) ============ */
+if(new URLSearchParams(location.search).has("shared")){
+  history.replaceState(null,"",location.pathname);
+  (async()=>{try{
+    const c=await caches.open("fb-shared");
+    const res=await c.match("/shared-file");if(!res)return;
+    const meta=await(await c.match("/shared-meta")).json();
+    const blob=await res.blob();
+    const file=new File([blob],meta.name||"shared-file",{type:meta.type||blob.type});
+    if(file.type.startsWith("image/")){
+      store.img2pdf.push({file,url:URL.createObjectURL(file)});
+      renderThumbs("img2pdfGrid",store.img2pdf);showTool("img2pdf");
+    }else if(file.type==="application/pdf"){
+      store.pdf2img=file;renderFiles("pdf2imgList",[file]);showTool("pdf2img");
+    }else{toast("That file type opens in FileBadlo tools — pick it from the tool",1);return}
+    toast("Shared file loaded ✓");
+    c.delete("/shared-file");c.delete("/shared-meta");
+  }catch(e){}})();
+}
 
 })();
 </script>
@@ -1317,6 +1720,70 @@ window.addEventListener("appinstalled",()=>{
     });
   });
   syncMode();syncSw();
+})();
+</script>
+
+<script>
+/* Urdu UI toggle + Offline Ready badge */
+(function(){
+  var UR={
+  "Image to PDF":"تصویر سے PDF","PDF to Image":"PDF سے تصویر","Text to PDF":"متن سے PDF",
+  "Images to PPT":"تصاویر سے PPT","Text to DOC":"متن سے DOC","PDF Merge":"PDF جوڑیں",
+  "PDF Split":"PDF تقسیم کریں","Compress PDF":"PDF چھوٹا کریں","Rotate PDF":"PDF گھمائیں",
+  "PDF Stamp":"PDF پر نشان","PDF to Word":"PDF سے Word","Word to PDF":"Word سے PDF",
+  "PPT to PDF":"PPT سے PDF","Compress Image":"تصویر چھوٹی کریں","Image Convert":"تصویر کی قسم بدلیں",
+  "Resize Image":"تصویر کا سائز بدلیں","Passport Photo":"پاسپورٹ فوٹو","Image to Text":"تصویر سے متن",
+  "QR Code Maker":"QR کوڈ بنائیں","Text Tools":"متنی اوزار","Signature Maker":"دستخط بنائیں",
+  "Calculators":"کیلکولیٹر","Password Generator":"پاس ورڈ بنائیں",
+  "PDF Tools":"PDF اوزار","Image Tools":"تصویری اوزار","Text & Utilities":"متن اور سہولتیں",
+  "23 Free Tools":"23 مفت اوزار","Works Offline":"آف لائن چلتا ہے","No Sign-up":"کوئی سائن اپ نہیں",
+  "More by Akram Khan":"Akram Khan کی مزید چیزیں",
+  "Every page as a JPG, in a ZIP":"ہر صفحہ JPG تصویر، ایک ZIP میں",
+  "Combine many PDFs into one":"کئی PDF ملا کر ایک بنائیں",
+  "Split a PDF page by page":"PDF کو صفحہ بہ صفحہ الگ کریں",
+  "Make a PDF file smaller":"PDF فائل کا سائز کم کریں",
+  "Turn pages 90°, 180° or 270°":"صفحات 90، 180 یا 270 ڈگری گھمائیں",
+  "Page numbers & watermark text":"صفحہ نمبر اور واٹر مارک لگائیں",
+  "PDF → editable Word file":"PDF سے قابلِ ترمیم Word فائل",
+  "DOCX → PDF in seconds":"DOCX سے PDF بنائیں","PPTX → PDF in seconds":"PPTX سے PDF بنائیں",
+  "JPG, PNG, WEBP → one clean PDF":"تصویروں سے ایک صاف PDF بنائیں",
+  "Photos → presentation slides":"تصویروں سے سلائیڈز بنائیں",
+  "Shrink image file size":"تصویر کا سائز کم کریں","JPG ⇄ PNG ⇄ WEBP":"JPG، PNG اور WEBP میں بدلیں",
+  "Exact pixels, aspect lock":"مقررہ پکسل سائز بنائیں","Official size, white background":"سرکاری سائز، سفید پس منظر",
+  "Extract text from any photo (OCR)":"کسی بھی تصویر سے متن نکالیں",
+  "Typed text → polished PDF":"لکھا ہوا متن خوبصورت PDF میں","Typed text → Word document":"لکھا ہوا متن Word فائل میں",
+  "Text or link → QR image":"متن یا لنک سے QR کوڈ","Word count & case changer":"الفاظ گنیں اور حروف بدلیں",
+  "Draw & download your sign":"دستخط بنا کر ڈاؤن لوڈ کریں","Age, BMI, %, unit converter":"عمر، BMI، فیصد اور اکائیاں",
+  "Strong passwords, one tap":"مضبوط پاس ورڈ ایک ٹیپ میں"};
+  var h1=document.querySelector(".hero h1"),h1en=h1?h1.innerHTML:"",
+      h1ur='کوئی بھی فائل تبدیل کریں، <span class="u">سیدھا اپنے براؤزر میں۔</span>';
+  var els=[];
+  document.querySelectorAll(".tab,.tcard b,.tcard small,.cathead,.hchips span,.tool h2,.flinks span")
+    .forEach(function(el){el.dataset.en=el.textContent;els.push(el)});
+  function apply(ur){
+    els.forEach(function(el){
+      var orig=el.dataset.en,m=orig.match(/^([^A-Za-z0-9]+)([\s\S]*)$/);
+      var pre="",body=orig;
+      if(m&&UR[m[2].trim()]){pre=m[1];body=m[2].trim()}
+      if(ur&&UR[body])el.textContent=pre+UR[body];
+      else el.textContent=orig;
+    });
+    if(h1)h1.innerHTML=ur?h1ur:h1en;
+    document.getElementById("langBtn").textContent=ur?"EN":"اردو";
+    document.documentElement.lang=ur?"ur":"en";
+  }
+  var cur=false;try{cur=localStorage.getItem("fb-lang")==="ur"}catch(e){}
+  if(cur)apply(true);
+  document.getElementById("langBtn").addEventListener("click",function(){
+    cur=!cur;try{localStorage.setItem("fb-lang",cur?"ur":"en")}catch(e){}
+    apply(cur);
+  });
+  if("serviceWorker" in navigator){
+    navigator.serviceWorker.ready.then(function(){return caches.keys()}).then(function(ks){
+      if(ks.some(function(k){return k.indexOf("filebadlo")===0}))
+        document.getElementById("offBadge").style.display="inline-flex";
+    }).catch(function(){});
+  }
 })();
 </script>
 </body>
