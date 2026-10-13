@@ -469,7 +469,8 @@ footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--acc
 <section class="tool on" id="tool-img2pdf">
   <h2>🖼️ Image to PDF</h2>
   <p class="desc">Add JPG, PNG or WEBP images, drag to reorder them, pick your page settings and get one clean PDF.</p>
-  <div class="drop" data-drop="img2pdf"><div class="dic">🖼️</div><b>Drop images here or click to browse</b><p>JPG • PNG • WEBP — as many as you like</p><input type="file" accept="image/jpeg,image/png,image/webp" multiple></div>
+  <div class="drop" data-drop="img2pdf"><div class="dic">🖼️</div><b>Drop images here or click to browse</b><p>JPG • PNG • WEBP — as many as you like • or press Ctrl+V to paste screenshots</p><input type="file" accept="image/jpeg,image/png,image/webp" multiple></div>
+  <button class="tbtn" id="i2pPaste" type="button" style="margin-top:12px">📋 Paste from clipboard</button>
   <div class="grid imgs" id="img2pdfGrid"></div>
   <div class="opts">
     <div class="opt"><label>Page size</label><select id="i2pSize"><option value="a4">A4</option><option value="letter">Letter</option></select></div>
@@ -1687,6 +1688,40 @@ if(new URLSearchParams(location.search).has("shared")){
     c.delete("/shared-file");c.delete("/shared-meta");
   }catch(e){}})();
 }
+
+
+/* ============ CLIPBOARD PASTE (screenshots) ============ */
+function pasteIntoTool(files){
+  const active=document.querySelector(".tool.on");
+  const name=active?active.id.replace("tool-",""):"img2pdf";
+  const f=files[0];
+  if(name==="img2ppt"){files.forEach(x=>store.img2ppt.push({file:x,url:URL.createObjectURL(x)}));renderThumbs("img2pptGrid",store.img2ppt)}
+  else if(name==="imgcompress"||name==="imgconvert"){if(store[name])URL.revokeObjectURL(store[name].url);store[name]={file:f,url:URL.createObjectURL(f)};renderThumbs(name==="imgcompress"?"imgcompressGrid":"imgconvertGrid",[store[name]])}
+  else if(name==="imgresize"){rzLoad(f)}
+  else if(name==="passport"){const img=new Image();img.onload=()=>{ppImg=img;ppDraw()};img.src=URL.createObjectURL(f)}
+  else if(name==="ocr"){if(ocrUrl)URL.revokeObjectURL(ocrUrl);ocrUrl=URL.createObjectURL(f);const p=$("ocrPrev");p.src=ocrUrl;p.style.display="inline-block"}
+  else{files.forEach(x=>store.img2pdf.push({file:x,url:URL.createObjectURL(x)}));renderThumbs("img2pdfGrid",store.img2pdf);if(name!=="img2pdf")showTool("img2pdf")}
+  toast(files.length>1?files.length+" images pasted ✓":"Image pasted ✓ — paste more with Ctrl+V");
+}
+document.addEventListener("paste",e=>{
+  const tag=(e.target.tagName||"").toLowerCase();
+  if(tag==="input"||tag==="textarea"||e.target.isContentEditable)return;
+  const files=[...(e.clipboardData?e.clipboardData.files:[])].filter(f=>f.type.startsWith("image/"));
+  if(!files.length)return;
+  e.preventDefault();pasteIntoTool(files);
+});
+$("i2pPaste").addEventListener("click",async()=>{
+  try{
+    const items=await navigator.clipboard.read();
+    const files=[];
+    for(const it of items){
+      const t=it.types.find(x=>x.startsWith("image/"));
+      if(t){const b=await it.getType(t);files.push(new File([b],"pasted-image."+(t.split("/")[1]||"png"),{type:t}))}
+    }
+    if(files.length)pasteIntoTool(files);
+    else toast("No image in clipboard — take a screenshot first (Win+Shift+S)",1);
+  }catch(err){toast("Clipboard blocked by browser — just press Ctrl+V on this page",1)}
+});
 
 })();
 </script>
