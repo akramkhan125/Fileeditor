@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Free Image to PDF, Text to PDF, Images to PPT Converter - AK TOOLS</title>
-<meta name="description" content="AK TOOLS by Akram Khan — free all-in-one file converter. Image to PDF, PDF to Image, Text to PDF, Images to PPT, Text to DOC, PDF Merge, Split & Compress. 100% private: all conversions happen in your browser.">
+<meta name="description" content="AK TOOLS by Akram Khan — free all-in-one file converter: image, PDF, text, PPT & Word tools. 100% private, works offline.">
 <meta name="theme-color" content="#0F172A">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="mobile-web-app-capable" content="yes">
+
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta property="og:title" content="AK TOOLS — All in One File Converter">
 <meta property="og:description" content="Convert images, PDFs, text, PPT & Word files free — right in your browser. No uploads, 100% private.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <script>
 (function(){try{
@@ -473,7 +473,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 <button class="tab" data-tool="text2doc">📝 Text to DOC</button>
 </nav>
 
-<div class="tsearch"><input id="toolSearch" type="search" placeholder="🔍 Search tools… try PDF, photo, QR, age"><button id="favToggle" type="button">⭐ Favorites</button></div>
+<div class="tsearch"><input id="toolSearch" type="search" placeholder="🔍 Search tools…"><button id="favToggle" type="button">⭐ Favorites</button></div>
 <p class="noresult" id="noResult" style="display:none;text-align:center;color:var(--mut);font-weight:700;margin:14px 0 2px">No tool found — try another word.</p>
 <div class="cards" id="toolCards">
 <div class="cathead" data-cat="pdf">📄 PDF Tools</div>
@@ -507,7 +507,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 
 <section class="tool on" id="tool-img2pdf">
 <h2>🖼️ Image to PDF</h2>
-<p class="desc">Add JPG, PNG or WEBP images, drag to reorder them, pick your page settings and get one clean PDF.</p>
+<p class="desc">Add images, drag to reorder, pick page settings and get one clean PDF.</p>
 <div class="drop" data-drop="img2pdf"><div class="dic">🖼️</div><b>Drop images here or click to browse</b><p>JPG • PNG • WEBP — as many as you like • or press Ctrl+V to paste screenshots</p><input type="file" accept="image/jpeg,image/png,image/webp" multiple></div>
 <button class="tbtn" id="i2pPaste" type="button" style="margin-top:12px">📋 Paste from clipboard</button>
 <div class="grid imgs" id="img2pdfGrid"></div>
@@ -524,7 +524,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 
 <section class="tool" id="tool-pdf2img">
 <h2>📄 PDF to Image</h2>
-<p class="desc">Upload a PDF and every page becomes a high-quality JPG image, delivered in one ZIP file.</p>
+<p class="desc">Every page of your PDF becomes a JPG image, delivered in one ZIP.</p>
 <div class="drop" data-drop="pdf2img"><div class="dic">📄</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
 <div class="filelist" id="pdf2imgList"></div>
 <div class="opts">
@@ -634,7 +634,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 
 <section class="tool" id="tool-pdfcompress">
 <h2>🗜️ Compress PDF</h2>
-<p class="desc">Shrink a PDF toward a target size. Pages are re-rendered as optimized images — best for scanned &amp; image-heavy PDFs.</p>
+<p class="desc">Shrink a PDF toward a target size — best for scanned &amp; image-heavy PDFs.</p>
 <div class="drop" data-drop="pdfcompress"><div class="dic">🗜️</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
 <div class="filelist" id="pdfcompressList"></div>
 <div class="opts">
@@ -649,7 +649,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 
 <section class="tool" id="tool-imgcompress">
 <h2>📉 Compress Image</h2>
-<p class="desc">Compress a JPG or PNG image down to a tiny target size — perfect for forms and uploads.</p>
+<p class="desc">Compress a JPG/PNG down to a tiny size — perfect for forms and uploads.</p>
 <div class="drop" data-drop="imgcompress"><div class="dic">📉</div><b>Drop an image here or click to browse</b><p>JPG • PNG • WEBP</p><input type="file" accept="image/*"></div>
 <div class="grid imgs" id="imgcompressGrid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))"></div>
 <div class="opts">
@@ -677,7 +677,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 
 <section class="tool" id="tool-word2pdf">
 <h2>📘 Word to PDF</h2>
-<p class="desc">Convert a Word document (.docx) into a PDF. Text content is preserved; complex layouts are simplified.</p>
+<p class="desc">Convert a Word (.docx) into a PDF. Text is preserved; complex layouts simplify.</p>
 <div class="drop" data-drop="word2pdf"><div class="dic">📘</div><b>Drop a .docx here or click to browse</b><p>Word .docx files</p><input type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></div>
 <div class="filelist" id="word2pdfList"></div>
 <button class="convert" id="w2pConvert">Convert to PDF</button>
@@ -688,7 +688,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 
 <section class="tool" id="tool-ppt2pdf">
 <h2>📙 PPT to PDF</h2>
-<p class="desc">Convert a PowerPoint (.pptx) into a PDF. Slide images become pages; slides without images are added as text pages.</p>
+<p class="desc">Convert PowerPoint (.pptx) into a PDF — slide images become pages.</p>
 <div class="drop" data-drop="ppt2pdf"><div class="dic">📙</div><b>Drop a .pptx here or click to browse</b><p>PowerPoint .pptx files</p><input type="file" accept=".pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation"></div>
 <div class="filelist" id="ppt2pdfList"></div>
 <button class="convert" id="ppConvert">Convert to PDF</button>
@@ -701,7 +701,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 
 <section class="tool" id="tool-pdf2word">
 <h2>📘 PDF to Word</h2>
-<p class="desc">Turn a text-based PDF into an editable Word (.docx) file. Works best on PDFs made from documents — scanned photo PDFs work better with Image to Text first.</p>
+<p class="desc">Turn a text-based PDF into an editable Word file. Scanned PDFs: use Image to Text first.</p>
 <div class="drop" data-drop="pdf2word"><div class="dic">📘</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
 <div class="filelist" id="pdf2wordList"></div>
 <button class="convert" id="p2wConvert">Convert to Word</button>
@@ -728,24 +728,24 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 
 <section class="tool" id="tool-passport">
 <h2>🪪 Passport Photo Maker</h2>
-<p class="desc">Make an official-size photo with a clean white background — for CNIC, passport, visa and job forms. Use the zoom slider to fit your face in the frame.</p>
-<div class="drop" id="ppDrop"><div class="dic">🪪</div><b>Drop a photo here or click to browse</b><p>Any portrait photo</p><input type="file" id="ppFile" accept="image/*"></div>
-<div style="text-align:center;margin-top:16px"><canvas id="ppPrev" width="413" height="531" style="max-width:230px;width:100%;border-radius:12px;box-shadow:0 12px 30px rgba(2,6,23,.2);display:none;background:#fff"></canvas></div>
+<p class="desc">Official-size photo with a white background — for CNIC, passport, visa and job forms. Zoom slider fits your face in the frame.</p>
+<div class="drop" id="passDrop" data-drop="passport"><div class="dic">🪪</div><b>Drop a photo here or click to browse</b><p>Any portrait photo</p><input type="file" id="passFile" accept="image/*"></div>
+<div style="text-align:center;margin-top:16px"><canvas id="passPrev" width="413" height="531" style="max-width:230px;width:100%;border-radius:12px;box-shadow:0 12px 30px rgba(2,6,23,.2);display:none;background:#fff"></canvas></div>
 <div class="opts">
-<div class="opt"><label>Photo size</label><select id="ppSize"><option value="413x531">35 × 45 mm (passport)</option><option value="600x600">2 × 2 inch</option><option value="300x300">1 × 1 inch</option></select></div>
-<div class="opt"><label>Copies</label><select id="ppCopies"><option value="1">Single photo</option><option value="4">Sheet of 4 (4×6 in)</option><option value="6">Sheet of 6 (4×6 in)</option><option value="8">Sheet of 8 (4×6 in)</option></select></div>
-<div class="opt"><label>Zoom</label><input type="range" id="ppZoom" min="100" max="300" value="100" style="width:100%"></div>
+<div class="opt"><label>Photo size</label><select id="passSize"><option value="413x531">35 × 45 mm (passport)</option><option value="600x600">2 × 2 inch</option><option value="300x300">1 × 1 inch</option></select></div>
+<div class="opt"><label>Copies</label><select id="passCopies"><option value="1">Single photo</option><option value="4">Sheet of 4 (4×6 in)</option><option value="6">Sheet of 6 (4×6 in)</option><option value="8">Sheet of 8 (4×6 in)</option></select></div>
+<div class="opt"><label>Zoom</label><input type="range" id="passZoom" min="100" max="300" value="100" style="width:100%"></div>
 </div>
-<button class="convert" id="ppConvert">Make Photo</button>
-<div class="prog" id="ppProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-<div class="dlzone" id="ppDl"><button class="dl-big">⬇️ Download Photo</button><div class="dl-meta"></div></div>
+<button class="convert" id="passConvert">Make Photo</button>
+<div class="prog" id="passProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="passDl"><button class="dl-big">⬇️ Download Photo</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-ocr">
 <h2>🔍 Image to Text (OCR)</h2>
-<p class="desc">Extract text from a photo or scanned page — English and Urdu supported. The OCR engine loads once from the internet, then stays on your device.</p>
-<div class="drop" id="ocrDrop"><div class="dic">🔍</div><b>Drop an image here or click to browse</b><p>Photo or scan with text</p><input type="file" id="ocrFile" accept="image/*"></div>
+<p class="desc">Extract text from a photo or scan — English and Urdu. The engine loads once online, then works offline.</p>
+<div class="drop" id="ocrDrop" data-drop="ocr"><div class="dic">🔍</div><b>Drop an image here or click to browse</b><p>Photo or scan with text</p><input type="file" id="ocrFile" accept="image/*"></div>
 <div style="text-align:center;margin-top:14px"><img id="ocrPrev" alt="" style="max-width:240px;max-height:240px;border-radius:12px;display:none;box-shadow:0 10px 26px rgba(2,6,23,.18)"></div>
 <div class="opts">
 <div class="opt"><label>Text language</label><select id="ocrLang"><option value="eng">English</option><option value="urd">Urdu (اردو)</option><option value="eng+urd">English + Urdu</option></select></div>
@@ -761,7 +761,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 
 <section class="tool" id="tool-signature">
 <h2>✒️ Signature Maker</h2>
-<p class="desc">Draw your signature with finger or mouse and download it as a transparent PNG — ready to place on documents.</p>
+<p class="desc">Draw your signature and download a transparent PNG, ready for documents.</p>
 <div class="sigwrap"><canvas id="sigPad"></canvas></div>
 <div class="opts">
 <div class="opt"><label>Pen color</label><input type="color" id="sigColor" value="#1e3a8a" class="cinput"></div>
@@ -775,7 +775,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 
 <section class="tool" id="tool-calculators">
 <h2>🧮 Calculators</h2>
-<p class="desc">Everyday calculators — age, BMI, percentage and unit conversion. Everything updates live as you type.</p>
+<p class="desc">Age, BMI, percentage and unit converter — results update live as you type.</p>
 <div class="opts" style="margin-top:0">
 <div class="opt"><label>🎂 Date of birth</label><input type="date" id="calcDob"></div>
 <div class="opt"><label>Your age</label><input type="text" id="calcAgeOut" readonly placeholder="Pick your birth date"></div>
@@ -870,7 +870,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 
 <section class="tool" id="tool-texttools">
 <h2>🔤 Text Tools</h2>
-<p class="desc">Word counter and case changer for essays, captions and assignments — live count as you type.</p>
+<p class="desc">Word counter and case changer for essays and captions — live as you type.</p>
 <div class="opt" style="margin-bottom:12px"><label>Your text</label><textarea id="ttText" rows="7" placeholder="Type or paste your text here…" style="width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:14.5px;background:var(--card);color:var(--ink);resize:vertical"></textarea></div>
 <p class="desc" id="ttStats" style="font-weight:700;color:var(--head)">Words: 0 • Characters: 0 • Sentences: 0 • Lines: 0 • Reading time: 0 min</p>
 <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">
@@ -1030,6 +1030,10 @@ function handleFiles(key,files){
     if(store[key])URL.revokeObjectURL(store[key].url);
     store[key]={file:f,url:URL.createObjectURL(f)};
     renderThumbs(key==="imgcompress"?"imgcompressGrid":"imgconvertGrid",[store[key]]);
+  }else if(key==="passport"||key==="ocr"){
+    const inp=$(key==="passport"?"passFile":"ocrFile");
+    try{const dt=new DataTransfer();dt.items.add(files[0]);inp.files=dt.files;
+      inp.dispatchEvent(new Event("change"))}catch(err){}
   }else if(key==="imgresize"){
     if(files[0])rzLoad(files[0]);
   }else if(key==="pdfmerge"){
@@ -1548,42 +1552,42 @@ $("stConvert").onclick=async()=>{
 let ppImg=null;
 function ppDraw(){
   if(!ppImg)return;
-  const cv=$("ppPrev"),parts=$("ppSize").value.split("x");
+  const cv=$("passPrev"),parts=$("passSize").value.split("x");
   const W=+parts[0],H=+parts[1];cv.width=W;cv.height=H;
   const x=cv.getContext("2d");x.fillStyle="#FFFFFF";x.fillRect(0,0,W,H);
-  const zoom=+$("ppZoom").value/100;
+  const zoom=+$("passZoom").value/100;
   const s=Math.max(W/ppImg.naturalWidth,H/ppImg.naturalHeight)*zoom;
   const w=ppImg.naturalWidth*s,h=ppImg.naturalHeight*s;
   x.drawImage(ppImg,(W-w)/2,(H-h)/2,w,h);
   cv.style.display="inline-block";
 }
-$("ppFile").addEventListener("change",()=>{
-  const f=$("ppFile").files[0];if(!f)return;
+$("passFile").addEventListener("change",()=>{
+  const f=$("passFile").files[0];if(!f)return;
   const img=new Image();img.onload=()=>{ppImg=img;ppDraw()};img.src=URL.createObjectURL(f);
-  $("ppFile").value="";
+  $("passFile").value="";
 });
-["ppSize","ppZoom"].forEach(id=>$(id).addEventListener("input",ppDraw));
-$("ppConvert").onclick=()=>{
+["passSize","passZoom"].forEach(id=>$(id).addEventListener("input",ppDraw));
+$("passConvert").onclick=()=>{
   if(!ppImg)return toast("Add a photo first",1);
-  ppDraw();const btn=$("ppConvert");busy(btn,1,"Preparing…");prog("ppProg",60,"Preparing…");
-  const copies=+$("ppCopies").value;
+  ppDraw();const btn=$("passConvert");busy(btn,1,"Preparing…");prog("passProg",60,"Preparing…");
+  const copies=+$("passCopies").value;
   if(copies===1){
-    $("ppPrev").toBlob(b=>{prog("ppProg",100,"Done");
-      setDownload("ppDl",b,"passport-photo.jpg");toast("Photo ready ✓");
-      busy(btn,0);progDone("ppProg")},"image/jpeg",0.95);
+    $("passPrev").toBlob(b=>{prog("passProg",100,"Done");
+      setDownload("passDl",b,"passport-photo.jpg");toast("Photo ready ✓");
+      busy(btn,0);progDone("passProg")},"image/jpeg",0.95);
   }else{
     const W=1200,H=1800,sheet=document.createElement("canvas");sheet.width=W;sheet.height=H;
     const x=sheet.getContext("2d");x.fillStyle="#FFFFFF";x.fillRect(0,0,W,H);
-    const pw=$("ppPrev").width,ph=$("ppPrev").height,cols=2,gap=30;
+    const pw=$("passPrev").width,ph=$("passPrev").height,cols=2,gap=30;
     const cw=(W-gap*(cols+1))/cols,ch=cw*ph/pw,rows=Math.ceil(copies/cols);
     for(let i=0;i<copies;i++){
       const cx=gap+(i%cols)*(cw+gap),cy=gap+Math.floor(i/cols)*(ch+gap);
-      x.drawImage($("ppPrev"),cx,cy,cw,ch);
+      x.drawImage($("passPrev"),cx,cy,cw,ch);
       x.strokeStyle="#DDDDDD";x.strokeRect(cx,cy,cw,ch);
     }
-    sheet.toBlob(b=>{prog("ppProg",100,"Done");
-      setDownload("ppDl",b,"passport-sheet-"+copies+".jpg");toast("Sheet ready ✓");
-      busy(btn,0);progDone("ppProg")},"image/jpeg",0.95);
+    sheet.toBlob(b=>{prog("passProg",100,"Done");
+      setDownload("passDl",b,"passport-sheet-"+copies+".jpg");toast("Sheet ready ✓");
+      busy(btn,0);progDone("passProg")},"image/jpeg",0.95);
   }
 };
 
