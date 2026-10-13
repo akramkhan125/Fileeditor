@@ -18,7 +18,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <script>
-/* Apply saved theme before first paint (no flash) */
 (function(){try{
   var t=localStorage.getItem("fb-theme"),a=localStorage.getItem("fb-accent");
   if(t)document.documentElement.dataset.theme=t;
@@ -242,8 +241,7 @@ color-mix(in srgb,var(--card) 80%,transparent);
 box-shadow:0 14px 30px rgba(2,6,23,.10),inset 0 1px 0 color-mix(in srgb,var(--head) 12%,transparent);
 backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);
 transition:transform .18s,box-shadow .18s,border-color .18s;overflow:hidden}
-.tcard::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+.tcard::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
 .tcard:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--acc,#F59E0B) 45%,transparent);
 box-shadow:0 22px 42px rgba(2,6,23,.16),0 0 0 1px color-mix(in srgb,var(--acc,#F59E0B) 22%,transparent),inset 0 1px 0 color-mix(in srgb,var(--head) 14%,transparent)}
 .tcard:active{transform:translateY(-1px) scale(.985)}
@@ -385,7 +383,6 @@ box-shadow:0 26px 54px rgba(2,6,23,.28),inset 0 1px 0 color-mix(in srgb,var(--he
 backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5)}
 #swatches.on{display:grid}
 #swatches .sw{width:36px;height:36px}
-/* v9 NATURE THEMES + BUTTONS + HEADER */
 body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:0;transition:opacity .5s;background-size:cover;background-position:center}
 body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .5s;background:color-mix(in srgb,var(--bg) 66%,transparent)}
 html[data-bgimg] body::before{opacity:1}
@@ -409,477 +406,504 @@ html[data-bgimg="waterfall"] body::before{background-image:url("https://images.u
 .brandname{font-weight:900;letter-spacing:-.02em}
 header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 .tab.on{background:linear-gradient(135deg,var(--acc,#F59E0B),var(--acc2,var(--acc,#F59E0B)));color:#fff;border-color:transparent}
+.cinput{width:100%;height:42px;border:1.5px solid var(--line);border-radius:11px;background:var(--card);padding:4px}
 </style>
 </head>
 <body>
 
 <header class="top">
-  <div class="wrap top-in">
-    <a class="brand" href="#">
-      <svg class="logo" viewBox="0 0 100 100" aria-label="AK logo"><circle cx="50" cy="50" r="47" fill="#0F172A"/><circle cx="50" cy="50" r="47" fill="none" stroke="#F59E0B" stroke-width="3"/><text x="50" y="63" text-anchor="middle" font-family="Poppins,Arial" font-weight="800" font-size="36" fill="#ffffff">AK</text></svg>
-      <span><span class="brandname">AK TOOLS</span><small>ALL FILE TOOLS IN ONE PLACE</small></span>
-    </a>
-    <span class="hctrl">
-      <span class="themeswrap"><button class="modebtn themesbtn" id="themesBtn" title="Color themes">🎨<span>Themes</span></button>
-        <span class="swatches" id="swatches" title="Theme color">
-        <button class="sw on" data-accent="slate" style="background:linear-gradient(135deg,#0F172A,#334155)" title="Slate"></button>
-        <button class="sw" data-accent="royal" style="background:linear-gradient(135deg,#2563EB,#06B6D4)" title="Royal Blue"></button>
-        <button class="sw" data-accent="violet" style="background:linear-gradient(135deg,#7C3AED,#DB2777)" title="Violet"></button>
-        <button class="sw" data-accent="emerald" style="background:linear-gradient(135deg,#059669,#14B8A6)" title="Emerald"></button>
-        <button class="sw" data-accent="crimson" style="background:linear-gradient(135deg,#DC2626,#F97316)" title="Crimson"></button>
-        <button class="sw" data-accent="amber" style="background:linear-gradient(135deg,#D97706,#F59E0B)" title="Amber"></button>
-        <button class="sw" data-accent="rose" style="background:linear-gradient(135deg,#E11D48,#F43F5E)" title="Rose"></button>
-        <button class="sw" data-accent="teal" style="background:linear-gradient(135deg,#0D9488,#22D3EE)" title="Teal"></button>
-        <button class="sw" data-accent="sunset" style="background:linear-gradient(135deg,#EA580C,#DB2777)" title="Sunset"></button>
-        <button class="sw" data-accent="ocean" style="background:linear-gradient(135deg,#0369A1,#2DD4BF)" title="Ocean"></button>
-        <button class="sw" data-accent="grape" style="background:linear-gradient(135deg,#9333EA,#6366F1)" title="Grape"></button>
-        <button class="sw" data-accent="gold" style="background:linear-gradient(135deg,#B8860B,#F59E0B)" title="Gold"></button>
-        <button class="sw" data-accent="forest" style="background:linear-gradient(135deg,#15803D,#84CC16)" title="Forest"></button>
-        <button class="sw" data-accent="neon" style="background:linear-gradient(135deg,#0891B2,#A3E635)" title="Neon"></button>
-        <span class="pop-label">🌿 Nature backgrounds</span>
-        <button class="sw bgsw" data-bgimg="forest" style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=70&w=200&auto=format&fit=crop')" title="Forest"></button>
-        <button class="sw bgsw" data-bgimg="mountain" style="background-image:url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=70&w=200&auto=format&fit=crop')" title="Mountains"></button>
-        <button class="sw bgsw" data-bgimg="ocean" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=70&w=200&auto=format&fit=crop')" title="Ocean"></button>
-        <button class="sw bgsw" data-bgimg="sunset" style="background-image:url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=70&w=200&auto=format&fit=crop')" title="Sunset"></button>
-        <button class="sw bgsw" data-bgimg="waterfall" style="background-image:url('https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=65&w=200&auto=format&fit=crop')" title="Waterfall"></button>
-        <span class="pop-label">Background</span>
-        <button class="sw bgsw" data-bgimg="" style="background:linear-gradient(135deg,#E2E8F0,#94A3B8)" title="Default (no image)">✕</button>
-      </span></span>
-      <button class="modebtn" id="modeBtn" title="Dark / Light mode">🌙</button>
-      <button class="modebtn" id="langBtn" title="Urdu / English" style="font-size:13px;font-weight:800;width:auto;padding:0 12px;border-radius:999px">اردو</button>
-      <span class="priv" id="offBadge" style="display:none"><span class="dot"></span>Offline Ready ✓</span>
-      <button id="installBtn">📲 Install App</button>
-      <span class="priv"><span class="dot"></span>100% Private — Files never leave your device</span>
-    </span>
-  </div>
+<div class="wrap top-in">
+<a class="brand" href="#">
+<svg class="logo" viewBox="0 0 100 100" aria-label="AK logo"><circle cx="50" cy="50" r="47" fill="#0F172A"/><circle cx="50" cy="50" r="47" fill="none" stroke="#F59E0B" stroke-width="3"/><text x="50" y="63" text-anchor="middle" font-family="Poppins,Arial" font-weight="800" font-size="36" fill="#ffffff">AK</text></svg>
+<span><span class="brandname">AK TOOLS</span><small>ALL FILE TOOLS IN ONE PLACE</small></span>
+</a>
+<span class="hctrl">
+<span class="themeswrap"><button class="modebtn themesbtn" id="themesBtn" title="Color themes">🎨<span>Themes</span></button>
+<span class="swatches" id="swatches" title="Theme color">
+<button class="sw on" data-accent="slate" style="background:linear-gradient(135deg,#0F172A,#334155)" title="Slate"></button>
+<button class="sw" data-accent="royal" style="background:linear-gradient(135deg,#2563EB,#06B6D4)" title="Royal Blue"></button>
+<button class="sw" data-accent="violet" style="background:linear-gradient(135deg,#7C3AED,#DB2777)" title="Violet"></button>
+<button class="sw" data-accent="emerald" style="background:linear-gradient(135deg,#059669,#14B8A6)" title="Emerald"></button>
+<button class="sw" data-accent="crimson" style="background:linear-gradient(135deg,#DC2626,#F97316)" title="Crimson"></button>
+<button class="sw" data-accent="amber" style="background:linear-gradient(135deg,#D97706,#F59E0B)" title="Amber"></button>
+<button class="sw" data-accent="rose" style="background:linear-gradient(135deg,#E11D48,#F43F5E)" title="Rose"></button>
+<button class="sw" data-accent="teal" style="background:linear-gradient(135deg,#0D9488,#22D3EE)" title="Teal"></button>
+<button class="sw" data-accent="sunset" style="background:linear-gradient(135deg,#EA580C,#DB2777)" title="Sunset"></button>
+<button class="sw" data-accent="ocean" style="background:linear-gradient(135deg,#0369A1,#2DD4BF)" title="Ocean"></button>
+<button class="sw" data-accent="grape" style="background:linear-gradient(135deg,#9333EA,#6366F1)" title="Grape"></button>
+<button class="sw" data-accent="gold" style="background:linear-gradient(135deg,#B8860B,#F59E0B)" title="Gold"></button>
+<button class="sw" data-accent="forest" style="background:linear-gradient(135deg,#15803D,#84CC16)" title="Forest"></button>
+<button class="sw" data-accent="neon" style="background:linear-gradient(135deg,#0891B2,#A3E635)" title="Neon"></button>
+<span class="pop-label">🌿 Nature backgrounds</span>
+<button class="sw bgsw" data-bgimg="forest" style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=70&w=200&auto=format&fit=crop')" title="Forest"></button>
+<button class="sw bgsw" data-bgimg="mountain" style="background-image:url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=70&w=200&auto=format&fit=crop')" title="Mountains"></button>
+<button class="sw bgsw" data-bgimg="ocean" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=70&w=200&auto=format&fit=crop')" title="Ocean"></button>
+<button class="sw bgsw" data-bgimg="sunset" style="background-image:url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=70&w=200&auto=format&fit=crop')" title="Sunset"></button>
+<button class="sw bgsw" data-bgimg="waterfall" style="background-image:url('https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=65&w=200&auto=format&fit=crop')" title="Waterfall"></button>
+<span class="pop-label">Background</span>
+<button class="sw bgsw" data-bgimg="" style="background:linear-gradient(135deg,#E2E8F0,#94A3B8)" title="Default (no image)">✕</button>
+</span></span>
+<button class="modebtn" id="modeBtn" title="Dark / Light mode">🌙</button>
+<button class="modebtn" id="langBtn" title="Urdu / English" style="font-size:13px;font-weight:800;width:auto;padding:0 12px;border-radius:999px">اردو</button>
+<span class="priv" id="offBadge" style="display:none"><span class="dot"></span>Offline Ready ✓</span>
+<button id="installBtn">📲 Install App</button>
+<span class="priv"><span class="dot"></span>100% Private — Files never leave your device</span>
+</span>
+</div>
 </header>
 
 <div class="wrap">
-  <section class="hero">
-    <h1>Convert any file, <span class="u">right in your browser.</span></h1>
-    <div class="hchips"><span>⚡ 23 Free Tools</span><span>📴 Works Offline</span><span>🔒 No Sign-up</span></div>
-    <div class="madeby">Made by <b>Akram Khan</b></div>
-  </section>
+<section class="hero">
+<h1>Convert any file, <span class="u">right in your browser.</span></h1>
+<div class="hchips"><span>⚡ 23 Free Tools</span><span>📴 Works Offline</span><span>🔒 No Sign-up</span></div>
+<div class="madeby">Made by <b>Akram Khan</b></div>
+</section>
 
-  <div id="toolStage"></div>
+<div id="toolStage"></div>
 
-  <nav class="tabs" id="tabs">
-    <button class="tab on" data-tool="img2pdf">🖼️ Image to PDF</button>
-    <button class="tab" data-tool="pdf2img">📄 PDF to Image</button>
-    <button class="tab" data-tool="text2pdf">✍️ Text to PDF</button>
-    <button class="tab" data-tool="img2ppt">📊 Images to PPT</button>
-    <button class="tab" data-tool="text2doc">📝 Text to DOC</button>
-    </nav>
+<nav class="tabs" id="tabs">
+<button class="tab on" data-tool="img2pdf">🖼️ Image to PDF</button>
+<button class="tab" data-tool="pdf2img">📄 PDF to Image</button>
+<button class="tab" data-tool="text2pdf">✍️ Text to PDF</button>
+<button class="tab" data-tool="img2ppt">📊 Images to PPT</button>
+<button class="tab" data-tool="text2doc">📝 Text to DOC</button>
+</nav>
 
-  <div class="tsearch"><input id="toolSearch" type="search" placeholder="🔍 Search tools… try PDF, photo, QR, age"><button id="favToggle" type="button">⭐ Favorites</button></div>
-  <p class="noresult" id="noResult" style="display:none;text-align:center;color:var(--mut);font-weight:700;margin:14px 0 2px">No tool found — try another word.</p>
-  <div class="cards" id="toolCards">
-    <div class="cathead" data-cat="pdf">📄 PDF Tools</div>
-    <button class="tcard" data-tool="pdf2img" data-cat="pdf"><span class="ic">📄</span><b>PDF to Image</b><small>Every page as a JPG, in a ZIP</small></button>
-    <button class="tcard" data-tool="pdfmerge" data-cat="pdf"><span class="ic">🔗</span><b>PDF Merge</b><small>Combine many PDFs into one</small></button>
-    <button class="tcard" data-tool="pdfsplit" data-cat="pdf"><span class="ic">✂️</span><b>PDF Split</b><small>Split a PDF page by page</small></button>
-    <button class="tcard" data-tool="pdfcompress" data-cat="pdf"><span class="ic">🗜️</span><b>Compress PDF</b><small>Make a PDF file smaller</small></button>
-    <button class="tcard" data-tool="pdfrotate" data-cat="pdf"><span class="ic">🔃</span><b>Rotate PDF</b><small>Turn pages 90°, 180° or 270°</small></button>
-    <button class="tcard" data-tool="pdfstamp" data-cat="pdf"><span class="ic">🔢</span><b>PDF Stamp</b><small>Page numbers & watermark text</small></button>
-    <button class="tcard" data-tool="pdf2word" data-cat="pdf"><span class="ic">📘</span><b>PDF to Word</b><small>PDF → editable Word file</small></button>
-    <button class="tcard" data-tool="word2pdf" data-cat="pdf"><span class="ic">📗</span><b>Word to PDF</b><small>DOCX → PDF in seconds</small></button>
-    <button class="tcard" data-tool="ppt2pdf" data-cat="pdf"><span class="ic">📙</span><b>PPT to PDF</b><small>PPTX → PDF in seconds</small></button>
-    <div class="cathead" data-cat="img">🖼️ Image Tools</div>
-    <button class="tcard" data-tool="img2pdf" data-cat="img"><span class="ic">🖼️</span><b>Image to PDF</b><small>JPG, PNG, WEBP → one clean PDF</small></button>
-    <button class="tcard" data-tool="img2ppt" data-cat="img"><span class="ic">📊</span><b>Images to PPT</b><small>Photos → presentation slides</small></button>
-    <button class="tcard" data-tool="imgcompress" data-cat="img"><span class="ic">📉</span><b>Compress Image</b><small>Shrink image file size</small></button>
-    <button class="tcard" data-tool="imgconvert" data-cat="img"><span class="ic">🔄</span><b>Image Convert</b><small>JPG ⇄ PNG ⇄ WEBP</small></button>
-    <button class="tcard" data-tool="imgresize" data-cat="img"><span class="ic">📐</span><b>Resize Image</b><small>Exact pixels, aspect lock</small></button>
-    <button class="tcard" data-tool="passport" data-cat="img"><span class="ic">🪪</span><b>Passport Photo</b><small>Official size, white background</small></button>
-    <button class="tcard" data-tool="ocr" data-cat="img"><span class="ic">🔍</span><b>Image to Text</b><small>Extract text from any photo (OCR)</small></button>
-    <div class="cathead" data-cat="txt">🧰 Text &amp; Utilities</div>
-    <button class="tcard" data-tool="text2pdf" data-cat="txt"><span class="ic">✍️</span><b>Text to PDF</b><small>Typed text → polished PDF</small></button>
-    <button class="tcard" data-tool="text2doc" data-cat="txt"><span class="ic">📝</span><b>Text to DOC</b><small>Typed text → Word document</small></button>
-    <button class="tcard" data-tool="qr" data-cat="txt"><span class="ic">🔳</span><b>QR Code Maker</b><small>Text or link → QR image</small></button>
-    <button class="tcard" data-tool="texttools" data-cat="txt"><span class="ic">🔤</span><b>Text Tools</b><small>Word count & case changer</small></button>
-    <button class="tcard" data-tool="signature" data-cat="txt"><span class="ic">✒️</span><b>Signature Maker</b><small>Draw & download your sign</small></button>
-    <button class="tcard" data-tool="calculators" data-cat="txt"><span class="ic">🧮</span><b>Calculators</b><small>Age, BMI, %, unit converter</small></button>
-    <button class="tcard" data-tool="passgen" data-cat="txt"><span class="ic">🔐</span><b>Password Generator</b><small>Strong passwords, one tap</small></button>
-  </div>
+<div class="tsearch"><input id="toolSearch" type="search" placeholder="🔍 Search tools… try PDF, photo, QR, age"><button id="favToggle" type="button">⭐ Favorites</button></div>
+<p class="noresult" id="noResult" style="display:none;text-align:center;color:var(--mut);font-weight:700;margin:14px 0 2px">No tool found — try another word.</p>
+<div class="cards" id="toolCards">
+<div class="cathead" data-cat="pdf">📄 PDF Tools</div>
+<button class="tcard" data-tool="pdf2img" data-cat="pdf"><span class="ic">📄</span><b>PDF to Image</b><small>Every page as a JPG, in a ZIP</small></button>
+<button class="tcard" data-tool="pdfmerge" data-cat="pdf"><span class="ic">🔗</span><b>PDF Merge</b><small>Combine many PDFs into one</small></button>
+<button class="tcard" data-tool="pdfsplit" data-cat="pdf"><span class="ic">✂️</span><b>PDF Split</b><small>Split a PDF page by page</small></button>
+<button class="tcard" data-tool="pdfcompress" data-cat="pdf"><span class="ic">🗜️</span><b>Compress PDF</b><small>Make a PDF file smaller</small></button>
+<button class="tcard" data-tool="pdfrotate" data-cat="pdf"><span class="ic">🔃</span><b>Rotate PDF</b><small>Turn pages 90°, 180° or 270°</small></button>
+<button class="tcard" data-tool="pdfstamp" data-cat="pdf"><span class="ic">🔢</span><b>PDF Stamp</b><small>Page numbers & watermark text</small></button>
+<button class="tcard" data-tool="pdf2word" data-cat="pdf"><span class="ic">📘</span><b>PDF to Word</b><small>PDF → editable Word file</small></button>
+<button class="tcard" data-tool="word2pdf" data-cat="pdf"><span class="ic">📗</span><b>Word to PDF</b><small>DOCX → PDF in seconds</small></button>
+<button class="tcard" data-tool="ppt2pdf" data-cat="pdf"><span class="ic">📙</span><b>PPT to PDF</b><small>PPTX → PDF in seconds</small></button>
+<div class="cathead" data-cat="img">🖼️ Image Tools</div>
+<button class="tcard" data-tool="img2pdf" data-cat="img"><span class="ic">🖼️</span><b>Image to PDF</b><small>JPG, PNG, WEBP → one clean PDF</small></button>
+<button class="tcard" data-tool="img2ppt" data-cat="img"><span class="ic">📊</span><b>Images to PPT</b><small>Photos → presentation slides</small></button>
+<button class="tcard" data-tool="imgcompress" data-cat="img"><span class="ic">📉</span><b>Compress Image</b><small>Shrink image file size</small></button>
+<button class="tcard" data-tool="imgconvert" data-cat="img"><span class="ic">🔄</span><b>Image Convert</b><small>JPG ⇄ PNG ⇄ WEBP</small></button>
+<button class="tcard" data-tool="imgresize" data-cat="img"><span class="ic">📐</span><b>Resize Image</b><small>Exact pixels, aspect lock</small></button>
+<button class="tcard" data-tool="passport" data-cat="img"><span class="ic">🪪</span><b>Passport Photo</b><small>Official size, white background</small></button>
+<button class="tcard" data-tool="ocr" data-cat="img"><span class="ic">🔍</span><b>Image to Text</b><small>Extract text from any photo (OCR)</small></button>
+<div class="cathead" data-cat="txt">🧰 Text &amp; Utilities</div>
+<button class="tcard" data-tool="text2pdf" data-cat="txt"><span class="ic">✍️</span><b>Text to PDF</b><small>Typed text → polished PDF</small></button>
+<button class="tcard" data-tool="text2doc" data-cat="txt"><span class="ic">📝</span><b>Text to DOC</b><small>Typed text → Word document</small></button>
+<button class="tcard" data-tool="qr" data-cat="txt"><span class="ic">🔳</span><b>QR Code Maker</b><small>Text or link → QR image</small></button>
+<button class="tcard" data-tool="texttools" data-cat="txt"><span class="ic">🔤</span><b>Text Tools</b><small>Word count & case changer</small></button>
+<button class="tcard" data-tool="signature" data-cat="txt"><span class="ic">✒️</span><b>Signature Maker</b><small>Draw & download your sign</small></button>
+<button class="tcard" data-tool="calculators" data-cat="txt"><span class="ic">🧮</span><b>Calculators</b><small>Age, BMI, %, unit converter</small></button>
+<button class="tcard" data-tool="passgen" data-cat="txt"><span class="ic">🔐</span><b>Password Generator</b><small>Strong passwords, one tap</small></button>
+</div>
 
 
 <section class="tool on" id="tool-img2pdf">
-  <h2>🖼️ Image to PDF</h2>
-  <p class="desc">Add JPG, PNG or WEBP images, drag to reorder them, pick your page settings and get one clean PDF.</p>
-  <div class="drop" data-drop="img2pdf"><div class="dic">🖼️</div><b>Drop images here or click to browse</b><p>JPG • PNG • WEBP — as many as you like • or press Ctrl+V to paste screenshots</p><input type="file" accept="image/jpeg,image/png,image/webp" multiple></div>
-  <button class="tbtn" id="i2pPaste" type="button" style="margin-top:12px">📋 Paste from clipboard</button>
-  <div class="grid imgs" id="img2pdfGrid"></div>
-  <div class="opts">
-    <div class="opt"><label>Page size</label><select id="i2pSize"><option value="a4">A4</option><option value="letter">Letter</option></select></div>
-    <div class="opt"><label>Orientation</label><select id="i2pOrient"><option value="p">Portrait</option><option value="l">Landscape</option></select></div>
-    <div class="opt"><label>Margin</label><select id="i2pMargin"><option value="10">Small</option><option value="15" selected>Medium</option><option value="25">Large</option></select></div>
-  </div>
-  <button class="convert" id="i2pConvert">Convert &amp; Create PDF</button>
-  <div class="prog" id="i2pProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="i2pDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
+<h2>🖼️ Image to PDF</h2>
+<p class="desc">Add JPG, PNG or WEBP images, drag to reorder them, pick your page settings and get one clean PDF.</p>
+<div class="drop" data-drop="img2pdf"><div class="dic">🖼️</div><b>Drop images here or click to browse</b><p>JPG • PNG • WEBP — as many as you like • or press Ctrl+V to paste screenshots</p><input type="file" accept="image/jpeg,image/png,image/webp" multiple></div>
+<button class="tbtn" id="i2pPaste" type="button" style="margin-top:12px">📋 Paste from clipboard</button>
+<div class="grid imgs" id="img2pdfGrid"></div>
+<div class="opts">
+<div class="opt"><label>Page size</label><select id="i2pSize"><option value="a4">A4</option><option value="letter">Letter</option></select></div>
+<div class="opt"><label>Orientation</label><select id="i2pOrient"><option value="p">Portrait</option><option value="l">Landscape</option></select></div>
+<div class="opt"><label>Margin</label><select id="i2pMargin"><option value="10">Small</option><option value="15" selected>Medium</option><option value="25">Large</option></select></div>
+</div>
+<button class="convert" id="i2pConvert">Convert &amp; Create PDF</button>
+<div class="prog" id="i2pProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="i2pDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-pdf2img">
-  <h2>📄 PDF to Image</h2>
-  <p class="desc">Upload a PDF and every page becomes a high-quality JPG image, delivered in one ZIP file.</p>
-  <div class="drop" data-drop="pdf2img"><div class="dic">📄</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
-  <div class="filelist" id="pdf2imgList"></div>
-  <div class="opts">
-    <div class="opt"><label>Image quality</label><select id="p2iScale"><option value="2">High (2×)</option><option value="1.5">Medium (1.5×)</option><option value="3">Ultra (3×)</option></select></div>
-  </div>
-  <button class="convert" id="p2iConvert">Convert Pages to JPG</button>
-  <div class="prog" id="p2iProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="p2iDl"><button class="dl-big">⬇️ Download ZIP</button><div class="dl-meta"></div></div>
+<h2>📄 PDF to Image</h2>
+<p class="desc">Upload a PDF and every page becomes a high-quality JPG image, delivered in one ZIP file.</p>
+<div class="drop" data-drop="pdf2img"><div class="dic">📄</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
+<div class="filelist" id="pdf2imgList"></div>
+<div class="opts">
+<div class="opt"><label>Image quality</label><select id="p2iScale"><option value="2">High (2×)</option><option value="1.5">Medium (1.5×)</option><option value="3">Ultra (3×)</option></select></div>
+</div>
+<button class="convert" id="p2iConvert">Convert Pages to JPG</button>
+<div class="prog" id="p2iProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="p2iDl"><button class="dl-big">⬇️ Download ZIP</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-text2pdf">
-  <h2>✍️ Text to PDF</h2>
-  <p class="desc">Type or paste your text, style it, and turn it into a polished PDF document.</p>
-  <div class="opts" style="margin:0 0 14px">
-    <div class="opt"><label>Document title (optional)</label><input type="text" id="t2pTitle" placeholder="e.g. My Notes"></div>
-  </div>
-  <div class="tbar">
-    <button class="tbtn" id="t2pBold">B — Bold</button>
-    <button class="tbtn on" data-align="left">⬅ Left</button>
-    <button class="tbtn" data-align="center">⬌ Center</button>
-    <button class="tbtn" data-align="justify">☰ Justify</button>
-    <button class="tbtn" id="t2pSizeBtn">Font: 12pt</button>
-  </div>
-  <textarea class="ta" id="t2pText" placeholder="Write or paste your text here…"></textarea>
-  <button class="convert" id="t2pConvert">Convert to PDF</button>
-  <div class="prog" id="t2pProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="t2pDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
+<h2>✍️ Text to PDF</h2>
+<p class="desc">Type or paste your text, style it, and turn it into a polished PDF document.</p>
+<div class="opts" style="margin:0 0 14px">
+<div class="opt"><label>Document title (optional)</label><input type="text" id="t2pTitle" placeholder="e.g. My Notes"></div>
+</div>
+<div class="opts" style="margin:0 0 10px">
+<div class="opt"><label>Font</label><select id="t2pFont"><option value="times">Times (Serif)</option><option value="helvetica">Helvetica (Sans)</option><option value="courier">Courier (Mono)</option></select></div>
+<div class="opt"><label>Size</label><select id="t2pSize"><option>10</option><option>11</option><option selected>12</option><option>14</option><option>16</option><option>18</option><option>20</option><option>24</option></select></div>
+<div class="opt"><label>Text color</label><input type="color" id="t2pColor" value="#1e1e1e" class="cinput"></div>
+<div class="opt"><label>Page background</label><input type="color" id="t2pBg" value="#ffffff" class="cinput"></div>
+<div class="opt"><label>Line spacing</label><select id="t2pLine"><option value="1">Single</option><option value="1.15">1.15</option><option value="1.5" selected>1.5</option><option value="2">Double</option></select></div>
+<div class="opt"><label>Margins</label><select id="t2pMargin"><option value="12">Narrow</option><option value="18" selected>Normal</option><option value="25">Wide</option></select></div>
+</div>
+<div class="tbar">
+<button class="tbtn" id="t2pBold"><b>B</b> Bold</button>
+<button class="tbtn" id="t2pItalic"><i>I</i> Italic</button>
+<button class="tbtn" id="t2pUnder"><u>U</u> Underline</button>
+<button class="tbtn on" data-a2p="left">⬅ Left</button>
+<button class="tbtn" data-a2p="center">⬌ Center</button>
+<button class="tbtn" data-a2p="right">➡ Right</button>
+<button class="tbtn" data-a2p="justify">☰ Justify</button>
+</div>
+<textarea class="ta" id="t2pText" placeholder="Write or paste your text here…"></textarea>
+<button class="convert" id="t2pConvert">Convert to PDF</button>
+<div class="prog" id="t2pProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="t2pDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-img2ppt">
-  <h2>📊 Images to PPT</h2>
-  <p class="desc">Turn a set of images into a PowerPoint presentation — one image per slide.</p>
-  <div class="drop" data-drop="img2ppt"><div class="dic">📊</div><b>Drop images here or click to browse</b><p>JPG • PNG • WEBP — drag thumbnails to reorder slides</p><input type="file" accept="image/jpeg,image/png,image/webp" multiple></div>
-  <div class="grid imgs" id="img2pptGrid"></div>
-  <div class="opts">
-    <div class="opt"><label>Image placement</label><select id="ipFit"><option value="contain">Fit to slide</option><option value="cover">Fill slide</option></select></div>
-    <label class="check"><input type="checkbox" id="ipTitles" checked> Add image name as slide title</label>
-  </div>
-  <button class="convert" id="ipConvert">Create PowerPoint (.pptx)</button>
-  <div class="prog" id="ipProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="ipDl"><button class="dl-big">⬇️ Download PPTX</button><div class="dl-meta"></div></div>
+<h2>📊 Images to PPT</h2>
+<p class="desc">Turn a set of images into a PowerPoint presentation — one image per slide.</p>
+<div class="drop" data-drop="img2ppt"><div class="dic">📊</div><b>Drop images here or click to browse</b><p>JPG • PNG • WEBP — drag thumbnails to reorder slides</p><input type="file" accept="image/jpeg,image/png,image/webp" multiple></div>
+<div class="grid imgs" id="img2pptGrid"></div>
+<div class="opts">
+<div class="opt"><label>Image placement</label><select id="ipFit"><option value="contain">Fit to slide</option><option value="cover">Fill slide</option></select></div>
+<label class="check"><input type="checkbox" id="ipTitles" checked> Add image name as slide title</label>
+</div>
+<button class="convert" id="ipConvert">Create PowerPoint (.pptx)</button>
+<div class="prog" id="ipProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="ipDl"><button class="dl-big">⬇️ Download PPTX</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-text2doc">
-  <h2>📝 Text to DOC</h2>
-  <p class="desc">Write your text and download it as a real Microsoft Word document (.docx).</p>
-  <div class="opts" style="margin:0 0 14px">
-    <div class="opt"><label>Document title (optional)</label><input type="text" id="t2dTitle" placeholder="e.g. My Document"></div>
-  </div>
-  <textarea class="ta" id="t2dText" placeholder="Write or paste your text here… Each new line becomes a paragraph."></textarea>
-  <button class="convert" id="t2dConvert">Convert to Word (.docx)</button>
-  <div class="prog" id="t2dProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="t2dDl"><button class="dl-big">⬇️ Download DOCX</button><div class="dl-meta"></div></div>
+<h2>📝 Text to DOC</h2>
+<p class="desc">Write your text and download it as a real Microsoft Word document (.docx).</p>
+<div class="opts" style="margin:0 0 14px">
+<div class="opt"><label>Document title (optional)</label><input type="text" id="t2dTitle" placeholder="e.g. My Document"></div>
+</div>
+<div class="opts" style="margin:0 0 10px">
+<div class="opt"><label>Font</label><select id="t2dFont"><option>Times New Roman</option><option selected>Calibri</option><option>Arial</option><option>Georgia</option><option>Courier New</option></select></div>
+<div class="opt"><label>Size</label><select id="t2dSize"><option>10</option><option>11</option><option selected>12</option><option>14</option><option>16</option><option>18</option><option>20</option><option>24</option></select></div>
+<div class="opt"><label>Text color</label><input type="color" id="t2dColor" value="#1e1e1e" class="cinput"></div>
+<div class="opt"><label>Page background</label><input type="color" id="t2dBg" value="#ffffff" class="cinput"></div>
+<div class="opt"><label>Line spacing</label><select id="t2dLine"><option value="1">Single</option><option value="1.15">1.15</option><option value="1.5" selected>1.5</option><option value="2">Double</option></select></div>
+</div>
+<div class="tbar">
+<button class="tbtn" id="t2dBold"><b>B</b> Bold</button>
+<button class="tbtn" id="t2dItalic"><i>I</i> Italic</button>
+<button class="tbtn" id="t2dUnder"><u>U</u> Underline</button>
+<button class="tbtn on" data-a2d="left">⬅ Left</button>
+<button class="tbtn" data-a2d="center">⬌ Center</button>
+<button class="tbtn" data-a2d="right">➡ Right</button>
+<button class="tbtn" data-a2d="justify">☰ Justify</button>
+</div>
+<textarea class="ta" id="t2dText" placeholder="Write or paste your text here… Each new line becomes a paragraph."></textarea>
+<button class="convert" id="t2dConvert">Convert to Word (.docx)</button>
+<div class="prog" id="t2dProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="t2dDl"><button class="dl-big">⬇️ Download DOCX</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-pdfmerge">
-  <h2>🔗 PDF Merge</h2>
-  <p class="desc">Combine multiple PDFs into one file, in the order you add them.</p>
-  <div class="drop" data-drop="pdfmerge"><div class="dic">🔗</div><b>Drop PDFs here or click to browse</b><p>2 or more PDF files</p><input type="file" accept="application/pdf" multiple></div>
-  <div class="filelist" id="pdfmergeList"></div>
-  <button class="convert" id="pmConvert">Merge PDFs</button>
-  <div class="prog" id="pmProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="pmDl"><button class="dl-big">⬇️ Download Merged PDF</button><div class="dl-meta"></div></div>
+<h2>🔗 PDF Merge</h2>
+<p class="desc">Combine multiple PDFs into one file, in the order you add them.</p>
+<div class="drop" data-drop="pdfmerge"><div class="dic">🔗</div><b>Drop PDFs here or click to browse</b><p>2 or more PDF files</p><input type="file" accept="application/pdf" multiple></div>
+<div class="filelist" id="pdfmergeList"></div>
+<button class="convert" id="pmConvert">Merge PDFs</button>
+<div class="prog" id="pmProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="pmDl"><button class="dl-big">⬇️ Download Merged PDF</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-pdfsplit">
-  <h2>✂️ PDF Split</h2>
-  <p class="desc">Split a PDF into separate one-page PDF files, delivered in a ZIP.</p>
-  <div class="drop" data-drop="pdfsplit"><div class="dic">✂️</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
-  <div class="filelist" id="pdfsplitList"></div>
-  <button class="convert" id="psConvert">Split PDF</button>
-  <div class="prog" id="psProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="psDl"><button class="dl-big">⬇️ Download ZIP</button><div class="dl-meta"></div></div>
+<h2>✂️ PDF Split</h2>
+<p class="desc">Split a PDF into separate one-page PDF files, delivered in a ZIP.</p>
+<div class="drop" data-drop="pdfsplit"><div class="dic">✂️</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
+<div class="filelist" id="pdfsplitList"></div>
+<button class="convert" id="psConvert">Split PDF</button>
+<div class="prog" id="psProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="psDl"><button class="dl-big">⬇️ Download ZIP</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-pdfcompress">
-  <h2>🗜️ Compress PDF</h2>
-  <p class="desc">Shrink a PDF toward a target size. Pages are re-rendered as optimized images — best for scanned &amp; image-heavy PDFs.</p>
-  <div class="drop" data-drop="pdfcompress"><div class="dic">🗜️</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
-  <div class="filelist" id="pdfcompressList"></div>
-  <div class="opts">
-    <div class="opt"><label>Target size</label><select id="pcTarget"><option value="100">≈ 100 KB</option><option value="200">≈ 200 KB</option><option value="500" selected>≈ 500 KB</option></select></div>
-  </div>
-  <button class="convert" id="pcConvert">Compress PDF</button>
-  <div class="prog" id="pcProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="pcDl"><button class="dl-big">⬇️ Download Compressed PDF</button><div class="dl-meta"></div></div>
-  <p class="note">Note: exact target sizes aren't always possible — AK TOOLS gets as close as it can while keeping pages readable.</p>
+<h2>🗜️ Compress PDF</h2>
+<p class="desc">Shrink a PDF toward a target size. Pages are re-rendered as optimized images — best for scanned &amp; image-heavy PDFs.</p>
+<div class="drop" data-drop="pdfcompress"><div class="dic">🗜️</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
+<div class="filelist" id="pdfcompressList"></div>
+<div class="opts">
+<div class="opt"><label>Target size</label><select id="pcTarget"><option value="100">≈ 100 KB</option><option value="200">≈ 200 KB</option><option value="500" selected>≈ 500 KB</option></select></div>
+</div>
+<button class="convert" id="pcConvert">Compress PDF</button>
+<div class="prog" id="pcProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="pcDl"><button class="dl-big">⬇️ Download Compressed PDF</button><div class="dl-meta"></div></div>
+<p class="note">Note: exact target sizes aren't always possible — AK TOOLS gets as close as it can while keeping pages readable.</p>
 </section>
 
 
 <section class="tool" id="tool-imgcompress">
-  <h2>📉 Compress Image</h2>
-  <p class="desc">Compress a JPG or PNG image down to a tiny target size — perfect for forms and uploads.</p>
-  <div class="drop" data-drop="imgcompress"><div class="dic">📉</div><b>Drop an image here or click to browse</b><p>JPG • PNG • WEBP</p><input type="file" accept="image/*"></div>
-  <div class="grid imgs" id="imgcompressGrid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))"></div>
-  <div class="opts">
-    <div class="opt"><label>Target size</label><select id="icTarget"><option value="20">≈ 20 KB</option><option value="50" selected>≈ 50 KB</option></select></div>
-  </div>
-  <button class="convert" id="icConvert">Compress Image</button>
-  <div class="prog" id="icProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="icDl"><button class="dl-big">⬇️ Download Compressed Image</button><div class="dl-meta"></div></div>
+<h2>📉 Compress Image</h2>
+<p class="desc">Compress a JPG or PNG image down to a tiny target size — perfect for forms and uploads.</p>
+<div class="drop" data-drop="imgcompress"><div class="dic">📉</div><b>Drop an image here or click to browse</b><p>JPG • PNG • WEBP</p><input type="file" accept="image/*"></div>
+<div class="grid imgs" id="imgcompressGrid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))"></div>
+<div class="opts">
+<div class="opt"><label>Target size</label><select id="icTarget"><option value="20">≈ 20 KB</option><option value="50" selected>≈ 50 KB</option></select></div>
+</div>
+<button class="convert" id="icConvert">Compress Image</button>
+<div class="prog" id="icProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="icDl"><button class="dl-big">⬇️ Download Compressed Image</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-imgconvert">
-  <h2>🔄 Image Format Converter</h2>
-  <p class="desc">Convert between JPG, PNG and WEBP — great for compatibility and smaller files.</p>
-  <div class="drop" data-drop="imgconvert"><div class="dic">🔄</div><b>Drop an image here or click to browse</b><p>JPG • PNG • WEBP</p><input type="file" accept="image/jpeg,image/png,image/webp"></div>
-  <div class="grid imgs" id="imgconvertGrid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))"></div>
-  <div class="opts">
-    <div class="opt"><label>Convert to</label><select id="icvTo"><option value="image/png">PNG</option><option value="image/jpeg">JPG</option><option value="image/webp">WEBP</option></select></div>
-  </div>
-  <button class="convert" id="icvConvert">Convert Image</button>
-  <div class="prog" id="icvProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="icvDl"><button class="dl-big">⬇️ Download Converted Image</button><div class="dl-meta"></div></div>
+<h2>🔄 Image Format Converter</h2>
+<p class="desc">Convert between JPG, PNG and WEBP — great for compatibility and smaller files.</p>
+<div class="drop" data-drop="imgconvert"><div class="dic">🔄</div><b>Drop an image here or click to browse</b><p>JPG • PNG • WEBP</p><input type="file" accept="image/jpeg,image/png,image/webp"></div>
+<div class="grid imgs" id="imgconvertGrid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))"></div>
+<div class="opts">
+<div class="opt"><label>Convert to</label><select id="icvTo"><option value="image/png">PNG</option><option value="image/jpeg">JPG</option><option value="image/webp">WEBP</option></select></div>
+</div>
+<button class="convert" id="icvConvert">Convert Image</button>
+<div class="prog" id="icvProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="icvDl"><button class="dl-big">⬇️ Download Converted Image</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-word2pdf">
-  <h2>📘 Word to PDF</h2>
-  <p class="desc">Convert a Word document (.docx) into a PDF. Text content is preserved; complex layouts are simplified.</p>
-  <div class="drop" data-drop="word2pdf"><div class="dic">📘</div><b>Drop a .docx here or click to browse</b><p>Word .docx files</p><input type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></div>
-  <div class="filelist" id="word2pdfList"></div>
-  <button class="convert" id="w2pConvert">Convert to PDF</button>
-  <div class="prog" id="w2pProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="w2pDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
+<h2>📘 Word to PDF</h2>
+<p class="desc">Convert a Word document (.docx) into a PDF. Text content is preserved; complex layouts are simplified.</p>
+<div class="drop" data-drop="word2pdf"><div class="dic">📘</div><b>Drop a .docx here or click to browse</b><p>Word .docx files</p><input type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></div>
+<div class="filelist" id="word2pdfList"></div>
+<button class="convert" id="w2pConvert">Convert to PDF</button>
+<div class="prog" id="w2pProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="w2pDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-ppt2pdf">
-  <h2>📙 PPT to PDF</h2>
-  <p class="desc">Convert a PowerPoint (.pptx) into a PDF. Slide images become pages; slides without images are added as text pages.</p>
-  <div class="drop" data-drop="ppt2pdf"><div class="dic">📙</div><b>Drop a .pptx here or click to browse</b><p>PowerPoint .pptx files</p><input type="file" accept=".pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation"></div>
-  <div class="filelist" id="ppt2pdfList"></div>
-  <button class="convert" id="ppConvert">Convert to PDF</button>
-  <div class="prog" id="ppProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="ppDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
+<h2>📙 PPT to PDF</h2>
+<p class="desc">Convert a PowerPoint (.pptx) into a PDF. Slide images become pages; slides without images are added as text pages.</p>
+<div class="drop" data-drop="ppt2pdf"><div class="dic">📙</div><b>Drop a .pptx here or click to browse</b><p>PowerPoint .pptx files</p><input type="file" accept=".pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation"></div>
+<div class="filelist" id="ppt2pdfList"></div>
+<button class="convert" id="ppConvert">Convert to PDF</button>
+<div class="prog" id="ppProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="ppDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
 </section>
 
 
 
 
 <section class="tool" id="tool-pdf2word">
-  <h2>📘 PDF to Word</h2>
-  <p class="desc">Turn a text-based PDF into an editable Word (.docx) file. Works best on PDFs made from documents — scanned photo PDFs work better with Image to Text first.</p>
-  <div class="drop" data-drop="pdf2word"><div class="dic">📘</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
-  <div class="filelist" id="pdf2wordList"></div>
-  <button class="convert" id="p2wConvert">Convert to Word</button>
-  <div class="prog" id="p2wProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="p2wDl"><button class="dl-big">⬇️ Download Word File</button><div class="dl-meta"></div></div>
+<h2>📘 PDF to Word</h2>
+<p class="desc">Turn a text-based PDF into an editable Word (.docx) file. Works best on PDFs made from documents — scanned photo PDFs work better with Image to Text first.</p>
+<div class="drop" data-drop="pdf2word"><div class="dic">📘</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
+<div class="filelist" id="pdf2wordList"></div>
+<button class="convert" id="p2wConvert">Convert to Word</button>
+<div class="prog" id="p2wProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="p2wDl"><button class="dl-big">⬇️ Download Word File</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-pdfstamp">
-  <h2>🔢 PDF Stamp — Page Numbers &amp; Watermark</h2>
-  <p class="desc">Add page numbers, your own watermark text, or both, to every page of a PDF.</p>
-  <div class="drop" data-drop="pdfstamp"><div class="dic">🔢</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
-  <div class="filelist" id="pdfstampList"></div>
-  <div class="opts">
-    <div class="opt"><label>Add</label><select id="stWhat"><option value="numbers">Page numbers only</option><option value="watermark">Watermark text only</option><option value="both">Both</option></select></div>
-    <div class="opt"><label>Watermark text</label><input type="text" id="stText" placeholder="e.g. CONFIDENTIAL or your name"></div>
-    <div class="opt"><label>Number position</label><select id="stPos"><option value="bc">Bottom center</option><option value="br">Bottom right</option><option value="bl">Bottom left</option></select></div>
-  </div>
-  <button class="convert" id="stConvert">Stamp PDF</button>
-  <div class="prog" id="stProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="stDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
+<h2>🔢 PDF Stamp — Page Numbers &amp; Watermark</h2>
+<p class="desc">Add page numbers, your own watermark text, or both, to every page of a PDF.</p>
+<div class="drop" data-drop="pdfstamp"><div class="dic">🔢</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
+<div class="filelist" id="pdfstampList"></div>
+<div class="opts">
+<div class="opt"><label>Add</label><select id="stWhat"><option value="numbers">Page numbers only</option><option value="watermark">Watermark text only</option><option value="both">Both</option></select></div>
+<div class="opt"><label>Watermark text</label><input type="text" id="stText" placeholder="e.g. CONFIDENTIAL or your name"></div>
+<div class="opt"><label>Number position</label><select id="stPos"><option value="bc">Bottom center</option><option value="br">Bottom right</option><option value="bl">Bottom left</option></select></div>
+</div>
+<button class="convert" id="stConvert">Stamp PDF</button>
+<div class="prog" id="stProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="stDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-passport">
-  <h2>🪪 Passport Photo Maker</h2>
-  <p class="desc">Make an official-size photo with a clean white background — for CNIC, passport, visa and job forms. Use the zoom slider to fit your face in the frame.</p>
-  <div class="drop" id="ppDrop"><div class="dic">🪪</div><b>Drop a photo here or click to browse</b><p>Any portrait photo</p><input type="file" id="ppFile" accept="image/*"></div>
-  <div style="text-align:center;margin-top:16px"><canvas id="ppPrev" width="413" height="531" style="max-width:230px;width:100%;border-radius:12px;box-shadow:0 12px 30px rgba(2,6,23,.2);display:none;background:#fff"></canvas></div>
-  <div class="opts">
-    <div class="opt"><label>Photo size</label><select id="ppSize"><option value="413x531">35 × 45 mm (passport)</option><option value="600x600">2 × 2 inch</option><option value="300x300">1 × 1 inch</option></select></div>
-    <div class="opt"><label>Copies</label><select id="ppCopies"><option value="1">Single photo</option><option value="4">Sheet of 4 (4×6 in)</option><option value="6">Sheet of 6 (4×6 in)</option><option value="8">Sheet of 8 (4×6 in)</option></select></div>
-    <div class="opt"><label>Zoom</label><input type="range" id="ppZoom" min="100" max="300" value="100" style="width:100%"></div>
-  </div>
-  <button class="convert" id="ppConvert">Make Photo</button>
-  <div class="prog" id="ppProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="ppDl"><button class="dl-big">⬇️ Download Photo</button><div class="dl-meta"></div></div>
+<h2>🪪 Passport Photo Maker</h2>
+<p class="desc">Make an official-size photo with a clean white background — for CNIC, passport, visa and job forms. Use the zoom slider to fit your face in the frame.</p>
+<div class="drop" id="ppDrop"><div class="dic">🪪</div><b>Drop a photo here or click to browse</b><p>Any portrait photo</p><input type="file" id="ppFile" accept="image/*"></div>
+<div style="text-align:center;margin-top:16px"><canvas id="ppPrev" width="413" height="531" style="max-width:230px;width:100%;border-radius:12px;box-shadow:0 12px 30px rgba(2,6,23,.2);display:none;background:#fff"></canvas></div>
+<div class="opts">
+<div class="opt"><label>Photo size</label><select id="ppSize"><option value="413x531">35 × 45 mm (passport)</option><option value="600x600">2 × 2 inch</option><option value="300x300">1 × 1 inch</option></select></div>
+<div class="opt"><label>Copies</label><select id="ppCopies"><option value="1">Single photo</option><option value="4">Sheet of 4 (4×6 in)</option><option value="6">Sheet of 6 (4×6 in)</option><option value="8">Sheet of 8 (4×6 in)</option></select></div>
+<div class="opt"><label>Zoom</label><input type="range" id="ppZoom" min="100" max="300" value="100" style="width:100%"></div>
+</div>
+<button class="convert" id="ppConvert">Make Photo</button>
+<div class="prog" id="ppProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="ppDl"><button class="dl-big">⬇️ Download Photo</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-ocr">
-  <h2>🔍 Image to Text (OCR)</h2>
-  <p class="desc">Extract text from a photo or scanned page — English and Urdu supported. The OCR engine loads once from the internet, then stays on your device.</p>
-  <div class="drop" id="ocrDrop"><div class="dic">🔍</div><b>Drop an image here or click to browse</b><p>Photo or scan with text</p><input type="file" id="ocrFile" accept="image/*"></div>
-  <div style="text-align:center;margin-top:14px"><img id="ocrPrev" alt="" style="max-width:240px;max-height:240px;border-radius:12px;display:none;box-shadow:0 10px 26px rgba(2,6,23,.18)"></div>
-  <div class="opts">
-    <div class="opt"><label>Text language</label><select id="ocrLang"><option value="eng">English</option><option value="urd">Urdu (اردو)</option><option value="eng+urd">English + Urdu</option></select></div>
-  </div>
-  <button class="convert" id="ocrConvert">Extract Text</button>
-  <div class="prog" id="ocrProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="opt" style="margin-top:12px"><label>Extracted text</label><textarea id="ocrOut" rows="7" placeholder="Your text will appear here…" style="width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:14.5px;background:var(--card);color:var(--ink);resize:vertical"></textarea></div>
-  <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tbtn" id="ocrCopy" type="button">📋 Copy text</button></div>
-  <button class="convert" id="ocrSave" style="margin-top:12px">Download as .txt</button>
-  <div class="dlzone" id="ocrDl"><button class="dl-big">⬇️ Download Text File</button><div class="dl-meta"></div></div>
+<h2>🔍 Image to Text (OCR)</h2>
+<p class="desc">Extract text from a photo or scanned page — English and Urdu supported. The OCR engine loads once from the internet, then stays on your device.</p>
+<div class="drop" id="ocrDrop"><div class="dic">🔍</div><b>Drop an image here or click to browse</b><p>Photo or scan with text</p><input type="file" id="ocrFile" accept="image/*"></div>
+<div style="text-align:center;margin-top:14px"><img id="ocrPrev" alt="" style="max-width:240px;max-height:240px;border-radius:12px;display:none;box-shadow:0 10px 26px rgba(2,6,23,.18)"></div>
+<div class="opts">
+<div class="opt"><label>Text language</label><select id="ocrLang"><option value="eng">English</option><option value="urd">Urdu (اردو)</option><option value="eng+urd">English + Urdu</option></select></div>
+</div>
+<button class="convert" id="ocrConvert">Extract Text</button>
+<div class="prog" id="ocrProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="opt" style="margin-top:12px"><label>Extracted text</label><textarea id="ocrOut" rows="7" placeholder="Your text will appear here…" style="width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:14.5px;background:var(--card);color:var(--ink);resize:vertical"></textarea></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tbtn" id="ocrCopy" type="button">📋 Copy text</button></div>
+<button class="convert" id="ocrSave" style="margin-top:12px">Download as .txt</button>
+<div class="dlzone" id="ocrDl"><button class="dl-big">⬇️ Download Text File</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-signature">
-  <h2>✒️ Signature Maker</h2>
-  <p class="desc">Draw your signature with finger or mouse and download it as a transparent PNG — ready to place on documents.</p>
-  <div class="sigwrap"><canvas id="sigPad"></canvas></div>
-  <div class="opts">
-    <div class="opt"><label>Pen color</label><input type="color" id="sigColor" value="#1e3a8a" style="width:100%;height:42px;border:1.5px solid var(--line);border-radius:11px;background:var(--card);padding:4px"></div>
-    <div class="opt"><label>Pen thickness</label><input type="range" id="sigSize" min="1" max="8" value="3" style="width:100%"></div>
-  </div>
-  <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tbtn" id="sigClear" type="button">🧹 Clear</button></div>
-  <button class="convert" id="sigSave">Save Signature</button>
-  <div class="dlzone" id="sigDl"><button class="dl-big">⬇️ Download PNG</button><div class="dl-meta"></div></div>
+<h2>✒️ Signature Maker</h2>
+<p class="desc">Draw your signature with finger or mouse and download it as a transparent PNG — ready to place on documents.</p>
+<div class="sigwrap"><canvas id="sigPad"></canvas></div>
+<div class="opts">
+<div class="opt"><label>Pen color</label><input type="color" id="sigColor" value="#1e3a8a" class="cinput"></div>
+<div class="opt"><label>Pen thickness</label><input type="range" id="sigSize" min="1" max="8" value="3" style="width:100%"></div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tbtn" id="sigClear" type="button">🧹 Clear</button></div>
+<button class="convert" id="sigSave">Save Signature</button>
+<div class="dlzone" id="sigDl"><button class="dl-big">⬇️ Download PNG</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-calculators">
-  <h2>🧮 Calculators</h2>
-  <p class="desc">Everyday calculators — age, BMI, percentage and unit conversion. Everything updates live as you type.</p>
-  <div class="opts" style="margin-top:0">
-    <div class="opt"><label>🎂 Date of birth</label><input type="date" id="calcDob"></div>
-    <div class="opt"><label>Your age</label><input type="text" id="calcAgeOut" readonly placeholder="Pick your birth date"></div>
-  </div>
-  <div class="opts">
-    <div class="opt"><label>⚖️ Weight (kg)</label><input type="number" id="calcW" placeholder="e.g. 70"></div>
-    <div class="opt"><label>📏 Height (cm)</label><input type="number" id="calcH" placeholder="e.g. 175"></div>
-    <div class="opt"><label>Your BMI</label><input type="text" id="calcBmiOut" readonly placeholder="Enter weight & height"></div>
-  </div>
-  <div class="opts">
-    <div class="opt"><label>% Percentage: what is</label><input type="number" id="pctA" placeholder="e.g. 15"></div>
-    <div class="opt"><label>% of</label><input type="number" id="pctB" placeholder="e.g. 2400"></div>
-    <div class="opt"><label>Result</label><input type="text" id="pctOut" readonly placeholder="—"></div>
-  </div>
-  <div class="opts">
-    <div class="opt"><label>🔄 Convert value</label><input type="number" id="unitVal" placeholder="e.g. 10"></div>
-    <div class="opt"><label>From → To</label><select id="unitPair">
-      <option value="km-mi">Kilometers → Miles</option><option value="mi-km">Miles → Kilometers</option>
-      <option value="kg-lb">Kilograms → Pounds</option><option value="lb-kg">Pounds → Kilograms</option>
-      <option value="c-f">Celsius → Fahrenheit</option><option value="f-c">Fahrenheit → Celsius</option>
-      <option value="m-ft">Meters → Feet</option><option value="ft-m">Feet → Meters</option>
-      <option value="l-gal">Liters → Gallons</option><option value="gal-l">Gallons → Liters</option>
-      <option value="in-cm">Inches → Centimeters</option><option value="cm-in">Centimeters → Inches</option>
-    </select></div>
-    <div class="opt"><label>Result</label><input type="text" id="unitOut" readonly placeholder="—"></div>
-  </div>
+<h2>🧮 Calculators</h2>
+<p class="desc">Everyday calculators — age, BMI, percentage and unit conversion. Everything updates live as you type.</p>
+<div class="opts" style="margin-top:0">
+<div class="opt"><label>🎂 Date of birth</label><input type="date" id="calcDob"></div>
+<div class="opt"><label>Your age</label><input type="text" id="calcAgeOut" readonly placeholder="Pick your birth date"></div>
+</div>
+<div class="opts">
+<div class="opt"><label>⚖️ Weight (kg)</label><input type="number" id="calcW" placeholder="e.g. 70"></div>
+<div class="opt"><label>📏 Height (cm)</label><input type="number" id="calcH" placeholder="e.g. 175"></div>
+<div class="opt"><label>Your BMI</label><input type="text" id="calcBmiOut" readonly placeholder="Enter weight & height"></div>
+</div>
+<div class="opts">
+<div class="opt"><label>% Percentage: what is</label><input type="number" id="pctA" placeholder="e.g. 15"></div>
+<div class="opt"><label>% of</label><input type="number" id="pctB" placeholder="e.g. 2400"></div>
+<div class="opt"><label>Result</label><input type="text" id="pctOut" readonly placeholder="—"></div>
+</div>
+<div class="opts">
+<div class="opt"><label>🔄 Convert value</label><input type="number" id="unitVal" placeholder="e.g. 10"></div>
+<div class="opt"><label>From → To</label><select id="unitPair">
+<option value="km-mi">Kilometers → Miles</option><option value="mi-km">Miles → Kilometers</option>
+<option value="kg-lb">Kilograms → Pounds</option><option value="lb-kg">Pounds → Kilograms</option>
+<option value="c-f">Celsius → Fahrenheit</option><option value="f-c">Fahrenheit → Celsius</option>
+<option value="m-ft">Meters → Feet</option><option value="ft-m">Feet → Meters</option>
+<option value="l-gal">Liters → Gallons</option><option value="gal-l">Gallons → Liters</option>
+<option value="in-cm">Inches → Centimeters</option><option value="cm-in">Centimeters → Inches</option>
+</select></div>
+<div class="opt"><label>Result</label><input type="text" id="unitOut" readonly placeholder="—"></div>
+</div>
 </section>
 
 
 <section class="tool" id="tool-passgen">
-  <h2>🔐 Password Generator</h2>
-  <p class="desc">Create strong, random passwords on your device — nothing is sent anywhere.</p>
-  <div class="opt" style="margin-bottom:12px"><label>Your password</label><input type="text" id="pgOut" readonly style="width:100%;border:1.5px solid var(--line);border-radius:12px;padding:13px 15px;font-family:ui-monospace,monospace;font-size:16px;background:var(--card);color:var(--head)" placeholder="Tap Generate"></div>
-  <div class="opts" style="margin-top:0">
-    <div class="opt"><label>Length: <span id="pgLenVal">16</span></label><input type="range" id="pgLen" min="8" max="40" value="16" style="width:100%"></div>
-  </div>
-  <div style="display:flex;flex-wrap:wrap;gap:14px;font-size:13.5px;font-weight:600;margin:4px 0 8px">
-    <label><input type="checkbox" id="pgUpper" checked> ABC</label>
-    <label><input type="checkbox" id="pgLower" checked> abc</label>
-    <label><input type="checkbox" id="pgDigits" checked> 123</label>
-    <label><input type="checkbox" id="pgSymbols" checked> #$&amp;</label>
-  </div>
-  <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tbtn" id="pgCopy" type="button">📋 Copy password</button></div>
-  <button class="convert" id="pgGen">Generate Password</button>
+<h2>🔐 Password Generator</h2>
+<p class="desc">Create strong, random passwords on your device — nothing is sent anywhere.</p>
+<div class="opt" style="margin-bottom:12px"><label>Your password</label><input type="text" id="pgOut" readonly style="width:100%;border:1.5px solid var(--line);border-radius:12px;padding:13px 15px;font-family:ui-monospace,monospace;font-size:16px;background:var(--card);color:var(--head)" placeholder="Tap Generate"></div>
+<div class="opts" style="margin-top:0">
+<div class="opt"><label>Length: <span id="pgLenVal">16</span></label><input type="range" id="pgLen" min="8" max="40" value="16" style="width:100%"></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:14px;font-size:13.5px;font-weight:600;margin:4px 0 8px">
+<label><input type="checkbox" id="pgUpper" checked> ABC</label>
+<label><input type="checkbox" id="pgLower" checked> abc</label>
+<label><input type="checkbox" id="pgDigits" checked> 123</label>
+<label><input type="checkbox" id="pgSymbols" checked> #$&amp;</label>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="tbtn" id="pgCopy" type="button">📋 Copy password</button></div>
+<button class="convert" id="pgGen">Generate Password</button>
 </section>
 
 
 <section class="tool" id="tool-pdfrotate">
-  <h2>🔃 Rotate PDF</h2>
-  <p class="desc">Turn every page of a PDF by 90°, 180° or 270° — handy for scanned pages that open sideways.</p>
-  <div class="drop" data-drop="pdfrotate"><div class="dic">🔃</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
-  <div class="filelist" id="pdfrotateList"></div>
-  <div class="opts">
-    <div class="opt"><label>Rotate by</label><select id="prAngle"><option value="90">90° clockwise</option><option value="180">180° (upside down)</option><option value="270">270° clockwise</option></select></div>
-  </div>
-  <button class="convert" id="prConvert">Rotate PDF</button>
-  <div class="prog" id="prProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="prDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
+<h2>🔃 Rotate PDF</h2>
+<p class="desc">Turn every page of a PDF by 90°, 180° or 270° — handy for scanned pages that open sideways.</p>
+<div class="drop" data-drop="pdfrotate"><div class="dic">🔃</div><b>Drop a PDF here or click to browse</b><p>One PDF file</p><input type="file" accept="application/pdf"></div>
+<div class="filelist" id="pdfrotateList"></div>
+<div class="opts">
+<div class="opt"><label>Rotate by</label><select id="prAngle"><option value="90">90° clockwise</option><option value="180">180° (upside down)</option><option value="270">270° clockwise</option></select></div>
+</div>
+<button class="convert" id="prConvert">Rotate PDF</button>
+<div class="prog" id="prProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="prDl"><button class="dl-big">⬇️ Download PDF</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-imgresize">
-  <h2>📐 Resize Image</h2>
-  <p class="desc">Set exact pixel size for any image — profile photos, thumbnails, uploads with size limits.</p>
-  <div class="drop" id="rzDrop" data-drop="imgresize"><div class="dic">📐</div><b>Drop an image here or click to browse</b><p>JPG • PNG • WEBP</p><input type="file" id="rzFile" accept="image/*"></div>
-  <div style="text-align:center;margin-top:14px"><img id="rzPrev" alt="" style="max-width:220px;max-height:220px;border-radius:14px;display:none;box-shadow:0 10px 26px rgba(2,6,23,.18)"></div>
-  <p class="desc" id="rzInfo" style="text-align:center;margin-top:8px"></p>
-  <div class="opts">
-    <div class="opt"><label>Width (px)</label><input type="number" id="rzW" min="1" placeholder="e.g. 800"></div>
-    <div class="opt"><label>Height (px)</label><input type="number" id="rzH" min="1" placeholder="e.g. 600"></div>
-    <div class="opt"><label>Format</label><select id="rzFmt"><option value="image/png">PNG</option><option value="image/jpeg" selected>JPG</option><option value="image/webp">WEBP</option></select></div>
-  </div>
-  <label style="display:flex;gap:8px;align-items:center;font-size:13.5px;font-weight:600;margin:2px 0 6px"><input type="checkbox" id="rzLock" checked style="width:17px;height:17px"> Keep aspect ratio (changing width sets height automatically)</label>
-  <button class="convert" id="rzConvert">Resize &amp; Prepare</button>
-  <div class="prog" id="rzProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
-  <div class="dlzone" id="rzDl"><button class="dl-big">⬇️ Download Image</button><div class="dl-meta"></div></div>
+<h2>📐 Resize Image</h2>
+<p class="desc">Set exact pixel size for any image — profile photos, thumbnails, uploads with size limits.</p>
+<div class="drop" id="rzDrop" data-drop="imgresize"><div class="dic">📐</div><b>Drop an image here or click to browse</b><p>JPG • PNG • WEBP</p><input type="file" id="rzFile" accept="image/*"></div>
+<div style="text-align:center;margin-top:14px"><img id="rzPrev" alt="" style="max-width:220px;max-height:220px;border-radius:14px;display:none;box-shadow:0 10px 26px rgba(2,6,23,.18)"></div>
+<p class="desc" id="rzInfo" style="text-align:center;margin-top:8px"></p>
+<div class="opts">
+<div class="opt"><label>Width (px)</label><input type="number" id="rzW" min="1" placeholder="e.g. 800"></div>
+<div class="opt"><label>Height (px)</label><input type="number" id="rzH" min="1" placeholder="e.g. 600"></div>
+<div class="opt"><label>Format</label><select id="rzFmt"><option value="image/png">PNG</option><option value="image/jpeg" selected>JPG</option><option value="image/webp">WEBP</option></select></div>
+</div>
+<label style="display:flex;gap:8px;align-items:center;font-size:13.5px;font-weight:600;margin:2px 0 6px"><input type="checkbox" id="rzLock" checked style="width:17px;height:17px"> Keep aspect ratio (changing width sets height automatically)</label>
+<button class="convert" id="rzConvert">Resize &amp; Prepare</button>
+<div class="prog" id="rzProg"><div class="bar"><div class="fill"></div></div><div class="pt"></div></div>
+<div class="dlzone" id="rzDl"><button class="dl-big">⬇️ Download Image</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-qr">
-  <h2>🔳 QR Code Maker</h2>
-  <p class="desc">Turn any text, link, phone number or Wi-Fi details into a QR code image — made on your device, nothing uploaded.</p>
-  <div class="opts" style="margin:0 0 14px">
-    <div class="opt" style="flex:2"><label>Text or link</label><input type="text" id="qrText" placeholder="e.g. https://fileeditor.vercel.app"></div>
-    <div class="opt"><label>Size</label><select id="qrSize"><option value="256">256 px</option><option value="512" selected>512 px</option><option value="1024">1024 px</option></select></div>
-  </div>
-  <button class="convert" id="qrConvert">Create QR Code</button>
-  <div id="qrBox" style="display:flex;justify-content:center;padding:20px 0 4px"></div>
-  <div class="dlzone" id="qrDl"><button class="dl-big">⬇️ Download QR (PNG)</button><div class="dl-meta"></div></div>
+<h2>🔳 QR Code Maker</h2>
+<p class="desc">Turn any text, link, phone number or Wi-Fi details into a QR code image — made on your device, nothing uploaded.</p>
+<div class="opts" style="margin:0 0 14px">
+<div class="opt" style="flex:2"><label>Text or link</label><input type="text" id="qrText" placeholder="e.g. https://fileeditor.vercel.app"></div>
+<div class="opt"><label>Size</label><select id="qrSize"><option value="256">256 px</option><option value="512" selected>512 px</option><option value="1024">1024 px</option></select></div>
+</div>
+<button class="convert" id="qrConvert">Create QR Code</button>
+<div id="qrBox" style="display:flex;justify-content:center;padding:20px 0 4px"></div>
+<div class="dlzone" id="qrDl"><button class="dl-big">⬇️ Download QR (PNG)</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="tool" id="tool-texttools">
-  <h2>🔤 Text Tools</h2>
-  <p class="desc">Word counter and case changer for essays, captions and assignments — live count as you type.</p>
-  <div class="opt" style="margin-bottom:12px"><label>Your text</label><textarea id="ttText" rows="7" placeholder="Type or paste your text here…" style="width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:14.5px;background:var(--card);color:var(--ink);resize:vertical"></textarea></div>
-  <p class="desc" id="ttStats" style="font-weight:700;color:var(--head)">Words: 0 • Characters: 0 • Sentences: 0 • Lines: 0 • Reading time: 0 min</p>
-  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">
-    <button class="tbtn" id="ttUpper" type="button">UPPERCASE</button>
-    <button class="tbtn" id="ttLower" type="button">lowercase</button>
-    <button class="tbtn" id="ttTitle" type="button">Title Case</button>
-    <button class="tbtn" id="ttSentence" type="button">Sentence case</button>
-    <button class="tbtn" id="ttSpaces" type="button">Clean extra spaces</button>
-    <button class="tbtn" id="ttCopy" type="button">📋 Copy text</button>
-  </div>
-  <button class="convert" id="ttDownload" style="margin-top:14px">Download as .txt</button>
-  <div class="dlzone" id="ttDl"><button class="dl-big">⬇️ Download Text File</button><div class="dl-meta"></div></div>
+<h2>🔤 Text Tools</h2>
+<p class="desc">Word counter and case changer for essays, captions and assignments — live count as you type.</p>
+<div class="opt" style="margin-bottom:12px"><label>Your text</label><textarea id="ttText" rows="7" placeholder="Type or paste your text here…" style="width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:14.5px;background:var(--card);color:var(--ink);resize:vertical"></textarea></div>
+<p class="desc" id="ttStats" style="font-weight:700;color:var(--head)">Words: 0 • Characters: 0 • Sentences: 0 • Lines: 0 • Reading time: 0 min</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">
+<button class="tbtn" id="ttUpper" type="button">UPPERCASE</button>
+<button class="tbtn" id="ttLower" type="button">lowercase</button>
+<button class="tbtn" id="ttTitle" type="button">Title Case</button>
+<button class="tbtn" id="ttSentence" type="button">Sentence case</button>
+<button class="tbtn" id="ttSpaces" type="button">Clean extra spaces</button>
+<button class="tbtn" id="ttCopy" type="button">📋 Copy text</button>
+</div>
+<button class="convert" id="ttDownload" style="margin-top:14px">Download as .txt</button>
+<div class="dlzone" id="ttDl"><button class="dl-big">⬇️ Download Text File</button><div class="dl-meta"></div></div>
 </section>
 
 
 <section class="faq">
-  <h2>Frequently Asked Questions</h2>
-  <details><summary>Is AK TOOLS free?<span class="pl">+</span></summary><p>Yes — every tool on AK TOOLS is 100% free, with no sign-up and no limits.</p></details>
-  <details><summary>Is it safe? Where do my files go?<span class="pl">+</span></summary><p>Completely safe. All conversions happen inside your own browser using JavaScript — your files are never uploaded to any server, so nobody can see them but you.</p></details>
-  <details><summary>Does it work on mobile phones?<span class="pl">+</span></summary><p>Yes, AK TOOLS is fully responsive and works on Android and iPhone browsers, as well as desktop.</p></details>
-  <details><summary>Is there a file size limit?<span class="pl">+</span></summary><p>There's no server limit, but very large files depend on your device's memory. Most everyday files convert in seconds.</p></details>
-  <details><summary>Do my converted files carry any watermark?<span class="pl">+</span></summary><p>Never. Every file you make on AK TOOLS is 100% clean — no watermark, no logo, no credit line. Your files are fully yours.</p></details>
-  <div class="share">
-    <a class="wa" href="https://wa.me/?text=Convert%20files%20free%20in%20your%20browser%20%E2%80%94%20Image%20to%20PDF%2C%20PDF%20tools%2C%20PPT%20%26%20more%20on%20AK TOOLS!" target="_blank" rel="noopener">📲 Share on WhatsApp</a>
-  </div>
+<h2>Frequently Asked Questions</h2>
+<details><summary>Is AK TOOLS free?<span class="pl">+</span></summary><p>Yes — every tool on AK TOOLS is 100% free, with no sign-up and no limits.</p></details>
+<details><summary>Is it safe? Where do my files go?<span class="pl">+</span></summary><p>Completely safe. All conversions happen inside your own browser using JavaScript — your files are never uploaded to any server, so nobody can see them but you.</p></details>
+<details><summary>Does it work on mobile phones?<span class="pl">+</span></summary><p>Yes, AK TOOLS is fully responsive and works on Android and iPhone browsers, as well as desktop.</p></details>
+<details><summary>Is there a file size limit?<span class="pl">+</span></summary><p>There's no server limit, but very large files depend on your device's memory. Most everyday files convert in seconds.</p></details>
+<details><summary>Do my converted files carry any watermark?<span class="pl">+</span></summary><p>Never. Every file you make on AK TOOLS is 100% clean — no watermark, no logo, no credit line. Your files are fully yours.</p></details>
+<div class="share">
+<a class="wa" href="https://wa.me/?text=Convert%20files%20free%20in%20your%20browser%20%E2%80%94%20Image%20to%20PDF%2C%20PDF%20tools%2C%20PPT%20%26%20more%20on%20AK TOOLS!" target="_blank" rel="noopener">📲 Share on WhatsApp</a>
+</div>
 </section>
 </div>
 
 <footer>
-  <div class="wrap foot-in">
-    <a class="brand" href="#" style="text-decoration:none">
-      <svg class="logo" style="width:38px;height:38px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="#0F172A"/><circle cx="50" cy="50" r="47" fill="none" stroke="#F59E0B" stroke-width="3"/><text x="50" y="63" text-anchor="middle" font-family="Poppins,Arial" font-weight="800" font-size="36" fill="#ffffff">AK</text></svg>
-      <span><span class="brandname" style="font-size:18px">AK TOOLS</span><small>MADE BY AKRAM KHAN</small></span>
-    </a>
-    <div class="flinks"><span>More by Akram Khan</span><a href="https://khanprompts.vercel.app/" target="_blank" rel="noopener">🧠 KhanPrompts — AI Prompts</a><a href="https://akbills.vercel.app/" target="_blank" rel="noopener">🧾 AK Bills — Bill Calculator</a></div>
-    <p>© 2026 AK TOOLS — Made by Akram Khan | All conversions happen in your browser — No files uploaded to server</p>
-  </div>
+<div class="wrap foot-in">
+<a class="brand" href="#" style="text-decoration:none">
+<svg class="logo" style="width:38px;height:38px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="#0F172A"/><circle cx="50" cy="50" r="47" fill="none" stroke="#F59E0B" stroke-width="3"/><text x="50" y="63" text-anchor="middle" font-family="Poppins,Arial" font-weight="800" font-size="36" fill="#ffffff">AK</text></svg>
+<span><span class="brandname" style="font-size:18px">AK TOOLS</span><small>MADE BY AKRAM KHAN</small></span>
+</a>
+<div class="flinks"><span>More by Akram Khan</span><a href="https://khanprompts.vercel.app/" target="_blank" rel="noopener">🧠 KhanPrompts — AI Prompts</a><a href="https://akbills.vercel.app/" target="_blank" rel="noopener">🧾 AK Bills — Bill Calculator</a></div>
+<p>© 2026 AK TOOLS — Made by Akram Khan | All conversions happen in your browser — No files uploaded to server</p>
+</div>
 </footer>
 
 <div id="toast"></div>
@@ -902,14 +926,12 @@ const $=id=>document.getElementById(id);
 const { jsPDF } = window.jspdf;
 pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
-/* ---------------- toast ---------------- */
 let toastT=null;
 function toast(msg,err){const t=$("toast");t.textContent=msg;t.className=err?"on err":"on";
   clearTimeout(toastT);toastT=setTimeout(()=>t.className="",2800)}
 function fmtSize(b){if(b<1024)return b+" B";if(b<1048576)return (b/1024).toFixed(1)+" KB";return (b/1048576).toFixed(2)+" MB"}
 function baseName(n){return n.replace(/\.[^.]+$/,"")}
 
-/* ---------------- progress + download zones ---------------- */
 function prog(id,pct,label){const p=$(id);p.classList.add("on");
   p.querySelector(".fill").style.width=pct+"%";p.querySelector(".pt").textContent=label||""}
 function progDone(id){const p=$(id);setTimeout(()=>p.classList.remove("on"),600)}
@@ -933,7 +955,6 @@ function setDownload(zoneId,blob,filename,meta){
 function busy(btn,on,label){btn.disabled=on;if(label)btn.dataset.label=btn.textContent,btn.textContent=label;
   else if(btn.dataset.label)btn.textContent=btn.dataset.label}
 
-/* ---------------- AK logo (canvas) for watermarks ---------------- */
 let _logoURL=null;
 function akLogoDataURL(){
   if(_logoURL)return _logoURL;
@@ -947,10 +968,8 @@ function akLogoDataURL(){
 function logoBytes(){const s=akLogoDataURL().split(",")[1];const bin=atob(s);
   const u=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return u}
 
-/* ============ WATERMARK: jsPDF ============ */
 function addWatermark(){}
 
-/* ---------------- shared file stores ---------------- */
 const store={img2pdf:[],pdf2img:null,img2ppt:[],pdfmerge:[],pdfsplit:null,
              pdfcompress:null,imgcompress:null,imgconvert:null,word2pdf:null,ppt2pdf:null,pdfrotate:null,pdf2word:null,pdfstamp:null};
 const singleTools={pdf2img:1,pdfsplit:1,pdfcompress:1,imgcompress:1,imgconvert:1,word2pdf:1,ppt2pdf:1,pdfrotate:1,pdf2word:1,pdfstamp:1};
@@ -988,7 +1007,6 @@ function makeSortable(gridId,arr){
 makeSortable("img2pdfGrid",store.img2pdf);
 makeSortable("img2pptGrid",store.img2ppt);
 
-/* dropzones */
 document.querySelectorAll(".drop").forEach(dz=>{
   const key=dz.dataset.drop,input=dz.querySelector("input");
   dz.addEventListener("click",e=>{if(e.target!==input)input.click()});
@@ -1020,7 +1038,6 @@ function handleFiles(key,files){
   }
 }
 
-/* ---------------- tabs ---------------- */
 function showTool(name){
   document.querySelectorAll(".tool").forEach(s=>s.classList.toggle("on",s.id==="tool-"+name));
   document.querySelectorAll(".tab[data-tool]").forEach(t=>t.classList.toggle("on",t.dataset.tool===name));
@@ -1028,12 +1045,10 @@ function showTool(name){
   if(sec&&stage&&sec.parentNode!==stage)stage.appendChild(sec);
   if(stage)window.scrollTo({top:stage.offsetTop-84,behavior:"smooth"});
 }
-/* put the default tool in the top stage on load */
 (function(){const sec=document.querySelector(".tool.on"),stage=document.getElementById("toolStage");
   if(sec&&stage)stage.appendChild(sec)})();
 document.querySelectorAll("[data-tool]").forEach(b=>b.addEventListener("click",()=>showTool(b.dataset.tool)));
 
-/* ---------------- image loading helper ---------------- */
 function loadImage(url){return new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=url})}
 async function imageToDataURL(file,maxDim){
   const url=URL.createObjectURL(file);const img=await loadImage(url);
@@ -1044,7 +1059,6 @@ async function imageToDataURL(file,maxDim){
   return{data:c.toDataURL("image/jpeg",0.92),w,h};
 }
 
-/* ============ TAB 1: IMAGE TO PDF ============ */
 $("i2pConvert").onclick=async()=>{
   const arr=store.img2pdf;
   if(!arr.length)return toast("Add at least one image first",1);
@@ -1069,7 +1083,6 @@ $("i2pConvert").onclick=async()=>{
   busy(btn,false);progDone("i2pProg");
 };
 
-/* ============ TAB 2: PDF TO IMAGE ============ */
 $("p2iConvert").onclick=async()=>{
   const f=store.pdf2img;if(!f)return toast("Add a PDF first",1);
   const btn=$("p2iConvert");busy(btn,true,"Converting…");
@@ -1092,46 +1105,60 @@ $("p2iConvert").onclick=async()=>{
   busy(btn,false);progDone("p2iProg");
 };
 
-/* ============ TAB 3: TEXT TO PDF ============ */
-let t2p={bold:false,size:12,align:"left"};
-$("t2pBold").onclick=e=>{t2p.bold=!t2p.bold;e.currentTarget.classList.toggle("on",t2p.bold)};
-document.querySelectorAll("[data-align]").forEach(b=>{if(!b.dataset.align)return;
-  b.onclick=()=>{t2p.align=b.dataset.align;
-    document.querySelectorAll("[data-align]").forEach(x=>x.classList.toggle("on",x===b))}});
-$("t2pSizeBtn").onclick=e=>{const sizes=[11,12,14,16,18,20];
-  t2p.size=sizes[(sizes.indexOf(t2p.size)+1)%sizes.length];e.currentTarget.textContent="Font: "+t2p.size+"pt"};
+function alignWire(attr){
+  let val="left";
+  document.querySelectorAll("["+attr+"]").forEach(b=>{b.onclick=()=>{
+    val=b.getAttribute(attr);
+    document.querySelectorAll("["+attr+"]").forEach(x=>x.classList.toggle("on",x===b))}});
+  return()=>val;
+}
+const getA2p=alignWire("data-a2p"),getA2d=alignWire("data-a2d");
+["t2pBold","t2pItalic","t2pUnder","t2dBold","t2dItalic","t2dUnder"].forEach(id=>{
+  const b=$(id);if(b)b.onclick=()=>b.classList.toggle("on")});
+function hexRgb(h){h=h.replace("#","");return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]}
 $("t2pConvert").onclick=async()=>{
-  const text=$("t2pText").value.trim();if(!text)return toast("Write some text first",1);
+  const text=$("t2pText").value;if(!text.trim())return toast("Write some text first",1);
   const btn=$("t2pConvert");busy(btn,true,"Building PDF…");
   try{
+    const F=$("t2pFont").value,SZ=+$("t2pSize").value,AL=getA2p(),
+      B=$("t2pBold").classList.contains("on"),I=$("t2pItalic").classList.contains("on"),U=$("t2pUnder").classList.contains("on"),
+      TC=hexRgb($("t2pColor").value),BG=$("t2pBg").value,LN=+$("t2pLine").value,M=+$("t2pMargin").value;
+    const style=(B&&I)?"bolditalic":B?"bold":I?"italic":"normal";
     const doc=new jsPDF({unit:"mm",format:"a4"});
-    const W=doc.internal.pageSize.getWidth(),H=doc.internal.pageSize.getHeight(),M=18;
-    let y=22;const title=$("t2pTitle").value.trim();
-    if(title){doc.setFont("helvetica","bold");doc.setFontSize(19);doc.setTextColor(15,23,42);
-      const tl=doc.splitTextToSize(title,W-M*2);doc.text(tl,W/2,y,{align:"center"});y+=tl.length*8+6}
-    doc.setFont("times",t2p.bold?"bold":"normal");doc.setFontSize(t2p.size);doc.setTextColor(30,30,30);
-    const lh=t2p.size*0.52+2.4;
-    const addBlock=(txt,style,size)=>{
-      doc.setFont("times",style);doc.setFontSize(size);
-      const lines=doc.splitTextToSize(txt,W-M*2);
-      lines.forEach(ln=>{
-        if(y>H-18){doc.addPage();y=20}
-        const x=t2p.align==="center"?W/2:M;
-        doc.text(ln,x,y,{align:t2p.align,maxWidth:W-M*2});y+= (size*0.52+2.4);
-      });
-    };
+    const W=doc.internal.pageSize.getWidth(),H=doc.internal.pageSize.getHeight();
+    const paint=()=>{if(BG.toLowerCase()!=="#ffffff"){const c=hexRgb(BG);doc.setFillColor(c[0],c[1],c[2]);doc.rect(0,0,W,H,"F")}};
+    paint();
+    const gap=SZ*0.353*LN*1.35;let y=M+SZ*0.4;
+    const title=$("t2pTitle").value.trim();
+    doc.setTextColor(TC[0],TC[1],TC[2]);
+    if(title){const TS=SZ+7;doc.setFont(F,"bold");doc.setFontSize(TS);
+      doc.splitTextToSize(title,W-2*M).forEach(ln=>{
+        if(y>H-M){doc.addPage();paint();y=M+TS*0.4}
+        const x=AL==="center"?W/2:AL==="right"?W-M:M;
+        doc.text(ln,x,y,{align:AL==="justify"?"left":AL});y+=TS*0.353*LN*1.35});
+      y+=4}
+    doc.setFont(F,style);doc.setFontSize(SZ);
+    const drawLine=(ln,last)=>{
+      if(y>H-M){doc.addPage();paint();y=M+SZ*0.4}
+      const a=AL==="justify"&&last?"left":AL;
+      const x=a==="center"?W/2:a==="right"?W-M:M;
+      doc.text(ln,x,y,{align:a,maxWidth:W-2*M});
+      if(U){const w=doc.getTextWidth(ln);const x0=a==="center"?W/2-w/2:a==="right"?W-M-w:M;
+        doc.setDrawColor(TC[0],TC[1],TC[2]);doc.setLineWidth(0.25);
+        doc.line(x0,y+SZ*0.1,x0+w,y+SZ*0.1)}
+      y+=gap};
     text.split(/\n{2,}/).forEach(para=>{
-      para.split("\n").forEach(line=>{ if(line.trim())addBlock(line,t2p.bold?"bold":"normal",t2p.size); });
-      y+=3;
-    });
-    addWatermark(doc);
+      const joined=para.split("\n").map(s=>s.trim()).filter(Boolean).join(" ");
+      if(!joined)return;
+      const lines=doc.splitTextToSize(joined,W-2*M);
+      lines.forEach((ln,ix)=>drawLine(ln,ix===lines.length-1));
+      y+=gap*0.6});
     setDownload("t2pDl",doc.output("blob"),(title?title.replace(/[^\w\- ]+/g,""):"AK TOOLS-text")+".pdf");
     toast("PDF ready ✓");
   }catch(e){console.error(e);toast("Conversion failed",1)}
   busy(btn,false);progDone("t2pProg");
 };
 
-/* ============ TAB 4: IMAGES TO PPT ============ */
 $("ipConvert").onclick=async()=>{
   const arr=store.img2ppt;if(!arr.length)return toast("Add at least one image first",1);
   const btn=$("ipConvert");busy(btn,true,"Building presentation…");
@@ -1159,30 +1186,32 @@ $("ipConvert").onclick=async()=>{
   busy(btn,false);progDone("ipProg");
 };
 
-/* ============ TAB 5: TEXT TO DOC ============ */
 $("t2dConvert").onclick=async()=>{
-  const text=$("t2dText").value.trim();if(!text)return toast("Write some text first",1);
+  const text=$("t2dText").value;if(!text.trim())return toast("Write some text first",1);
   const btn=$("t2dConvert");busy(btn,true,"Building document…");
   try{
-    const D=window.docx;const title=$("t2dTitle").value.trim();
-    const kids=[];
-    if(title)kids.push(new D.Paragraph({alignment:D.AlignmentType.CENTER,spacing:{after:280},
-      children:[new D.TextRun({text:title,bold:true,size:36,font:"Calibri"})]}));
+    const D=window.docx,F=$("t2dFont").value,SZ=+$("t2dSize").value,AL=getA2d(),
+      B=$("t2dBold").classList.contains("on"),I=$("t2dItalic").classList.contains("on"),U=$("t2dUnder").classList.contains("on"),
+      COL=$("t2dColor").value.replace("#","").toUpperCase(),LN=+$("t2dLine").value;
+    const AM={left:D.AlignmentType.LEFT,center:D.AlignmentType.CENTER,right:D.AlignmentType.RIGHT,justify:D.AlignmentType.JUSTIFIED};
+    const title=$("t2dTitle").value.trim();const kids=[];
+    if(title)kids.push(new D.Paragraph({alignment:AM[AL],spacing:{after:280,line:Math.round(240*LN)},
+      children:[new D.TextRun({text:title,font:F,size:(SZ+6)*2,bold:true,italics:I,color:COL})]}));
     text.split(/\n{2,}/).forEach(block=>{
       block.split("\n").forEach(line=>{
-        kids.push(new D.Paragraph({spacing:{after:140},
-          children:[new D.TextRun({text:line,size:24,font:"Calibri"})]}));
-      });
-    });
-    const doc=new D.Document({sections:[{children:kids}]});
-    const blob=await D.Packer.toBlob(doc);
+        if(line.trim())kids.push(new D.Paragraph({alignment:AM[AL],spacing:{after:140,line:Math.round(240*LN)},
+          children:[new D.TextRun({text:line,font:F,size:SZ*2,bold:B,italics:I,underline:U?{type:D.UnderlineType.SINGLE}:undefined,color:COL})]}));
+      })});
+    const opts={sections:[{children:kids}]};
+    const BG=$("t2dBg").value.replace("#","").toUpperCase();
+    if(BG!=="FFFFFF")opts.background={color:BG};
+    const blob=await D.Packer.toBlob(new D.Document(opts));
     setDownload("t2dDl",blob,(title?title.replace(/[^\w\- ]+/g,""):"AK TOOLS-document")+".docx");
     toast("Word file ready ✓");
   }catch(e){console.error(e);toast("Conversion failed",1)}
   busy(btn,false);progDone("t2dProg");
 };
 
-/* ============ MORE: PDF MERGE ============ */
 $("pmConvert").onclick=async()=>{
   const files=store.pdfmerge;if(files.length<2)return toast("Add at least 2 PDFs",1);
   const btn=$("pmConvert");busy(btn,true,"Merging…");
@@ -1201,7 +1230,6 @@ $("pmConvert").onclick=async()=>{
   busy(btn,false);progDone("pmProg");
 };
 
-/* ============ MORE: PDF SPLIT ============ */
 $("psConvert").onclick=async()=>{
   const f=store.pdfsplit;if(!f)return toast("Add a PDF first",1);
   const btn=$("psConvert");busy(btn,true,"Splitting…");
@@ -1221,7 +1249,6 @@ $("psConvert").onclick=async()=>{
   busy(btn,false);progDone("psProg");
 };
 
-/* ============ MORE: COMPRESS PDF ============ */
 async function buildCompressedPdf(buf,scale,quality){
   const pdf=await pdfjsLib.getDocument({data:buf.slice(0)}).promise;
   const doc=new jsPDF({unit:"mm",format:"a4"});
@@ -1255,7 +1282,6 @@ $("pcConvert").onclick=async()=>{
   busy(btn,false);progDone("pcProg");
 };
 
-/* ============ MORE: COMPRESS IMAGE ============ */
 $("icConvert").onclick=async()=>{
   const it=store.imgcompress;if(!it)return toast("Add an image first",1);
   const btn=$("icConvert");busy(btn,true,"Compressing…");
@@ -1274,7 +1300,6 @@ $("icConvert").onclick=async()=>{
   busy(btn,false);progDone("icProg");
 };
 
-/* ============ MORE: IMAGE FORMAT CONVERT ============ */
 $("icvConvert").onclick=async()=>{
   const it=store.imgconvert;if(!it)return toast("Add an image first",1);
   const btn=$("icvConvert");busy(btn,true,"Converting…");
@@ -1292,7 +1317,6 @@ $("icvConvert").onclick=async()=>{
   busy(btn,false);progDone("icvProg");
 };
 
-/* ============ MORE: WORD TO PDF ============ */
 $("w2pConvert").onclick=async()=>{
   const f=store.word2pdf;if(!f)return toast("Add a .docx file first",1);
   const btn=$("w2pConvert");busy(btn,true,"Converting…");
@@ -1323,7 +1347,6 @@ $("w2pConvert").onclick=async()=>{
   busy(btn,false);progDone("w2pProg");
 };
 
-/* ============ MORE: PPT TO PDF ============ */
 $("ppConvert").onclick=async()=>{
   const f=store.ppt2pdf;if(!f)return toast("Add a .pptx file first",1);
   const btn=$("ppConvert");busy(btn,true,"Converting…");
@@ -1371,7 +1394,6 @@ $("ppConvert").onclick=async()=>{
   busy(btn,false);progDone("ppProg");
 };
 
-/* ============ NEW: ROTATE PDF ============ */
 $("prConvert").onclick=async()=>{
   const f=store.pdfrotate;if(!f)return toast("Add a PDF file first",1);
   const btn=$("prConvert");busy(btn,1,"Rotating…");
@@ -1390,7 +1412,6 @@ $("prConvert").onclick=async()=>{
   busy(btn,0);progDone("prProg");
 };
 
-/* ============ NEW: RESIZE IMAGE ============ */
 let rzImg=null,rzRatio=1,rzName="image";
 function rzLoad(f){
   if(!f||!f.type||!f.type.startsWith("image/"))return toast("Please choose an image file",1);
@@ -1420,7 +1441,6 @@ $("rzConvert").onclick=()=>{
     toast("Image resized ✓");busy(btn,0);progDone("rzProg")},fmt,0.92);
 };
 
-/* ============ NEW: QR CODE MAKER ============ */
 $("qrConvert").onclick=()=>{
   const txt=$("qrText").value.trim();
   if(!txt)return toast("Type some text or a link first",1);
@@ -1432,7 +1452,6 @@ $("qrConvert").onclick=()=>{
   toast("QR code ready ✓");
 };
 
-/* ============ NEW: TEXT TOOLS ============ */
 function ttStats(){
   const t=$("ttText").value;
   const words=(t.trim().match(/\S+/g)||[]).length;
@@ -1459,7 +1478,6 @@ $("ttDownload").onclick=()=>{
 };
 
 
-/* ============ NEW: PDF TO WORD ============ */
 $("p2wConvert").onclick=async()=>{
   const f=store.pdf2word;if(!f)return toast("Add a PDF file first",1);
   const btn=$("p2wConvert");busy(btn,1,"Converting…");
@@ -1492,7 +1510,6 @@ $("p2wConvert").onclick=async()=>{
   busy(btn,0);progDone("p2wProg");
 };
 
-/* ============ NEW: PDF STAMP ============ */
 $("stConvert").onclick=async()=>{
   const f=store.pdfstamp;if(!f)return toast("Add a PDF file first",1);
   const what=$("stWhat").value,wm=$("stText").value.trim();
@@ -1524,7 +1541,6 @@ $("stConvert").onclick=async()=>{
   busy(btn,0);progDone("stProg");
 };
 
-/* ============ NEW: PASSPORT PHOTO ============ */
 let ppImg=null;
 function ppDraw(){
   if(!ppImg)return;
@@ -1567,7 +1583,6 @@ $("ppConvert").onclick=()=>{
   }
 };
 
-/* ============ NEW: OCR ============ */
 let ocrUrl=null;
 $("ocrFile").addEventListener("change",()=>{
   const f=$("ocrFile").files[0];if(!f)return;
@@ -1596,7 +1611,6 @@ $("ocrSave").onclick=()=>{
   setDownload("ocrDl",new Blob([t],{type:"text/plain"}),"aktools-ocr.txt");
 };
 
-/* ============ NEW: SIGNATURE ============ */
 (function(){
   const cv=$("sigPad"),x=cv.getContext("2d");let drawing=false,lx=0,ly=0,has=false;
   function fit(){const r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;
@@ -1622,7 +1636,6 @@ $("ocrSave").onclick=()=>{
   };
 })();
 
-/* ============ NEW: CALCULATORS ============ */
 function calcAge(){const v=$("calcDob").value;if(!v)return;
   const d=new Date(v),now=new Date();if(isNaN(d)||d>now){$("calcAgeOut").value="";return}
   let y=now.getFullYear()-d.getFullYear(),m=now.getMonth()-d.getMonth(),dd=now.getDate()-d.getDate();
@@ -1654,7 +1667,6 @@ $("calcDob").addEventListener("change",calcAge);
 ["pctA","pctB"].forEach(id=>$(id).addEventListener("input",calcPct));
 ["unitVal","unitPair"].forEach(id=>$(id).addEventListener("input",calcUnit));
 
-/* ============ NEW: PASSWORD GENERATOR ============ */
 function pgMake(){
   let set="";
   if($("pgUpper").checked)set+="ABCDEFGHJKLMNPQRSTUVWXYZ";
@@ -1672,7 +1684,6 @@ $("pgCopy").onclick=async()=>{if(!$("pgOut").value)pgMake();
   try{await navigator.clipboard.writeText($("pgOut").value);toast("Password copied ✓")}catch(e){toast("Copy failed",1)}};
 pgMake();
 
-/* ============ SEARCH + FAVORITES ============ */
 let favs=new Set();try{favs=new Set(JSON.parse(localStorage.getItem("fb-favs")||"[]"))}catch(e){}
 let favOnly=false;
 document.querySelectorAll(".tcard").forEach(card=>{
@@ -1701,7 +1712,6 @@ $("toolSearch").addEventListener("input",applyFilter);
 $("favToggle").addEventListener("click",()=>{favOnly=!favOnly;
   $("favToggle").classList.toggle("on",favOnly);applyFilter()});
 
-/* ============ SHARED FILE INTAKE (share target) ============ */
 if(new URLSearchParams(location.search).has("shared")){
   history.replaceState(null,"",location.pathname);
   (async()=>{try{
@@ -1722,7 +1732,6 @@ if(new URLSearchParams(location.search).has("shared")){
 }
 
 
-/* ============ CLIPBOARD PASTE (screenshots) ============ */
 function pasteIntoTool(files){
   const active=document.querySelector(".tool.on");
   const name=active?active.id.replace("tool-",""):"img2pdf";
@@ -1758,7 +1767,6 @@ $("i2pPaste").addEventListener("click",async()=>{
 })();
 </script>
 <script>
-/* PWA: offline service worker + install prompt */
 if("serviceWorker" in navigator){
   window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})});
 }
@@ -1778,7 +1786,6 @@ window.addEventListener("appinstalled",()=>{
 });
 </script>
 <script>
-/* Theme: dark/light + accent colors (saved on device) */
 (function(){
   var root=document.documentElement,modeBtn=document.getElementById("modeBtn");
   function syncMode(){modeBtn.textContent=root.dataset.theme==="dark"?"☀️":"🌙"}
@@ -1806,7 +1813,6 @@ window.addEventListener("appinstalled",()=>{
 </script>
 
 <script>
-/* Urdu UI toggle + Offline Ready badge */
 (function(){
   var UR={
   "Image to PDF":"تصویر سے PDF","PDF to Image":"PDF سے تصویر","Text to PDF":"متن سے PDF",
@@ -1870,7 +1876,6 @@ window.addEventListener("appinstalled",()=>{
 </script>
 
 <script>
-/* Themes palette popover */
 (function(){
   var btn=document.getElementById("themesBtn"),panel=document.getElementById("swatches");
   if(!btn||!panel)return;
