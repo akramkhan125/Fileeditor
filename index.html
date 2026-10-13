@@ -24,7 +24,7 @@
   if(a)document.documentElement.dataset.accent=a;
 }catch(e){}})();
 </script>
-<style>:root{
+<style>:root{--noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
 --acc:#0F172A; --acc2:#334155;
 --bg:#ffffff; --card:#ffffff; --soft:#F8FAFC; --line:#E2E8F0;
 --ink:#0b1220; --head:#0F172A; --mut:#64748B;
@@ -227,7 +227,7 @@ border:1px solid color-mix(in srgb,var(--head) 14%,transparent);border-radius:26
 box-shadow:0 30px 60px rgba(2,6,23,.16),inset 0 1px 0 color-mix(in srgb,var(--head) 12%,transparent);
 backdrop-filter:blur(20px) saturate(1.55);-webkit-backdrop-filter:blur(20px) saturate(1.55)}
 .tool::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+background-image:var(--noise)}
 .drop{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
 background:color-mix(in srgb,var(--card) 66%,transparent);
 box-shadow:inset 0 1px 0 color-mix(in srgb,var(--head) 9%,transparent)}
@@ -241,7 +241,7 @@ color-mix(in srgb,var(--card) 80%,transparent);
 box-shadow:0 14px 30px rgba(2,6,23,.10),inset 0 1px 0 color-mix(in srgb,var(--head) 12%,transparent);
 backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);
 transition:transform .18s,box-shadow .18s,border-color .18s;overflow:hidden}
-.tcard::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+.tcard::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;background-image:var(--noise)}
 .tcard:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--acc,#F59E0B) 45%,transparent);
 box-shadow:0 22px 42px rgba(2,6,23,.16),0 0 0 1px color-mix(in srgb,var(--acc,#F59E0B) 22%,transparent),inset 0 1px 0 color-mix(in srgb,var(--head) 14%,transparent)}
 .tcard:active{transform:translateY(-1px) scale(.985)}
@@ -407,6 +407,9 @@ html[data-bgimg="waterfall"] body::before{background-image:url("https://images.u
 header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 .tab.on{background:linear-gradient(135deg,var(--acc,#F59E0B),var(--acc2,var(--acc,#F59E0B)));color:#fff;border-color:transparent}
 .cinput{width:100%;height:42px;border:1.5px solid var(--line);border-radius:11px;background:var(--card);padding:4px}
+.logowrap{position:relative;display:inline-block;line-height:0;flex:none}
+.logoimg{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;object-fit:cover}
+.hero-logo{width:88px;height:88px;border-radius:50%;object-fit:cover;border:3px solid #E9A93D;box-shadow:0 16px 36px rgba(217,164,65,.45),0 0 0 7px rgba(233,169,61,.14);margin-bottom:16px}
 </style>
 </head>
 <body>
@@ -414,7 +417,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 <header class="top">
 <div class="wrap top-in">
 <a class="brand" href="#">
-<svg class="logo" viewBox="0 0 100 100" aria-label="AK logo"><circle cx="50" cy="50" r="47" fill="#0F172A"/><circle cx="50" cy="50" r="47" fill="none" stroke="#F59E0B" stroke-width="3"/><text x="50" y="63" text-anchor="middle" font-family="Poppins,Arial" font-weight="800" font-size="36" fill="#ffffff">AK</text></svg>
+<span class="logowrap"><svg class="logo" viewBox="0 0 100 100" aria-label="AK logo"><circle cx="50" cy="50" r="47" fill="#0F172A"/><circle cx="50" cy="50" r="47" fill="none" stroke="#F59E0B" stroke-width="3"/><text x="50" y="63" text-anchor="middle" font-family="Poppins,Arial" font-weight="800" font-size="36" fill="#ffffff">AK</text></svg><img class="logoimg" src="logo.png" alt="Akram Khan logo" onerror="this.remove()"></span>
 <span><span class="brandname">AK TOOLS</span><small>ALL FILE TOOLS IN ONE PLACE</small></span>
 </a>
 <span class="hctrl">
@@ -454,6 +457,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 
 <div class="wrap">
 <section class="hero">
+<img class="hero-logo" src="logo.png" alt="Akram Khan logo" onerror="this.remove()">
 <h1>Convert any file, <span class="u">right in your browser.</span></h1>
 <div class="hchips"><span>⚡ 23 Free Tools</span><span>📴 Works Offline</span><span>🔒 No Sign-up</span></div>
 <div class="madeby">Made by <b>Akram Khan</b></div>
@@ -898,7 +902,7 @@ header .logo{filter:drop-shadow(0 6px 14px rgba(245,158,11,.35))}
 <footer>
 <div class="wrap foot-in">
 <a class="brand" href="#" style="text-decoration:none">
-<svg class="logo" style="width:38px;height:38px" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="#0F172A"/><circle cx="50" cy="50" r="47" fill="none" stroke="#F59E0B" stroke-width="3"/><text x="50" y="63" text-anchor="middle" font-family="Poppins,Arial" font-weight="800" font-size="36" fill="#ffffff">AK</text></svg>
+<img class="logo" src="logo.png" alt="Akram Khan logo" style="width:38px;height:38px;border-radius:50%;object-fit:cover" onerror="this.remove()">
 <span><span class="brandname" style="font-size:18px">AK TOOLS</span><small>MADE BY AKRAM KHAN</small></span>
 </a>
 <div class="flinks"><span>More by Akram Khan</span><a href="https://khanprompts.vercel.app/" target="_blank" rel="noopener">🧠 KhanPrompts — AI Prompts</a><a href="https://akbills.vercel.app/" target="_blank" rel="noopener">🧾 AK Bills — Bill Calculator</a></div>
