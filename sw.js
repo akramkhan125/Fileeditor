@@ -1,6 +1,6 @@
 /* AK TOOLS service worker — cache-first so the app works fully offline
    after the first visit. Bump CACHE when libraries change. */
-const CACHE = "aktools-v7";
+const CACHE = "aktools-v8";
 const CORE = [
   "./",
   "./index.html",
