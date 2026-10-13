@@ -1,6 +1,6 @@
 /* AK TOOLS service worker — cache-first so the app works fully offline
    after the first visit. Bump CACHE when libraries change. */
-const CACHE = "aktools-v6";
+const CACHE = "aktools-v7";
 const CORE = [
   "./",
   "./index.html",
@@ -9,7 +9,7 @@ const CORE = [
   "./icon-192.png",
   "./icon-512.png",
   "./apple-touch-icon.png",
-  "./logo.png",
+  "./logo.svg",
   "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap",
   "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js",
