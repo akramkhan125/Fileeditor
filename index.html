@@ -383,6 +383,31 @@ footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--acc
 [data-accent="gold"]{--acc:#B8860B;--acc2:#F59E0B}
 [data-accent="forest"]{--acc:#15803D;--acc2:#84CC16}
 [data-accent="neon"]{--acc:#0891B2;--acc2:#A3E635}
+
+/* ===== v7 STAGE + HEADLINE FIX + RENAME FIELD ===== */
+#toolStage{scroll-margin-top:84px}
+#toolStage .tool{margin-top:20px}
+.hero h1 .u{background:linear-gradient(transparent 63%,color-mix(in srgb,var(--acc,#F59E0B) 48%,transparent) 63%);
+  color:inherit;-webkit-text-fill-color:currentColor;text-decoration:none}
+.modebtn{color:var(--head)}
+.dl-name{display:block;width:min(420px,100%);margin:0 auto 12px;border:1.5px solid var(--line);
+  border-radius:12px;padding:11px 14px;font-family:inherit;font-size:14px;font-weight:600;
+  background:var(--card);color:var(--head);outline:none;text-align:center}
+.dl-name:focus{border-color:var(--acc,#F59E0B)}
+
+/* ===== v8 THEMES BUTTON + PALETTE POPOVER ===== */
+.themeswrap{position:relative;display:inline-block}
+.themesbtn{width:auto;height:42px;padding:0 15px;border-radius:999px;font-size:15px;
+  display:inline-flex;align-items:center;gap:7px}
+.themesbtn span{font-size:13px;font-weight:800;font-family:inherit}
+#swatches{display:none;position:absolute;right:0;top:calc(100% + 10px);z-index:80;
+  grid-template-columns:repeat(5,36px);gap:9px;padding:14px;border-radius:20px;
+  background:color-mix(in srgb,var(--card) 88%,transparent);
+  border:1px solid color-mix(in srgb,var(--head) 14%,transparent);
+  box-shadow:0 26px 54px rgba(2,6,23,.28),inset 0 1px 0 color-mix(in srgb,var(--head) 12%,transparent);
+  backdrop-filter:blur(20px) saturate(1.5);-webkit-backdrop-filter:blur(20px) saturate(1.5)}
+#swatches.on{display:grid}
+#swatches .sw{width:36px;height:36px}
 </style>
 </head>
 <body>
@@ -394,7 +419,8 @@ footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--acc
       <span><span class="brandname">AK TOOLS</span><small>ALL FILE TOOLS IN ONE PLACE</small></span>
     </a>
     <span class="hctrl">
-      <span class="swatches" id="swatches" title="Theme color">
+      <span class="themeswrap"><button class="modebtn themesbtn" id="themesBtn" title="Color themes">🎨<span>Themes</span></button>
+        <span class="swatches" id="swatches" title="Theme color">
         <button class="sw on" data-accent="slate" style="background:linear-gradient(135deg,#0F172A,#334155)" title="Slate"></button>
         <button class="sw" data-accent="royal" style="background:linear-gradient(135deg,#2563EB,#06B6D4)" title="Royal Blue"></button>
         <button class="sw" data-accent="violet" style="background:linear-gradient(135deg,#7C3AED,#DB2777)" title="Violet"></button>
@@ -409,7 +435,7 @@ footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--acc
         <button class="sw" data-accent="gold" style="background:linear-gradient(135deg,#B8860B,#F59E0B)" title="Gold"></button>
         <button class="sw" data-accent="forest" style="background:linear-gradient(135deg,#15803D,#84CC16)" title="Forest"></button>
         <button class="sw" data-accent="neon" style="background:linear-gradient(135deg,#0891B2,#A3E635)" title="Neon"></button>
-      </span>
+      </span></span>
       <button class="modebtn" id="modeBtn" title="Dark / Light mode">🌙</button>
       <button class="modebtn" id="langBtn" title="Urdu / English" style="font-size:13px;font-weight:800;width:auto;padding:0 12px;border-radius:999px">اردو</button>
       <span class="priv" id="offBadge" style="display:none"><span class="dot"></span>Offline Ready ✓</span>
@@ -425,6 +451,8 @@ footer{background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--acc
     <div class="hchips"><span>⚡ 23 Free Tools</span><span>📴 Works Offline</span><span>🔒 No Sign-up</span></div>
     <div class="madeby">Made by <b>Akram Khan</b></div>
   </section>
+
+  <div id="toolStage"></div>
 
   <nav class="tabs" id="tabs">
     <button class="tab on" data-tool="img2pdf">🖼️ Image to PDF</button>
@@ -878,9 +906,18 @@ function prog(id,pct,label){const p=$(id);p.classList.add("on");
 function progDone(id){const p=$(id);setTimeout(()=>p.classList.remove("on"),600)}
 function setDownload(zoneId,blob,filename,meta){
   const z=$(zoneId);z.classList.add("on");
+  let nameInp=z.querySelector(".dl-name");
+  if(!nameInp){nameInp=document.createElement("input");nameInp.className="dl-name";
+    nameInp.type="text";nameInp.placeholder="File name";nameInp.setAttribute("aria-label","File name");
+    z.insertBefore(nameInp,z.firstChild)}
+  nameInp.value=filename;
   z.querySelector(".dl-meta").textContent=filename+" • "+fmtSize(blob.size)+(meta?" • "+meta:"");
   z.querySelector(".dl-big").onclick=()=>{
-    const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=filename;
+    const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=(function(){let nm=(nameInp.value||"").trim().replace(/[\\/:*?"<>|]+/g,"");
+      const ext=filename.slice(filename.lastIndexOf("."));
+      if(!nm)return filename;
+      if(!nm.toLowerCase().endsWith(ext.toLowerCase()))nm=nm.replace(/\.[^.]*$/,"")+ext;
+      return nm})();
     document.body.appendChild(a);a.click();a.remove();
     setTimeout(()=>URL.revokeObjectURL(a.href),4000);toast("Download started ✓")};
 }
@@ -997,8 +1034,13 @@ function handleFiles(key,files){
 function showTool(name){
   document.querySelectorAll(".tool").forEach(s=>s.classList.toggle("on",s.id==="tool-"+name));
   document.querySelectorAll(".tab[data-tool]").forEach(t=>t.classList.toggle("on",t.dataset.tool===name));
-  window.scrollTo({top:document.querySelector(".tabs").offsetTop-90,behavior:"smooth"});
+  const sec=document.getElementById("tool-"+name),stage=document.getElementById("toolStage");
+  if(sec&&stage&&sec.parentNode!==stage)stage.appendChild(sec);
+  if(stage)window.scrollTo({top:stage.offsetTop-84,behavior:"smooth"});
 }
+/* put the default tool in the top stage on load */
+(function(){const sec=document.querySelector(".tool.on"),stage=document.getElementById("toolStage");
+  if(sec&&stage)stage.appendChild(sec)})();
 document.querySelectorAll("[data-tool]").forEach(b=>b.addEventListener("click",()=>showTool(b.dataset.tool)));
 
 /* ---------------- image loading helper ---------------- */
@@ -1834,6 +1876,18 @@ window.addEventListener("appinstalled",()=>{
         document.getElementById("offBadge").style.display="inline-flex";
     }).catch(function(){});
   }
+})();
+</script>
+
+<script>
+/* Themes palette popover */
+(function(){
+  var btn=document.getElementById("themesBtn"),panel=document.getElementById("swatches");
+  if(!btn||!panel)return;
+  btn.addEventListener("click",function(e){e.stopPropagation();panel.classList.toggle("on")});
+  panel.addEventListener("click",function(e){e.stopPropagation();
+    if(e.target.classList.contains("sw"))panel.classList.remove("on")});
+  document.addEventListener("click",function(){panel.classList.remove("on")});
 })();
 </script>
 </body>
